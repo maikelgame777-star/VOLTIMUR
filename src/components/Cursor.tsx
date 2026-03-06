@@ -1,16 +1,35 @@
-import { useEffect, useState } from 'react';
-import { motion, useMotionValue, useSpring } from 'motion/react';
+import { useEffect } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
 
 export default function Cursor() {
-  const [visible, setVisible] = useState(false);
-  const [hovering, setHovering] = useState(false);
-  const [clicking, setClicking] = useState(false);
-
+  // Raw mouse position
   const mouseX = useMotionValue(-200);
   const mouseY = useMotionValue(-200);
 
-  const ringX = useSpring(mouseX, { damping: 22, stiffness: 250, mass: 0.5 });
-  const ringY = useSpring(mouseY, { damping: 22, stiffness: 250, mass: 0.5 });
+  // Signals as MotionValues — zero React re-renders
+  const visible = useMotionValue(0);
+  const hover = useMotionValue(0);
+  const click = useMotionValue(0);
+
+  // Smooth signals
+  const hoverSpring = useSpring(hover, { damping: 20, stiffness: 350 });
+  const clickSpring = useSpring(click, { damping: 20, stiffness: 350 });
+
+  // Ring follows mouse with lag
+  const ringX = useSpring(mouseX, { damping: 25, stiffness: 280, mass: 0.4 });
+  const ringY = useSpring(mouseY, { damping: 25, stiffness: 280, mass: 0.4 });
+
+  // Derived values — no re-renders, pure transforms
+  const ringSize = useTransform(
+    [hoverSpring, clickSpring] as Parameters<typeof useTransform>[0],
+    ([h, c]: number[]) => 36 + h * 18 - c * 14
+  );
+  const dotScale = useTransform(
+    [hoverSpring, clickSpring] as Parameters<typeof useTransform>[0],
+    ([h, c]: number[]) => Math.max(0, 1 - h + c * 1.5)
+  );
+  const borderColor = useTransform(hoverSpring, [0, 1], ['#ffffff', '#10b981']);
+  const opacity = useTransform(visible, [0, 1], [0, 1]);
 
   useEffect(() => {
     if (!window.matchMedia('(pointer: fine)').matches) return;
@@ -18,23 +37,24 @@ export default function Cursor() {
     const onMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
-      setVisible(true);
+      visible.set(1);
     };
-    const onLeave = () => setVisible(false);
-    const onEnter = () => setVisible(true);
-    const onDown = () => setClicking(true);
-    const onUp = () => setClicking(false);
+    const onLeave = () => visible.set(0);
+    const onEnter = () => visible.set(1);
+    const onDown = () => click.set(1);
+    const onUp = () => click.set(0);
     const onOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      setHovering(!!target.closest('a, button, input, textarea, select, label, [role="button"]'));
+      const el = e.target as HTMLElement;
+      hover.set(el.closest('a, button, input, textarea, select, label, [role="button"]') ? 1 : 0);
     };
 
-    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mousemove', onMove, { passive: true });
     document.addEventListener('mouseleave', onLeave);
     document.addEventListener('mouseenter', onEnter);
     document.addEventListener('mousedown', onDown);
     document.addEventListener('mouseup', onUp);
-    document.addEventListener('mouseover', onOver);
+    document.addEventListener('mouseover', onOver, { passive: true });
+
     return () => {
       document.removeEventListener('mousemove', onMove);
       document.removeEventListener('mouseleave', onLeave);
@@ -43,25 +63,28 @@ export default function Cursor() {
       document.removeEventListener('mouseup', onUp);
       document.removeEventListener('mouseover', onOver);
     };
-  }, [mouseX, mouseY]);
+  }, [mouseX, mouseY, visible, hover, click]);
 
   return (
     <>
-      {/* Ring - follows with spring lag */}
+      {/* Ring */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9999] rounded-full border mix-blend-difference"
-        style={{ x: ringX, y: ringY, translateX: '-50%', translateY: '-50%' }}
-        animate={{
-          width: hovering ? 52 : clicking ? 22 : 36,
-          height: hovering ? 52 : clicking ? 22 : 36,
-          borderColor: hovering ? '#10b981' : '#ffffff',
-          opacity: visible ? 1 : 0,
-          scale: clicking ? 0.85 : 1,
+        className="fixed top-0 left-0 pointer-events-none z-[9999] rounded-full mix-blend-difference"
+        style={{
+          x: ringX,
+          y: ringY,
+          translateX: '-50%',
+          translateY: '-50%',
+          width: ringSize,
+          height: ringSize,
+          borderWidth: 1.5,
+          borderStyle: 'solid',
+          borderColor,
+          opacity,
+          willChange: 'transform',
         }}
-        transition={{ duration: 0.18, ease: 'easeOut' }}
       />
-
-      {/* Dot - follows exactly */}
+      {/* Dot */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9999] rounded-full bg-white mix-blend-difference"
         style={{
@@ -71,12 +94,10 @@ export default function Cursor() {
           translateY: '-50%',
           width: 6,
           height: 6,
+          scale: dotScale,
+          opacity,
+          willChange: 'transform',
         }}
-        animate={{
-          opacity: visible ? 1 : 0,
-          scale: clicking ? 2 : hovering ? 0 : 1,
-        }}
-        transition={{ duration: 0.12 }}
       />
     </>
   );
