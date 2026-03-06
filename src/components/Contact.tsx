@@ -1,7 +1,32 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import { Phone, Mail, MapPin, Clock, ChevronDown } from 'lucide-react';
 
 export default function Contact() {
+  const [form, setForm] = useState({ nombre: '', telefono: '', email: '', servicio: 'Instalación Eléctrica', mensaje: '' });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('loading');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error();
+      setStatus('success');
+      setForm({ nombre: '', telefono: '', email: '', servicio: 'Instalación Eléctrica', mensaje: '' });
+    } catch {
+      setStatus('error');
+    }
+  };
+
   return (
     <section id="contact" className="py-32 bg-[#0d1117] text-white relative overflow-hidden border-t border-white/5">
       {/* Background glow */}
@@ -72,21 +97,28 @@ export default function Contact() {
             {/* Subtle inner glow */}
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
             
-            <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-8" onSubmit={handleSubmit}>
               <div className="grid sm:grid-cols-2 gap-8">
                 <div className="space-y-3">
                   <label className="text-sm font-medium text-gray-400 uppercase tracking-wider">Nombre</label>
-                  <input 
-                    type="text" 
-                    placeholder="Tu nombre" 
+                  <input
+                    type="text"
+                    name="nombre"
+                    value={form.nombre}
+                    onChange={handleChange}
+                    required
+                    placeholder="Tu nombre"
                     className="w-full bg-[#0d1117] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                   />
                 </div>
                 <div className="space-y-3">
                   <label className="text-sm font-medium text-gray-400 uppercase tracking-wider">Teléfono</label>
-                  <input 
-                    type="tel" 
-                    placeholder="+34 600 000 000" 
+                  <input
+                    type="tel"
+                    name="telefono"
+                    value={form.telefono}
+                    onChange={handleChange}
+                    placeholder="+34 600 000 000"
                     className="w-full bg-[#0d1117] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                   />
                 </div>
@@ -94,9 +126,13 @@ export default function Contact() {
 
               <div className="space-y-3">
                 <label className="text-sm font-medium text-gray-400 uppercase tracking-wider">Email</label>
-                <input 
-                  type="email" 
-                  placeholder="tu@email.com" 
+                <input
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                  placeholder="tu@email.com"
                   className="w-full bg-[#0d1117] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                 />
               </div>
@@ -104,7 +140,12 @@ export default function Contact() {
               <div className="space-y-3">
                 <label className="text-sm font-medium text-gray-400 uppercase tracking-wider">Servicio</label>
                 <div className="relative">
-                  <select className="w-full bg-[#0d1117] border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all appearance-none cursor-pointer">
+                  <select
+                    name="servicio"
+                    value={form.servicio}
+                    onChange={handleChange}
+                    className="w-full bg-[#0d1117] border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all appearance-none cursor-pointer"
+                  >
                     <option>Instalación Eléctrica</option>
                     <option>Telecomunicaciones</option>
                     <option>Sistemas de Seguridad</option>
@@ -120,19 +161,36 @@ export default function Contact() {
 
               <div className="space-y-3">
                 <label className="text-sm font-medium text-gray-400 uppercase tracking-wider">Mensaje</label>
-                <textarea 
+                <textarea
+                  name="mensaje"
+                  value={form.mensaje}
+                  onChange={handleChange}
+                  required
                   rows={4}
-                  placeholder="Describe tu proyecto..." 
+                  placeholder="Describe tu proyecto..."
                   className="w-full bg-[#0d1117] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all resize-none"
                 ></textarea>
               </div>
 
+              {status === 'success' && (
+                <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-center">
+                  Mensaje enviado correctamente. Te contactaremos pronto.
+                </div>
+              )}
+              {status === 'error' && (
+                <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-center">
+                  Error al enviar el mensaje. Inténtalo de nuevo.
+                </div>
+              )}
+
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full py-5 bg-[#2b90ff] hover:bg-[#1a7bed] text-white rounded-xl font-medium text-lg transition-colors shadow-[0_0_20px_rgba(43,144,255,0.3)] hover:shadow-[0_0_30px_rgba(43,144,255,0.5)]"
+                type="submit"
+                disabled={status === 'loading'}
+                className="w-full py-5 bg-[#2b90ff] hover:bg-[#1a7bed] disabled:opacity-60 disabled:cursor-not-allowed text-white rounded-xl font-medium text-lg transition-colors shadow-[0_0_20px_rgba(43,144,255,0.3)] hover:shadow-[0_0_30px_rgba(43,144,255,0.5)]"
               >
-                Enviar Solicitud
+                {status === 'loading' ? 'Enviando...' : 'Enviar Solicitud'}
               </motion.button>
             </form>
           </motion.div>
