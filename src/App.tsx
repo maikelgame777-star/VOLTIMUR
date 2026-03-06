@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import About from './components/About';
@@ -30,6 +31,9 @@ export default function App() {
       
       {/* ElevenLabs AI Agent */}
       <elevenlabs-convai agent-id="agent_1601kk07y417fas98fmc894decym"></elevenlabs-convai>
+      
+      {/* Vercel Speed Insights */}
+      <SpeedInsights />
     </div>
   );
 }
