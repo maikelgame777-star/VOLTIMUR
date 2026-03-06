@@ -50,7 +50,7 @@ export default function About() {
               
               <div className="absolute inset-0 flex flex-col items-center justify-center">
                 <div className="text-center p-12 bg-white/80 backdrop-blur-md rounded-3xl shadow-lg border border-white/50 transform hover:scale-105 transition-transform duration-500">
-                  <div className="text-7xl font-display font-bold text-blue-600 mb-2">+10</div>
+                  <div className="text-7xl font-display font-bold text-blue-600 mb-2">+15</div>
                   <div className="text-sm font-semibold text-gray-500 uppercase tracking-[0.2em]">Años de Experiencia</div>
                 </div>
               </div>
