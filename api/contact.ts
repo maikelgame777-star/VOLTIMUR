@@ -17,7 +17,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     await resend.emails.send({
       from: 'Voltimur Web <noreply@voltimur.com>',
-      to: 'voltimur@outlook.es',
+      to: 'maikel_ms@icloud.com',
       replyTo: email,
       subject: `Nueva solicitud: ${servicio}`,
       html: `
