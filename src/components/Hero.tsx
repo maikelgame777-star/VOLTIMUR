@@ -63,7 +63,7 @@ export default function Hero() {
             </span>
           </h1>
           <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed font-light">
-            Más de 15 años conectando hogares y empresas de Murcia con soluciones eléctricas y tecnológicas seguras, eficientes y certificadas.
+            Un equipo con más de 15 años de experiencia en el sector, conectando hogares y empresas de Murcia con soluciones eléctricas y tecnológicas seguras, eficientes y certificadas.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
