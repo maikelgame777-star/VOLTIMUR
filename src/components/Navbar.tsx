@@ -41,7 +41,7 @@ export default function Navbar() {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="font-display font-bold text-xl text-white tracking-tight"
           >
-            Voltimur<span className="text-blue-500">.</span>
+            Voltimur<span className="text-emerald-500">.</span>
           </button>
 
           <div className="hidden md:flex items-center gap-8">
@@ -60,7 +60,7 @@ export default function Navbar() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => scrollTo('contact')}
-            className="hidden md:block px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-sm font-medium transition-colors"
+            className="hidden md:block px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-sm font-medium transition-colors"
           >
             Solicitar Presupuesto
           </motion.button>
@@ -95,7 +95,7 @@ export default function Navbar() {
             ))}
             <button
               onClick={() => scrollTo('contact')}
-              className="mt-4 px-5 py-3.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-sm font-medium transition-colors text-center"
+              className="mt-4 px-5 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-sm font-medium transition-colors text-center"
             >
               Solicitar Presupuesto
             </button>
