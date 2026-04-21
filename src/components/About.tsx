@@ -69,10 +69,14 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 + i * 0.15 }}
-                whileHover={{ x: 6 }}
-                className="flex items-center gap-8 p-8 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md hover:border-emerald-100 transition-all duration-300 group"
+                whileHover={{ x: 6, scale: 1.02 }}
+                className="stat-glow flex items-center gap-8 p-8 border rounded-2xl shadow-sm transition-all duration-300 group relative overflow-hidden"
               >
-                <div className="text-5xl md:text-6xl font-display font-bold text-emerald-600 tabular-nums">
+                {/* Decorative glow orb */}
+                <div className="absolute -right-8 -top-8 w-28 h-28 rounded-full bg-emerald-400/10 blur-2xl pointer-events-none group-hover:bg-emerald-400/20 transition-all duration-500" />
+                {/* Left accent bar */}
+                <div className="absolute left-0 top-4 bottom-4 w-1 rounded-r-full bg-gradient-to-b from-emerald-400 to-amber-400 opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="text-5xl md:text-6xl font-display font-bold tabular-nums bg-gradient-to-br from-emerald-600 to-emerald-400 bg-clip-text text-transparent drop-shadow-sm">
                   <CountUp target={stat.value} suffix={stat.suffix} />
                 </div>
                 <div className="text-sm font-semibold text-gray-500 uppercase tracking-[0.15em]">{stat.label}</div>

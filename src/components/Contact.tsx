@@ -1,22 +1,11 @@
-import { useRef, useState } from 'react';
-import { motion, useMotionValue, useMotionTemplate } from 'motion/react';
+import { useState } from 'react';
+import { motion } from 'motion/react';
 import { Phone, Mail, MapPin, Clock, ChevronDown } from 'lucide-react';
-import MagneticButton from './MagneticButton';
+
 
 export default function Contact() {
   const [form, setForm] = useState({ nombre: '', telefono: '', email: '', servicio: 'Instalación Eléctrica', mensaje: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const sectionRef = useRef<HTMLElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const spotlight = useMotionTemplate`radial-gradient(700px circle at ${mouseX}px ${mouseY}px, rgba(16,185,129,0.06), transparent 80%)`;
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    const rect = sectionRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    mouseX.set(e.clientX - rect.left);
-    mouseY.set(e.clientY - rect.top);
-  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -42,12 +31,9 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      ref={sectionRef}
-      onMouseMove={handleMouseMove}
       className="py-32 bg-[#0d1117] text-white relative overflow-hidden border-t border-white/5"
     >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-emerald-600/10 blur-[150px] rounded-full pointer-events-none"></div>
-      <motion.div className="absolute inset-0 pointer-events-none z-0" style={{ background: spotlight }} />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-20">
@@ -158,14 +144,13 @@ export default function Contact() {
                 </div>
               )}
 
-              <MagneticButton
+              <button
                 type="submit"
                 disabled={status === 'loading'}
-                strength={0.2}
                 className="w-full py-5 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-60 disabled:cursor-not-allowed text-white rounded-xl font-medium text-lg transition-colors shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)]"
               >
                 {status === 'loading' ? 'Enviando...' : 'Enviar Solicitud'}
-              </MagneticButton>
+              </button>
             </form>
           </motion.div>
         </div>

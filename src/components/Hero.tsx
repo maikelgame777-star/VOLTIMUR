@@ -1,35 +1,56 @@
-import { useRef } from 'react';
-import { motion, useMotionValue, useMotionTemplate } from 'motion/react';
+import { motion } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
-import MagneticButton from './MagneticButton';
+
 
 const line1 = ['Energía', 'que', 'transforma,'];
 const line2 = ['instalaciones', 'que', 'perduran'];
 
+const PARTICLES = [
+  { x: 10, y: 22, size: 5, dur: 7,  delay: 0,   color: 'emerald' },
+  { x: 88, y: 16, size: 4, dur: 9,  delay: 1.5, color: 'amber'   },
+  { x: 24, y: 70, size: 4, dur: 11, delay: 0.8, color: 'emerald' },
+  { x: 76, y: 58, size: 6, dur: 8,  delay: 2,   color: 'emerald' },
+  { x: 45, y: 83, size: 3, dur: 10, delay: 0.3, color: 'amber'   },
+  { x: 63, y: 32, size: 5, dur: 12, delay: 1.2, color: 'emerald' },
+  { x: 18, y: 48, size: 4, dur: 9,  delay: 2.5, color: 'emerald' },
+  { x: 91, y: 73, size: 5, dur: 8,  delay: 0.7, color: 'amber'   },
+  { x: 55, y: 12, size: 3, dur: 13, delay: 1.8, color: 'emerald' },
+  { x: 35, y: 40, size: 4, dur: 10, delay: 3,   color: 'emerald' },
+  { x: 72, y: 90, size: 5, dur: 7,  delay: 0.5, color: 'amber'   },
+  { x:  6, y: 78, size: 3, dur: 11, delay: 1,   color: 'emerald' },
+  { x: 50, y: 55, size: 4, dur: 14, delay: 2.2, color: 'amber'   },
+  { x: 30, y: 10, size: 3, dur: 9,  delay: 0.9, color: 'emerald' },
+];
+
 export default function Hero() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const spotlight = useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(16,185,129,0.07), transparent 80%)`;
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    const rect = sectionRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    mouseX.set(e.clientX - rect.left);
-    mouseY.set(e.clientY - rect.top);
-  };
-
   return (
     <section
-      ref={sectionRef}
-      onMouseMove={handleMouseMove}
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#0d1117] pt-20 pb-32"
     >
-      {/* Spotlight */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none z-0"
-        style={{ background: spotlight }}
-      />
+
+      {/* Floating particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {PARTICLES.map((p, i) => (
+          <motion.div
+            key={i}
+            className={`absolute rounded-full ${p.color === 'emerald' ? 'bg-emerald-400' : 'bg-amber-400'}`}
+            style={{
+              left: `${p.x}%`,
+              top: `${p.y}%`,
+              width: p.size,
+              height: p.size,
+              willChange: 'transform, opacity',
+            }}
+            animate={{
+              y: [0, -18, 4, -10, 0],
+              x: [0, 7, -5, 3, 0],
+              opacity: [0.25, 0.7, 0.45, 0.65, 0.25],
+              scale: [1, 1.3, 0.85, 1.15, 1],
+            }}
+            transition={{ duration: p.dur, repeat: Infinity, ease: 'easeInOut', delay: p.delay }}
+          />
+        ))}
+      </div>
 
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -157,18 +178,18 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 1.3 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-5"
         >
-          <MagneticButton
+          <button
             className="w-full sm:w-auto px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-medium transition-colors shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:shadow-[0_0_30px_rgba(16,185,129,0.6)]"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Solicitar Presupuesto Gratis
-          </MagneticButton>
-          <MagneticButton
+          </button>
+          <button
             className="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-lg font-medium transition-colors"
             onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Ver Servicios
-          </MagneticButton>
+          </button>
         </motion.div>
       </div>
 

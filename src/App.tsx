@@ -4,7 +4,6 @@
  */
 
 import Loader from './components/Loader';
-import Cursor from './components/Cursor';
 import ScrollProgress from './components/ScrollProgress';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -22,7 +21,6 @@ export default function App() {
     <div className="min-h-screen bg-[#0d1117] text-white selection:bg-emerald-500/30 font-sans">
       {/* Global overlays */}
       <Loader />
-      <Cursor />
       <ScrollProgress />
       <div className="grain-overlay" />
 
@@ -41,9 +39,6 @@ export default function App() {
       <ServiceArea />
       <Contact />
       <Footer />
-
-      {/* ElevenLabs AI Agent */}
-      <elevenlabs-convai agent-id="agent_1601kk07y417fas98fmc894decym"></elevenlabs-convai>
 
       {/* WhatsApp floating button */}
       <a

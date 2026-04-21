@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Zap } from 'lucide-react';
 
 const links = [
   { label: 'Servicios', href: 'services' },
@@ -39,8 +39,11 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="font-display font-bold text-xl text-white tracking-tight"
+            className="font-display font-bold text-xl text-white tracking-tight flex items-center gap-1.5"
           >
+            <span className="w-7 h-7 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center">
+              <Zap size={15} className="text-emerald-400" fill="currentColor" />
+            </span>
             Voltimur<span className="text-emerald-500">.</span>
           </button>
 

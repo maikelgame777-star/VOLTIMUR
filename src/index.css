@@ -17,13 +17,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
 }
 
-/* Custom cursor: hide default on desktop */
-@media (pointer: fine) {
-  *, *::before, *::after {
-    cursor: none !important;
-  }
-}
-
 /* Grain overlay */
 .grain-overlay {
   position: fixed;
@@ -62,4 +55,33 @@ h1, h2, h3, h4, h5, h6 {
 .animated-gradient {
   background-size: 300% 300%;
   animation: gradient-shift 5s ease infinite;
+}
+
+/* Shimmer sweep for buttons */
+@keyframes shimmer-sweep {
+  0%   { left: -60%; }
+  100% { left: 130%; }
+}
+
+.shimmer-sweep {
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  transform: skewX(-15deg);
+  animation: shimmer-sweep 3.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Stat card gradient border */
+.stat-glow {
+  background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(245,158,11,0.06));
+  border-color: rgba(16,185,129,0.2);
+}
+.stat-glow:hover {
+  background: linear-gradient(135deg, rgba(16,185,129,0.18), rgba(245,158,11,0.1));
+  border-color: rgba(16,185,129,0.4);
+  box-shadow: 0 0 30px rgba(16,185,129,0.12);
 }

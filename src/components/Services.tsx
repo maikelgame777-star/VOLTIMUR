@@ -1,5 +1,4 @@
-import { useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
+import { motion } from 'motion/react';
 import { Zap, Wifi, Shield, Sun, Wrench, Home, BatteryCharging } from 'lucide-react';
 
 const services = [
@@ -41,47 +40,13 @@ const services = [
 ];
 
 function TiltCard({ children, index }: { children: React.ReactNode; index: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const rawX = useMotionValue(0);
-  const rawY = useMotionValue(0);
-  const rotateX = useSpring(useTransform(rawY, [-0.5, 0.5], [7, -7]), { damping: 20, stiffness: 200 });
-  const rotateY = useSpring(useTransform(rawX, [-0.5, 0.5], [-7, 7]), { damping: 20, stiffness: 200 });
-  const y = useSpring(useMotionValue(0), { damping: 20, stiffness: 200 });
-  const bgColor = useMotionValue('rgb(255,255,255)');
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    rawX.set((e.clientX - rect.left) / rect.width - 0.5);
-    rawY.set((e.clientY - rect.top) / rect.height - 0.5);
-    y.set(-6);
-    bgColor.set('rgb(240,253,244)');
-  };
-
-  const handleMouseLeave = () => {
-    rawX.set(0);
-    rawY.set(0);
-    y.set(0);
-    bgColor.set('rgb(255,255,255)');
-  };
-
   return (
     <motion.div
-      ref={ref}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX,
-        rotateY,
-        y,
-        backgroundColor: bgColor,
-        transformPerspective: 900,
-      }}
-      className="p-10 border-r border-b border-gray-200 border-dashed group transition-colors duration-300 cursor-pointer relative overflow-hidden flex flex-col"
+      className="p-10 border-r border-b border-gray-200 border-dashed group hover:bg-emerald-50/50 transition-colors duration-300 cursor-pointer relative overflow-hidden flex flex-col"
     >
       {children}
     </motion.div>
