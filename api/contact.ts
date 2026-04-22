@@ -44,8 +44,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     });
 
     return res.status(200).json({ ok: true });
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
-    return res.status(500).json({ error: 'Error al enviar el mensaje' });
+    return res.status(500).json({ error: error?.message || 'Error al enviar el mensaje' });
   }
 }

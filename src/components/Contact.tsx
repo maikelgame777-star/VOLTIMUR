@@ -106,6 +106,7 @@ function PhoneField({ value, onChange }: { value: string; onChange: (val: string
 export default function Contact() {
   const [form, setForm] = useState({ nombre: '', telefono: '', email: '', servicio: 'Instalación Eléctrica', mensaje: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -120,10 +121,12 @@ export default function Contact() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
-      if (!res.ok) throw new Error();
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Error desconocido');
       setStatus('success');
       setForm({ nombre: '', telefono: '', email: '', servicio: 'Instalación Eléctrica', mensaje: '' });
-    } catch {
+    } catch (err: any) {
+      setErrorMsg(err.message);
       setStatus('error');
     }
   };
@@ -241,8 +244,8 @@ export default function Contact() {
                 </div>
               )}
               {status === 'error' && (
-                <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-center">
-                  Error al enviar el mensaje. Inténtalo de nuevo.
+                <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-center text-sm">
+                  {errorMsg || 'Error al enviar el mensaje. Inténtalo de nuevo.'}
                 </div>
               )}
 
