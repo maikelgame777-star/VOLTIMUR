@@ -1,7 +1,15 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const transporter = nodemailer.createTransport({
+  host: 'smtp-mail.outlook.com',
+  port: 587,
+  secure: false,
+  auth: {
+    user: 'voltimur@outlook.es',
+    pass: process.env.EMAIL_PASSWORD,
+  },
+});
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
@@ -15,14 +23,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    await resend.emails.send({
-      from: 'Voltimur Web <noreply@voltimur.com>',
-      to: 'maikel_ms@icloud.com',
+    await transporter.sendMail({
+      from: '"Voltimur Web" <voltimur@outlook.es>',
+      to: 'voltimur@outlook.es',
       replyTo: email,
       subject: `Nueva solicitud: ${servicio}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #2b90ff;">Nueva solicitud de contacto</h2>
+          <h2 style="color: #10b981;">Nueva solicitud de contacto</h2>
           <table style="width: 100%; border-collapse: collapse;">
             <tr><td style="padding: 8px 0; color: #666;">Nombre</td><td style="padding: 8px 0;"><strong>${nombre}</strong></td></tr>
             <tr><td style="padding: 8px 0; color: #666;">Teléfono</td><td style="padding: 8px 0;"><strong>${telefono || 'No indicado'}</strong></td></tr>
