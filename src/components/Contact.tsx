@@ -1,7 +1,107 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { Phone, Mail, MapPin, Clock, ChevronDown } from 'lucide-react';
 
+const COUNTRIES = [
+  { code: 'ES', prefix: '+34', flag: '🇪🇸', name: 'España' },
+  { code: 'FR', prefix: '+33', flag: '🇫🇷', name: 'Francia' },
+  { code: 'DE', prefix: '+49', flag: '🇩🇪', name: 'Alemania' },
+  { code: 'IT', prefix: '+39', flag: '🇮🇹', name: 'Italia' },
+  { code: 'PT', prefix: '+351', flag: '🇵🇹', name: 'Portugal' },
+  { code: 'GB', prefix: '+44', flag: '🇬🇧', name: 'Reino Unido' },
+  { code: 'NL', prefix: '+31', flag: '🇳🇱', name: 'Países Bajos' },
+  { code: 'BE', prefix: '+32', flag: '🇧🇪', name: 'Bélgica' },
+  { code: 'CH', prefix: '+41', flag: '🇨🇭', name: 'Suiza' },
+  { code: 'AT', prefix: '+43', flag: '🇦🇹', name: 'Austria' },
+  { code: 'PL', prefix: '+48', flag: '🇵🇱', name: 'Polonia' },
+  { code: 'RO', prefix: '+40', flag: '🇷🇴', name: 'Rumanía' },
+  { code: 'MX', prefix: '+52', flag: '🇲🇽', name: 'México' },
+  { code: 'AR', prefix: '+54', flag: '🇦🇷', name: 'Argentina' },
+  { code: 'CO', prefix: '+57', flag: '🇨🇴', name: 'Colombia' },
+  { code: 'VE', prefix: '+58', flag: '🇻🇪', name: 'Venezuela' },
+  { code: 'PE', prefix: '+51', flag: '🇵🇪', name: 'Perú' },
+  { code: 'CL', prefix: '+56', flag: '🇨🇱', name: 'Chile' },
+  { code: 'EC', prefix: '+593', flag: '🇪🇨', name: 'Ecuador' },
+  { code: 'BO', prefix: '+591', flag: '🇧🇴', name: 'Bolivia' },
+  { code: 'MA', prefix: '+212', flag: '🇲🇦', name: 'Marruecos' },
+  { code: 'US', prefix: '+1', flag: '🇺🇸', name: 'Estados Unidos' },
+];
+
+function detectCountry(): string {
+  const lang = navigator.language || 'es';
+  const region = lang.split('-')[1]?.toUpperCase() || lang.toUpperCase();
+  const found = COUNTRIES.find(c => c.code === region);
+  return found ? found.code : 'ES';
+}
+
+function PhoneField({ value, onChange }: { value: string; onChange: (val: string) => void }) {
+  const [countryCode, setCountryCode] = useState('ES');
+  const [number, setNumber] = useState('');
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setCountryCode(detectCountry());
+  }, []);
+
+  useEffect(() => {
+    const country = COUNTRIES.find(c => c.code === countryCode)!;
+    onChange(number ? `${country.prefix} ${number}` : '');
+  }, [countryCode, number]);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  const selected = COUNTRIES.find(c => c.code === countryCode)!;
+
+  return (
+    <div className="flex gap-2" ref={ref}>
+      {/* Country selector */}
+      <div className="relative">
+        <button
+          type="button"
+          onClick={() => setOpen(o => !o)}
+          className="flex items-center gap-1.5 bg-[#0d1117] border border-white/10 rounded-xl px-3 py-4 text-white focus:outline-none focus:border-emerald-500 hover:border-white/20 transition-all whitespace-nowrap"
+        >
+          <span className="text-lg">{selected.flag}</span>
+          <span className="text-sm text-gray-300">{selected.prefix}</span>
+          <ChevronDown size={14} className="text-gray-500" />
+        </button>
+
+        {open && (
+          <div className="absolute top-full left-0 mt-1 w-52 bg-[#161b22] border border-white/10 rounded-xl overflow-auto z-50 shadow-xl max-h-60">
+            {COUNTRIES.map(c => (
+              <button
+                key={c.code}
+                type="button"
+                onClick={() => { setCountryCode(c.code); setOpen(false); }}
+                className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-white/5 transition-colors text-left ${c.code === countryCode ? 'text-emerald-400' : 'text-gray-300'}`}
+              >
+                <span className="text-base">{c.flag}</span>
+                <span>{c.name}</span>
+                <span className="ml-auto text-gray-500">{c.prefix}</span>
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Number input */}
+      <input
+        type="tel"
+        value={number}
+        onChange={e => setNumber(e.target.value)}
+        placeholder="600 000 000"
+        className="flex-1 bg-[#0d1117] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
+      />
+    </div>
+  );
+}
 
 export default function Contact() {
   const [form, setForm] = useState({ nombre: '', telefono: '', email: '', servicio: 'Instalación Eléctrica', mensaje: '' });
@@ -98,8 +198,10 @@ export default function Contact() {
                 </div>
                 <div className="space-y-3">
                   <label className="text-sm font-medium text-gray-400 uppercase tracking-wider">Teléfono</label>
-                  <input type="tel" name="telefono" value={form.telefono} onChange={handleChange} placeholder="+34 600 000 000"
-                    className="w-full bg-[#0d1117] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all" />
+                  <PhoneField
+                    value={form.telefono}
+                    onChange={val => setForm(prev => ({ ...prev, telefono: val }))}
+                  />
                 </div>
               </div>
 
