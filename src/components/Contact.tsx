@@ -60,7 +60,7 @@ function PhoneField({ value, onChange }: { value: string; onChange: (val: string
   const selected = COUNTRIES.find(c => c.code === countryCode)!;
 
   return (
-    <div className="flex gap-2" ref={ref}>
+    <div className="flex gap-2 w-full min-w-0" ref={ref}>
       {/* Country selector */}
       <div className="relative">
         <button
@@ -97,7 +97,7 @@ function PhoneField({ value, onChange }: { value: string; onChange: (val: string
         value={number}
         onChange={e => setNumber(e.target.value)}
         placeholder="600 000 000"
-        className="flex-1 bg-[#0d1117] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
+        className="flex-1 min-w-0 bg-[#0d1117] border border-white/10 rounded-xl px-3 sm:px-5 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
       />
     </div>
   );
@@ -150,7 +150,7 @@ export default function Contact() {
             className="flex flex-col justify-center"
           >
             <div className="text-emerald-500 font-semibold tracking-[0.2em] uppercase text-sm mb-6">Contacto</div>
-            <h2 className="text-5xl md:text-6xl font-display font-bold mb-8 leading-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-8 leading-tight">
               Hablemos de tu{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-400 animated-gradient">
                 proyecto
@@ -163,14 +163,14 @@ export default function Contact() {
             <div className="grid sm:grid-cols-2 gap-6">
               {[
                 { icon: Phone, label: 'Teléfono', content: <a href="tel:+34660144754" className="font-medium text-lg text-gray-200 hover:text-emerald-400 transition-colors">660 144 754</a> },
-                { icon: Mail, label: 'Email', content: <a href="mailto:voltimur@voltimur.com" className="font-medium text-lg text-gray-200 hover:text-emerald-400 transition-colors">voltimur@voltimur.com</a> },
+                { icon: Mail, label: 'Email', content: <a href="mailto:voltimur@voltimur.com" className="font-medium text-base text-gray-200 hover:text-emerald-400 transition-colors break-all">voltimur@voltimur.com</a> },
                 { icon: MapPin, label: 'Ubicación', content: <div className="font-medium text-lg text-gray-200">Murcia, España</div> },
                 { icon: Clock, label: 'Horario', content: <div className="font-medium text-lg text-gray-200">Lun–Vie: 8:00–18:00</div> },
               ].map(({ icon: Icon, label, content }, i) => (
                 <motion.div
                   key={i}
                   whileHover={{ y: -3 }}
-                  className="p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-colors group"
+                  className="p-5 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-colors group"
                 >
                   <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-6 group-hover:scale-125 group-hover:bg-emerald-500/20 group-hover:shadow-[0_0_15px_rgba(16,185,129,0.5)] transition-all duration-300">
                     <Icon size={24} strokeWidth={1.5} />
@@ -188,7 +188,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="bg-[#161b22] border border-white/10 rounded-3xl p-10 shadow-2xl relative overflow-hidden"
+            className="bg-[#161b22] border border-white/10 rounded-3xl p-6 md:p-10 shadow-2xl relative overflow-hidden"
           >
             <div className="absolute top-0 left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent"></div>
 

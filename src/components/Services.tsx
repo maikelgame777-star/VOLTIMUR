@@ -46,7 +46,7 @@ function TiltCard({ children, index }: { children: React.ReactNode; index: numbe
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
-      className="p-10 border-r border-b border-gray-200 border-dashed group hover:bg-emerald-50/50 transition-colors duration-300 cursor-pointer relative overflow-hidden flex flex-col"
+      className="p-6 md:p-10 border-r border-b border-gray-200 border-dashed group hover:bg-emerald-50/50 transition-colors duration-300 cursor-pointer relative overflow-hidden flex flex-col"
     >
       {children}
     </motion.div>

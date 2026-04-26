@@ -2,8 +2,8 @@ import { motion } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
 
 
-const line1 = ['Soluciones', 'en', 'electricidad'];
-const line2 = ['y', 'telecomunicaciones'];
+const line1 = ['Soluciones', 'eléctricas'];
+const line2 = ['y', 'automáticas'];
 
 const PARTICLES = [
   { x: 10, y: 22, size: 5, dur: 7,  delay: 0,   color: 'emerald' },
@@ -132,7 +132,7 @@ export default function Hero() {
         </motion.span>
 
         {/* Headline — word by word */}
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight text-white mb-8 leading-[1.1]">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight text-white mb-8 leading-[1.1]">
           <span className="block">
             {line1.map((word, i) => (
               <motion.span
