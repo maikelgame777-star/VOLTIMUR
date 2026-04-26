@@ -225,6 +225,7 @@ export default function Contact() {
                     <option>Mantenimiento</option>
                     <option>Domótica</option>
                     <option>Puntos de Recarga</option>
+                    <option>Análisis de Redes Eléctricas</option>
                     <option>Otro</option>
                   </select>
                   <ChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" size={20} />

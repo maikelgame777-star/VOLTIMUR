@@ -35,7 +35,7 @@ export default function Footer() {
           <div>
             <div className="text-white font-semibold mb-5 uppercase tracking-wider text-xs">Servicios</div>
             <ul className="space-y-3">
-              {['Instalaciones Eléctricas', 'Telecomunicaciones', 'Energía Solar', 'Sistemas de Seguridad', 'Domótica', 'Puntos de Recarga'].map(s => (
+              {['Instalaciones Eléctricas', 'Telecomunicaciones', 'Energía Solar', 'Sistemas de Seguridad', 'Domótica', 'Puntos de Recarga', 'Análisis de Redes Eléctricas'].map(s => (
                 <li key={s}>
                   <button
                     onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}

@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Zap, Wifi, Shield, Sun, Wrench, Home, BatteryCharging } from 'lucide-react';
+import { Zap, Wifi, Shield, Sun, Wrench, Home, BatteryCharging, Activity } from 'lucide-react';
 
 const services = [
   {
@@ -36,6 +36,11 @@ const services = [
     icon: BatteryCharging,
     title: "Puntos de Recarga",
     description: "Instalación y legalización de puntos de recarga para vehículos eléctricos en viviendas, aparcamientos y empresas. Gestión completa del trámite administrativo y boletín eléctrico incluido."
+  },
+  {
+    icon: Activity,
+    title: "Análisis de Redes Eléctricas",
+    description: "Diagnóstico avanzado de instalaciones mediante analizadores de redes multifunción: detección de armónicos (THD), desequilibrios de fases, perturbaciones transitorias y corrección del factor de potencia. Implantamos baterías de condensadores, filtros activos y sistemas de gestión y control para optimizar el consumo energético, reducir penalizaciones en la factura eléctrica y prolongar la vida útil de los equipos."
   }
 ];
 
