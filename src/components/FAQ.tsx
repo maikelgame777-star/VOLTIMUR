@@ -12,16 +12,12 @@ const faqs = [
     a: "Trabajamos con todo tipo de clientes: particulares, comunidades de propietarios, pequeñas y medianas empresas, locales comerciales e instalaciones industriales. Adaptamos cada solución a tus necesidades."
   },
   {
-    q: "¿Cuánto tarda una instalación eléctrica doméstica?",
-    a: "Depende de la complejidad del proyecto. Una instalación estándar en vivienda se completa habitualmente en 1 o 2 días. Para proyectos mayores, te indicamos el plazo exacto en el presupuesto."
-  },
-  {
     q: "¿Necesito permisos para instalar paneles solares?",
     a: "Nos encargamos de toda la tramitación administrativa: licencias municipales, legalización ante la distribuidora y alta en el Registro de Autoconsumo. Tú solo tienes que disfrutar del ahorro."
   },
   {
     q: "¿Cuánto cuesta instalar un punto de recarga para coche eléctrico?",
-    a: "El precio depende del tipo de cargador y de la instalación existente. Una instalación monofásica doméstica comienza desde 400€, incluyendo el boletín de legalización. Te enviamos un presupuesto exacto sin compromiso."
+    a: "El precio depende del tipo de cargador y de la instalación existente. Pásanos tus necesidades y el tipo de instalación, y te enviamos un presupuesto exacto sin compromiso."
   },
   {
     q: "¿Estáis certificados como instaladores autorizados?",
