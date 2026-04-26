@@ -163,7 +163,7 @@ export default function Contact() {
             <div className="grid sm:grid-cols-2 gap-6">
               {[
                 { icon: Phone, label: 'Teléfono', content: <a href="tel:+34660144754" className="font-medium text-lg text-gray-200 hover:text-emerald-400 transition-colors">660 144 754</a> },
-                { icon: Mail, label: 'Email', content: <a href="mailto:voltimur@outlook.es" className="font-medium text-lg text-gray-200 hover:text-emerald-400 transition-colors">voltimur@outlook.es</a> },
+                { icon: Mail, label: 'Email', content: <a href="mailto:voltimur@voltimur.com" className="font-medium text-lg text-gray-200 hover:text-emerald-400 transition-colors">voltimur@voltimur.com</a> },
                 { icon: MapPin, label: 'Ubicación', content: <div className="font-medium text-lg text-gray-200">Murcia, España</div> },
                 { icon: Clock, label: 'Horario', content: <div className="font-medium text-lg text-gray-200">Lun–Vie: 8:00–18:00</div> },
               ].map(({ icon: Icon, label, content }, i) => (

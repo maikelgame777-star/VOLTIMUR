@@ -53,7 +53,7 @@ export default function Footer() {
             <div className="text-white font-semibold mb-5 uppercase tracking-wider text-xs">Contacto</div>
             <ul className="space-y-3">
               <li><a href="tel:+34660144754" className="hover:text-white transition-colors">660 144 754</a></li>
-              <li><a href="mailto:voltimur@outlook.es" className="hover:text-white transition-colors">voltimur@outlook.es</a></li>
+              <li><a href="mailto:voltimur@voltimur.com" className="hover:text-white transition-colors">voltimur@voltimur.com</a></li>
               <li className="text-gray-500">Murcia, España</li>
               <li className="text-gray-500">Lun–Vie: 8:00–18:00</li>
             </ul>
