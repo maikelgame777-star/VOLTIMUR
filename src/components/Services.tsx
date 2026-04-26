@@ -35,7 +35,7 @@ const services = [
   {
     icon: BatteryCharging,
     title: "Puntos de Recarga",
-    description: "Instalación y legalización de puntos de recarga para vehículos eléctricos en viviendas, aparcamientos y empresas. Gestión completa del trámite administrativo y boletín eléctrico incluido."
+    description: "Instalación y legalización de puntos de recarga para VE en viviendas, aparcamientos y empresas. Implantamos sistemas de gestión de carga dinámica (SPL) para el control y distribución inteligente de la potencia disponible, evitando disparos de protecciones. Asesoramiento en discriminación horaria y contratación de tarifa óptima para minimizar el coste por kWh en recarga."
   },
   {
     icon: Activity,
