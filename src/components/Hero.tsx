@@ -2,8 +2,8 @@ import { motion } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
 
 
-const line1 = ['Energía', 'que', 'transforma,'];
-const line2 = ['instalaciones', 'que', 'perduran'];
+const line1 = ['Soluciones', 'en', 'electricidad'];
+const line2 = ['y', 'telecomunicaciones'];
 
 const PARTICLES = [
   { x: 10, y: 22, size: 5, dur: 7,  delay: 0,   color: 'emerald' },
@@ -168,7 +168,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 1.1 }}
           className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed font-light"
         >
-          Un equipo con más de 15 años de experiencia en el sector, conectando hogares y empresas de Murcia con soluciones eléctricas y tecnológicas seguras, eficientes y certificadas.
+          Más de 15 años de experiencia en el sector, conectando hogares y empresas de Murcia con soluciones eléctricas y tecnológicas seguras, eficientes y certificadas.
         </motion.p>
 
         {/* Buttons */}
