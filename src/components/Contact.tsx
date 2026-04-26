@@ -60,7 +60,7 @@ function PhoneField({ value, onChange }: { value: string; onChange: (val: string
   const selected = COUNTRIES.find(c => c.code === countryCode)!;
 
   return (
-    <div className="flex gap-2 w-full min-w-0" ref={ref}>
+    <div className="flex flex-row gap-2 w-full min-w-0" ref={ref}>
       {/* Country selector */}
       <div className="relative">
         <button
@@ -97,7 +97,7 @@ function PhoneField({ value, onChange }: { value: string; onChange: (val: string
         value={number}
         onChange={e => setNumber(e.target.value)}
         placeholder="600 000 000"
-        className="flex-1 min-w-0 bg-[#0d1117] border border-white/10 rounded-xl px-3 sm:px-5 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
+        className="w-full flex-1 min-w-0 bg-[#0d1117] border border-white/10 rounded-xl px-4 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
       />
     </div>
   );
@@ -193,19 +193,18 @@ export default function Contact() {
             <div className="absolute top-0 left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent"></div>
 
             <form className="space-y-8" onSubmit={handleSubmit}>
-              <div className="grid sm:grid-cols-2 gap-8">
-                <div className="space-y-3">
-                  <label className="text-sm font-medium text-gray-400 uppercase tracking-wider">Nombre</label>
-                  <input type="text" name="nombre" value={form.nombre} onChange={handleChange} required placeholder="Tu nombre"
-                    className="w-full bg-[#0d1117] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all" />
-                </div>
-                <div className="space-y-3">
-                  <label className="text-sm font-medium text-gray-400 uppercase tracking-wider">Teléfono</label>
-                  <PhoneField
-                    value={form.telefono}
-                    onChange={val => setForm(prev => ({ ...prev, telefono: val }))}
-                  />
-                </div>
+              <div className="space-y-3">
+                <label className="text-sm font-medium text-gray-400 uppercase tracking-wider">Nombre</label>
+                <input type="text" name="nombre" value={form.nombre} onChange={handleChange} required placeholder="Tu nombre"
+                  className="w-full bg-[#0d1117] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all" />
+              </div>
+
+              <div className="space-y-3">
+                <label className="text-sm font-medium text-gray-400 uppercase tracking-wider">Teléfono</label>
+                <PhoneField
+                  value={form.telefono}
+                  onChange={val => setForm(prev => ({ ...prev, telefono: val }))}
+                />
               </div>
 
               <div className="space-y-3">
