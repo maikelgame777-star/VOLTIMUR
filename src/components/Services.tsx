@@ -5,12 +5,12 @@ const services = [
   {
     icon: Zap,
     title: "Instalaciones Eléctricas",
-    description: "Diseño e instalación de sistemas eléctricos para viviendas, locales e industrias. Trabajamos con certificación oficial y cumplimos toda la normativa vigente."
+    description: "Diseño e instalación de sistemas eléctricos para uso residencial, comercial e industrial. Certificación oficial y cumplimiento íntegro del Reglamento Electrotécnico de Baja Tensión (REBT)."
   },
   {
     icon: Wifi,
     title: "Telecomunicaciones",
-    description: "Redes de datos, fibra óptica, sistemas telefónicos y conectividad empresarial. Tu negocio, siempre conectado y a máximo rendimiento."
+    description: "Redes de datos, sistemas telefónicos y conectividad empresarial. Tu negocio, siempre conectado y a máximo rendimiento."
   },
   {
     icon: Shield,
@@ -20,22 +20,22 @@ const services = [
   {
     icon: Sun,
     title: "Energía Solar",
-    description: "Instalación de paneles fotovoltaicos y sistemas de autoconsumo. Reduce tu factura eléctrica y contribuye a un futuro más sostenible."
+    description: "Instalación de paneles fotovoltaicos, sistemas de autoconsumo, funcionamiento en modo isla y baterías de respaldo. Reduce tu factura eléctrica y autogestiona tu energía desde la app móvil."
   },
   {
     icon: Wrench,
     title: "Mantenimiento",
-    description: "Mantenimiento preventivo y correctivo para instalaciones eléctricas. Evita averías, alarga la vida de tus equipos y garantiza la seguridad."
+    description: "Mantenimiento preventivo y correctivo de instalaciones eléctricas. Minimiza el riesgo de averías, prolonga la vida útil de los equipos y garantiza el cumplimiento normativo."
   },
   {
     icon: Home,
     title: "Domótica",
-    description: "Hogares y edificios inteligentes que se adaptan a ti. Controla la iluminación, climatización y seguridad desde tu móvil con un solo toque."
+    description: "Automatización de viviendas y edificios mediante sistemas KNX, Zigbee y Z-Wave. Gestión centralizada de iluminación, climatización y seguridad desde dispositivo móvil."
   },
   {
     icon: BatteryCharging,
     title: "Puntos de Recarga",
-    description: "Instalación y legalización de cargadores para vehículos eléctricos en domicilios, parkings y empresas. Todo incluido, sin complicaciones."
+    description: "Instalación y legalización de puntos de recarga para vehículos eléctricos en viviendas, aparcamientos y empresas. Gestión completa del trámite administrativo y boletín eléctrico incluido."
   }
 ];
 
