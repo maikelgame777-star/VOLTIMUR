@@ -2,11 +2,11 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import nodemailer from 'nodemailer';
 
 const transporter = nodemailer.createTransport({
-  host: 'smtp-mail.outlook.com',
+  host: 'smtp.gmail.com',
   port: 587,
   secure: false,
   auth: {
-    user: 'voltimur@outlook.es',
+    user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASSWORD,
   },
 });
@@ -24,8 +24,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   try {
     await transporter.sendMail({
-      from: '"Voltimur Web" <voltimur@outlook.es>',
-      to: 'voltimur@outlook.es',
+      from: `"Voltimur Web" <${process.env.EMAIL_USER}>`,
+      to: process.env.EMAIL_USER,
       replyTo: email,
       subject: `Nueva solicitud: ${servicio}`,
       html: `
