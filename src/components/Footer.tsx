@@ -16,7 +16,7 @@ export default function Footer() {
               Voltimur<span className="text-emerald-500">.</span>
             </div>
             <p className="text-gray-500 leading-relaxed font-light max-w-xs">
-              Instalaciones eléctricas y telecomunicaciones de confianza en la Región de Murcia desde hace más de 15 años.
+              Más de 25 años de experiencia en soluciones integrales de instalaciones eléctricas y telecomunicaciones en la Región de Murcia.
             </p>
             <div className="flex gap-4 mt-6">
               <a href="#" aria-label="Instagram" className="w-9 h-9 rounded-lg bg-white/5 hover:bg-emerald-600 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300">

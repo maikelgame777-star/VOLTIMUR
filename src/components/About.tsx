@@ -23,7 +23,7 @@ function CountUp({ target, suffix = '' }: { target: number; suffix?: string }) {
 }
 
 const stats = [
-  { value: 15, suffix: '+', label: 'Años de experiencia en el sector' },
+  { value: 25, suffix: '+', label: 'Años de experiencia en instalaciones integrales' },
   { value: 500, suffix: '+', label: 'Instalaciones completadas' },
   { value: 300, suffix: '+', label: 'Clientes satisfechos' },
 ];
@@ -44,10 +44,10 @@ export default function About() {
           >
             <div className="text-emerald-600 font-semibold tracking-wider uppercase text-sm mb-4">Sobre Nosotros</div>
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-8 text-gray-900">
-              Expertos con más de 15 años en el sector
+              Más de 25 años en soluciones integrales de instalaciones
             </h2>
             <p className="text-lg text-gray-600 mb-6 leading-relaxed font-light">
-              <strong className="text-gray-900 font-medium">Voltimur</strong> nace en Murcia con una misión clara: poner al servicio de hogares y empresas la experiencia acumulada durante más de 15 años trabajando en el sector eléctrico y tecnológico. Un equipo técnico certificado que ya conoce cada reto posible y sabe cómo resolverlo.
+              <strong className="text-gray-900 font-medium">Voltimur</strong> nace en Murcia con una misión clara: ofrecer a hogares y empresas más de 25 años de experiencia en soluciones integrales de instalaciones eléctricas y telecomunicaciones. Un profesional certificado que conoce cada reto del sector y sabe cómo resolverlo con rigor y eficiencia.
             </p>
             <p className="text-lg text-gray-600 leading-relaxed font-light">
               Trabajamos bajo tres pilares que nunca negociamos:{' '}

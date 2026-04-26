@@ -168,7 +168,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 1.1 }}
           className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed font-light"
         >
-          Más de 15 años de experiencia en el sector, conectando hogares y empresas de Murcia con soluciones eléctricas y tecnológicas seguras, eficientes y certificadas.
+          Más de 25 años de experiencia en soluciones integrales de instalaciones eléctricas y telecomunicaciones, al servicio de hogares y empresas de Murcia con garantía, eficiencia y certificación oficial.
         </motion.p>
 
         {/* Buttons */}
