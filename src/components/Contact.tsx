@@ -1,6 +1,65 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
-import { Phone, Mail, MapPin, Clock, ChevronDown } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, ChevronDown, Download, QrCode } from 'lucide-react';
+import { QRCodeSVG, QRCodeCanvas } from 'qrcode.react';
+
+const QR_URL = 'https://voltimur.com/#contact';
+
+function QRSection() {
+  const canvasRef = useRef<HTMLDivElement>(null);
+
+  const handleDownload = () => {
+    const canvas = canvasRef.current?.querySelector('canvas') as HTMLCanvasElement | null;
+    if (!canvas) return;
+    const link = document.createElement('a');
+    link.download = 'voltimur-contacto-qr.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: 0.3 }}
+      className="mt-8 flex items-center gap-6 p-5 md:p-6 rounded-2xl bg-white/[0.02] border border-white/5"
+    >
+      {/* QR visible */}
+      <div className="p-3 bg-white rounded-xl shrink-0">
+        <QRCodeSVG
+          value={QR_URL}
+          size={88}
+          fgColor="#0d1117"
+          bgColor="#ffffff"
+          level="M"
+        />
+      </div>
+
+      {/* Hidden canvas for download */}
+      <div ref={canvasRef} className="hidden">
+        <QRCodeCanvas value={QR_URL} size={512} fgColor="#0d1117" bgColor="#ffffff" level="M" />
+      </div>
+
+      <div className="flex flex-col gap-3">
+        <div className="flex items-center gap-2 text-white font-semibold">
+          <QrCode size={16} className="text-emerald-400" />
+          Contacto rápido
+        </div>
+        <p className="text-gray-500 text-sm leading-relaxed">
+          Escanea con tu móvil para abrir el formulario de contacto directamente.
+        </p>
+        <button
+          onClick={handleDownload}
+          className="flex items-center gap-2 text-sm text-emerald-400 hover:text-emerald-300 transition-colors font-medium w-fit"
+        >
+          <Download size={14} />
+          Descargar para imprimir
+        </button>
+      </div>
+    </motion.div>
+  );
+}
 
 const COUNTRIES = [
   { code: 'ES', prefix: '+34', flag: '🇪🇸', name: 'España' },
@@ -180,6 +239,8 @@ export default function Contact() {
                 </motion.div>
               ))}
             </div>
+
+            <QRSection />
           </motion.div>
 
           {/* Right Column: Form */}
