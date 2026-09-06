@@ -5,8 +5,10 @@ import { Menu, X, Zap } from 'lucide-react';
 const links = [
   { label: 'Servicios', href: 'services' },
   { label: 'Trabajos', href: 'works' },
+  { label: 'Marcas', href: 'brands' },
   { label: 'Nosotros', href: 'about' },
-  { label: 'Testimonios', href: 'testimonials' },
+  { label: 'Zona técnica', href: 'docs' },
+  { label: 'Noticias', href: 'news' },
   { label: 'Contacto', href: 'contact' },
 ];
 
@@ -31,10 +33,10 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-10 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? 'bg-[#0d1117]/95 backdrop-blur-md border-b border-white/10 py-4'
-            : 'py-6'
+            ? 'bg-[#0d1117]/95 backdrop-blur-md border-b border-white/10 py-3'
+            : 'py-4'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -48,7 +50,7 @@ export default function Navbar() {
             Voltimur<span className="text-emerald-500">.</span>
           </button>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-5 xl:gap-7">
             {links.map(link => (
               <button
                 key={link.href}
@@ -64,13 +66,13 @@ export default function Navbar() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => scrollTo('contact')}
-            className="hidden md:block px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-sm font-medium transition-colors"
+            className="hidden lg:block px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-sm font-medium transition-colors"
           >
             Solicitar Presupuesto
           </motion.button>
 
           <button
-            className="md:hidden text-gray-400 hover:text-white transition-colors"
+            className="lg:hidden text-gray-400 hover:text-white transition-colors"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Abrir menú"
           >
@@ -86,7 +88,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-[68px] left-0 right-0 z-40 bg-[#0d1117]/98 backdrop-blur-md border-b border-white/10 py-6 px-6 flex flex-col gap-2"
+            className="fixed top-[6.5rem] left-0 right-0 z-40 bg-[#0d1117]/98 backdrop-blur-md border-b border-white/10 py-6 px-6 flex flex-col gap-2 max-h-[calc(100vh-6.5rem)] overflow-y-auto"
           >
             {links.map(link => (
               <button

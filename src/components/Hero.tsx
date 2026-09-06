@@ -25,7 +25,7 @@ const PARTICLES = [
 export default function Hero() {
   return (
     <section
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#0d1117] pt-20 pb-32"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#0d1117] pt-32 pb-32"
     >
 
       {/* Floating particles */}

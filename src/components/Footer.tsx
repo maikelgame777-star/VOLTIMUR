@@ -35,10 +35,10 @@ export default function Footer() {
           <div>
             <div className="text-white font-semibold mb-5 uppercase tracking-wider text-xs">Servicios</div>
             <ul className="space-y-3">
-              {['Instalaciones Eléctricas', 'Telecomunicaciones', 'Energía Solar', 'Sistemas de Seguridad', 'Domótica', 'Puntos de Recarga', 'Análisis de Redes Eléctricas'].map(s => (
+              {['Instalaciones Eléctricas', 'Telecomunicaciones', 'Energía Solar', 'Sistemas de Seguridad', 'Domótica', 'Puntos de Recarga', 'Análisis de Redes Eléctricas', 'Zona técnica'].map(s => (
                 <li key={s}>
                   <button
-                    onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => document.getElementById(s === 'Zona técnica' ? 'docs' : 'services')?.scrollIntoView({ behavior: 'smooth' })}
                     className="hover:text-white transition-colors"
                   >
                     {s}
