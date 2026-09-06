@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" role="img" aria-label="Osram">
+  <rect width="320" height="80" rx="14" fill="#FFFFFF" stroke="#EEF2F7"/>
+  <rect x="0" y="0" width="8" height="80" fill="#FF6600"/>
+  <circle cx="40" cy="40" r="22" fill="#FF6600"/>
+  <text x="40" y="41" text-anchor="middle" dominant-baseline="central"
+        font-family="Arial Black, Arial, sans-serif" font-size="17" font-weight="700" fill="#fff">O</text>
+  <text x="74" y="45" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#0F172A">Osram</text>
+  <text x="74" y="62" font-family="Arial, Helvetica, sans-serif" font-size="10" letter-spacing="1.5" fill="#94A3B8">ILUMINACION</text>
+</svg>

@@ -20,6 +20,8 @@ const brands: Brand[] = [
   { name: 'Salicru', file: 'salicru.svg' },
   { name: 'Pramac', file: 'pramac.svg' },
   { name: 'Himoinsa', file: 'himoinsa.svg' },
+  { name: 'Philips', file: 'philips.svg' },
+  { name: 'Osram', file: 'osram.svg' },
 ];
 
 export default function Brands() {
@@ -40,7 +42,7 @@ export default function Brands() {
             Trabajamos con primeras marcas
           </h2>
           <p className="text-gray-500 font-light max-w-2xl mx-auto leading-relaxed">
-            Material e infraestructura de fabricantes de referencia para instalaciones eléctricas, solar, recarga y energía de respaldo.
+            Material e infraestructura de fabricantes de referencia para electricidad, iluminación, solar, recarga y energía de respaldo.
           </p>
         </motion.div>
 

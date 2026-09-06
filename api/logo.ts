@@ -15,6 +15,8 @@ const ALLOWED = new Set([
   'salicru.com',
   'pramac.com',
   'himoinsa.com',
+  'philips.com',
+  'osram.com',
 ]);
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
