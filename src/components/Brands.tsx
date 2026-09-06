@@ -1,58 +1,30 @@
-import { useState } from 'react';
 import { motion } from 'motion/react';
 
 type Brand = {
   name: string;
-  domain: string;
+  file: string;
 };
 
 const brands: Brand[] = [
-  { name: 'Schneider Electric', domain: 'se.com' },
-  { name: 'Simon', domain: 'simon.es' },
-  { name: 'General Cable', domain: 'generalcable.com' },
-  { name: 'Prysmian', domain: 'prysmiangroup.com' },
-  { name: 'Circutor', domain: 'circutor.com' },
-  { name: 'V2C', domain: 'v2c.tech' },
-  { name: 'Wallbox', domain: 'wallbox.com' },
-  { name: 'Legrand', domain: 'legrand.com' },
-  { name: 'Fronius', domain: 'fronius.com' },
-  { name: 'Huawei', domain: 'huawei.com' },
-  { name: 'Victron', domain: 'victronenergy.com' },
-  { name: 'Salicru', domain: 'salicru.com' },
-  { name: 'Pramac', domain: 'pramac.com' },
-  { name: 'Himoinsa', domain: 'himoinsa.com' },
+  { name: 'Schneider Electric', file: 'schneider.svg' },
+  { name: 'Simon', file: 'simon.svg' },
+  { name: 'General Cable', file: 'general-cable.svg' },
+  { name: 'Prysmian', file: 'prysmian.svg' },
+  { name: 'Circutor', file: 'circutor.svg' },
+  { name: 'V2C', file: 'v2c.svg' },
+  { name: 'Wallbox', file: 'wallbox.svg' },
+  { name: 'Legrand', file: 'legrand.svg' },
+  { name: 'Fronius', file: 'fronius.svg' },
+  { name: 'Huawei', file: 'huawei.svg' },
+  { name: 'Victron', file: 'victron.svg' },
+  { name: 'Salicru', file: 'salicru.svg' },
+  { name: 'Pramac', file: 'pramac.svg' },
+  { name: 'Himoinsa', file: 'himoinsa.svg' },
 ];
-
-function BrandLogo({ brand }: { brand: Brand }) {
-  const [failed, setFailed] = useState(false);
-  const src = `https://logo.clearbit.com/${brand.domain}?size=128`;
-
-  return (
-    <div
-      className="flex items-center justify-center h-20 px-4 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-      title={brand.name}
-    >
-      {!failed ? (
-        <img
-          src={src}
-          alt={`Logo ${brand.name}`}
-          loading="lazy"
-          referrerPolicy="no-referrer"
-          className="max-h-10 max-w-[140px] w-auto object-contain"
-          onError={() => setFailed(true)}
-        />
-      ) : (
-        <span className="font-display font-semibold text-sm md:text-base text-gray-500 tracking-tight text-center">
-          {brand.name}
-        </span>
-      )}
-    </div>
-  );
-}
 
 export default function Brands() {
   return (
-    <section id="brands" className="py-24 bg-white border-t border-gray-200 border-dashed">
+    <section id="brands" className="py-24 bg-gray-50 border-t border-gray-200 border-dashed">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -73,14 +45,28 @@ export default function Brands() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-y-2 gap-x-2"
+          transition={{ duration: 0.7, delay: 0.08 }}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4"
         >
-          {brands.map((brand) => (
-            <BrandLogo key={brand.name} brand={brand} />
+          {brands.map((brand, index) => (
+            <motion.div
+              key={brand.name}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.03 }}
+              className="group rounded-2xl border border-gray-100 bg-white p-3 shadow-sm hover:shadow-[0_12px_32px_rgba(16,185,129,0.12)] hover:border-emerald-200 transition-all duration-300"
+            >
+              <img
+                src={`/brands/${brand.file}`}
+                alt={`Logo ${brand.name}`}
+                loading="lazy"
+                className="w-full h-[76px] object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+              />
+            </motion.div>
           ))}
         </motion.div>
       </div>
