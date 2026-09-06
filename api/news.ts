@@ -62,6 +62,21 @@ const SOURCES: { name: string; url: string; category: NewsItem['category'] }[] =
 function decodeXml(text: string): string {
   return text
     .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1')
+    .replace(/&#x([0-9a-f]+);/gi, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#(\d+);/g, (_, num) => String.fromCodePoint(Number(num)))
+    .replace(/&aacute;/gi, 'á')
+    .replace(/&eacute;/gi, 'é')
+    .replace(/&iacute;/gi, 'í')
+    .replace(/&oacute;/gi, 'ó')
+    .replace(/&uacute;/gi, 'ú')
+    .replace(/&ntilde;/gi, 'ñ')
+    .replace(/&uuml;/gi, 'ü')
+    .replace(/&Aacute;/g, 'Á')
+    .replace(/&Eacute;/g, 'É')
+    .replace(/&Iacute;/g, 'Í')
+    .replace(/&Oacute;/g, 'Ó')
+    .replace(/&Uacute;/g, 'Ú')
+    .replace(/&Ntilde;/g, 'Ñ')
     .replace(/&amp;/g, '&')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
@@ -71,6 +86,21 @@ function decodeXml(text: string): string {
     .replace(/<[^>]+>/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
+}
+
+/** Lee el RSS respetando ISO-8859-1 / UTF-8 (BOE usa latin1). */
+async function readXmlText(res: Response): Promise<string> {
+  const buf = Buffer.from(await res.arrayBuffer());
+  const contentType = res.headers.get('content-type') || '';
+  const headerCharset = contentType.match(/charset\s*=\s*([^;]+)/i)?.[1]?.trim().replace(/['"]/g, '');
+  const xmlHead = buf.subarray(0, 240).toString('ascii');
+  const xmlCharset = xmlHead.match(/encoding\s*=\s*["']([^"']+)["']/i)?.[1];
+  const charset = (headerCharset || xmlCharset || 'utf-8').toLowerCase();
+
+  if (charset.includes('8859-1') || charset.includes('latin-1') || charset.includes('latin1') || charset.includes('windows-1252') || charset.includes('cp1252')) {
+    return buf.toString('latin1');
+  }
+  return buf.toString('utf8');
 }
 
 function extractTag(block: string, tag: string): string {
@@ -116,7 +146,7 @@ async function fetchSource(source: (typeof SOURCES)[number]): Promise<NewsItem[]
     },
   });
   if (!res.ok) throw new Error(`${source.name} HTTP ${res.status}`);
-  const xml = await res.text();
+  const xml = await readXmlText(res);
   const parsed = parseRssItems(xml);
 
   return parsed
@@ -202,6 +232,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   try {
     const payload = await collectNews();
+    res.setHeader('Content-Type', 'application/json; charset=utf-8');
     res.setHeader('Cache-Control', 's-maxage=1800, stale-while-revalidate=3600');
     res.setHeader('Access-Control-Allow-Origin', '*');
     return res.status(200).json({
@@ -211,6 +242,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     });
   } catch (error: any) {
     console.error(error);
+    res.setHeader('Content-Type', 'application/json; charset=utf-8');
     return res.status(200).json({
       ok: true,
       agent: 'voltimur-news-agent',
