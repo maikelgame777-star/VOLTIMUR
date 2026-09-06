@@ -8,6 +8,7 @@ import ScrollProgress from './components/ScrollProgress';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
+import Works from './components/Works';
 import About from './components/About';
 import FAQ from './components/FAQ';
 import Testimonials from './components/Testimonials';
@@ -30,6 +31,7 @@ export default function App() {
       <DarkToLight />
 
       <Services />
+      <Works />
       <About />
       <FAQ />
       <Testimonials />
