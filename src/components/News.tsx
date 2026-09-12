@@ -5,7 +5,9 @@ import { loadNews, type NewsItem } from './NewsTicker';
 
 const categoryLabel: Record<NewsItem['category'], string> = {
   normativa: 'Normativa',
-  tecnologia: 'Tecnología',
+  subvenciones: 'Subvenciones',
+  fotovoltaica: 'Fotovoltaica',
+  fabricantes: 'Fabricantes',
   energia: 'Energía',
 };
 
@@ -48,10 +50,10 @@ export default function News() {
             Actualidad técnica
           </div>
           <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight mb-6">
-            Normativa y tecnología al día
+            Normativa, ayudas y tecnología del sector
           </h2>
           <p className="text-lg md:text-xl text-gray-400 font-light leading-relaxed">
-            Seguimiento automático de fuentes oficiales (BOE, IDAE y CNMC) para informarte de cambios normativos y novedades del sector eléctrico.
+            Solo contenido útil para instalaciones: REBT y normativa eléctrica, subvenciones, fotovoltaica, ciencia/tecnología energética y novedades de fabricantes de referencia.
           </p>
         </motion.div>
 

@@ -8,14 +8,14 @@ export type NewsItem = {
   summary: string;
   url: string;
   source: string;
-  category: 'normativa' | 'tecnologia' | 'energia';
+  category: 'normativa' | 'subvenciones' | 'fotovoltaica' | 'fabricantes' | 'energia';
   publishedAt: string;
 };
 
 const FALLBACK: NewsItem[] = [
   {
     id: 'fallback-rebt',
-    title: 'REBT e ITC-BT: marco normativo vigente para instalaciones de baja tensión',
+    title: 'REBT e ITC-BT: marco normativo para instalaciones de baja tensión',
     summary: 'Referencia orientativa sobre el reglamento aplicable a instalaciones eléctricas.',
     url: 'https://www.boe.es/',
     source: 'Voltimur',
@@ -24,20 +24,20 @@ const FALLBACK: NewsItem[] = [
   },
   {
     id: 'fallback-idae',
-    title: 'Eficiencia energética y autoconsumo: novedades del sector',
-    summary: 'Seguimiento de ayudas, tecnología y criterios técnicos publicados por organismos oficiales.',
+    title: 'Ayudas e incentivos al autoconsumo fotovoltaico',
+    summary: 'Seguimiento de subvenciones y criterios técnicos del sector renovable.',
     url: 'https://www.idae.es/',
     source: 'IDAE',
-    category: 'tecnologia',
+    category: 'subvenciones',
     publishedAt: new Date().toISOString(),
   },
   {
-    id: 'fallback-cnmc',
-    title: 'Mercado eléctrico y regulación: actualizaciones CNMC',
-    summary: 'Información relevante sobre tarifas, redes y mercados energéticos.',
-    url: 'https://www.cnmc.es/',
-    source: 'CNMC',
-    category: 'energia',
+    id: 'fallback-fab',
+    title: 'Novedades de fabricantes para instalaciones eléctricas y solar',
+    summary: 'Actualidad de producto de marcas de referencia del sector.',
+    url: 'https://voltimur.com/#brands',
+    source: 'Voltimur',
+    category: 'fabricantes',
     publishedAt: new Date().toISOString(),
   },
 ];
