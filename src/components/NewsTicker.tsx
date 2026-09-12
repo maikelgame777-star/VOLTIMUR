@@ -43,17 +43,21 @@ const FALLBACK: NewsItem[] = [
 ];
 
 let cachedNews: NewsItem[] | null = null;
+let cachedAt = 0;
+const CLIENT_CACHE_MS = 5 * 60 * 1000;
 
 export async function loadNews(): Promise<NewsItem[]> {
-  if (cachedNews) return cachedNews;
+  if (cachedNews && Date.now() - cachedAt < CLIENT_CACHE_MS) return cachedNews;
   try {
-    const res = await fetch('/api/news');
+    const res = await fetch(`/api/news?ts=${Date.now()}`, { cache: 'no-store' });
     if (!res.ok) throw new Error('news api failed');
     const data = await res.json();
     cachedNews = Array.isArray(data.items) && data.items.length ? data.items : FALLBACK;
+    cachedAt = Date.now();
     return cachedNews!;
   } catch {
     cachedNews = FALLBACK;
+    cachedAt = Date.now();
     return FALLBACK;
   }
 }

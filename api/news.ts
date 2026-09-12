@@ -14,18 +14,30 @@ type Source = {
   name: string;
   url: string;
   category: NewsItem['category'];
-  /** Si true, solo pasan ítems con puntuación de relevancia suficiente */
-  strictFilter: boolean;
+  /** fabricantes: basta con mencionar marca; sector: filtro estricto */
+  filterMode: 'strict' | 'brand' | 'soft';
 };
 
-/**
- * Enfoque Voltimur:
- * - normativa eléctrica / REBT / ITC
- * - subvenciones y ayudas (IDAE, fondos, autoconsumo)
- * - fotovoltaica y almacenamiento
- * - actualidad de fabricantes de producto para instalaciones
- * - ministerio / ciencia-tecnología solo si toca energía o innovación aplicada
- */
+const BRANDS = [
+  'schneider',
+  'fronius',
+  'huawei',
+  'wallbox',
+  'victron',
+  'circutor',
+  'legrand',
+  'prysmian',
+  'general cable',
+  'osram',
+  'philips',
+  'signify',
+  'salicru',
+  'pramac',
+  'himoinsa',
+  'v2c',
+  'simon',
+];
+
 const HIGH_PRIORITY = [
   'rebt',
   'itc-bt',
@@ -34,69 +46,58 @@ const HIGH_PRIORITY = [
   'baja tension',
   'reglamento electrotécnico',
   'reglamento electrotecnico',
-  'autoconsumo',
-  'fotovolta',
-  'placa solar',
-  'paneles solares',
-  'punto de recarga',
-  'puntos de recarga',
-  'vehículo eléctrico',
-  'vehiculo electrico',
-  'infraestructura de recarga',
-  'subvencención',
-  'subvencion',
-  'ayudas al autoconsumo',
-  'ayuda idae',
-  'fondos next',
-  'perte',
-  'eficiencia energética',
-  'eficiencia energetica',
-];
-
-const INCLUDE = [
-  ...HIGH_PRIORITY,
   'instalación eléctrica',
   'instalacion electrica',
   'instalaciones eléctricas',
   'cuadro eléctrico',
   'cuadro electrico',
+  'punto de recarga',
+  'puntos de recarga',
+  'vehículo eléctrico',
+  'vehiculo electrico',
+  'infraestructura de recarga',
+  'subvención',
+  'subvencion',
+  'ayuda idae',
+  'fondos next',
+  'perte',
+  'eficiencia energética',
+  'eficiencia energetica',
+  'domótica',
+  'domotica',
+  'telecomunicaciones',
+  'cableado',
+];
+
+const INCLUDE = [
+  ...HIGH_PRIORITY,
+  'autoconsumo',
+  'fotovolta',
+  'placa solar',
+  'paneles solares',
+  'energía solar',
+  'energia solar',
   'electricidad',
   'electrotécnic',
   'electrotecnic',
   'red eléctrica',
   'red electrica',
-  'autoconsumo fotovolta',
   'inversor',
-  'batería de litio',
-  'bateria de litio',
-  'almacenamiento energético',
-  'almacenamiento energetico',
+  'batería',
+  'bateria',
+  'almacenamiento',
   'cargador',
-  'wallbox',
-  'schneider',
-  'fronius',
-  'huawei',
-  'victron',
-  'circutor',
-  'legrand',
-  'prysmian',
-  'general cable',
-  'osram',
-  'philips lighting',
-  'signify',
   'miteco',
   'idae',
   'cnmc',
-  'ciencia e innovación',
-  'ciencia e innovacion',
   'ministerio de ciencia',
-  'tecnología energética',
-  'tecnologia energetica',
   'renovable',
-  'energía solar',
-  'energia solar',
   'comunidades energéticas',
   'comunidades energeticas',
+  'iluminación',
+  'iluminacion',
+  'led',
+  ...BRANDS,
 ];
 
 const EXCLUDE = [
@@ -123,56 +124,92 @@ const EXCLUDE = [
   'cine',
   'cultura',
   'turismo',
-  'vivienda de protección',
-  'alquiler social',
 ];
+
+const GN = (q: string) =>
+  `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=es&gl=ES&ceid=ES:es`;
 
 const SOURCES: Source[] = [
   {
     name: 'BOE',
     url: 'https://www.boe.es/rss/boe.php?seccion=1',
     category: 'normativa',
-    strictFilter: true,
+    filterMode: 'strict',
   },
   {
     name: 'IDAE',
     url: 'https://www.idae.es/rss.xml',
     category: 'subvenciones',
-    strictFilter: true,
+    filterMode: 'soft',
   },
   {
     name: 'CNMC',
     url: 'https://www.cnmc.es/rss.xml',
     category: 'energia',
-    strictFilter: true,
+    filterMode: 'soft',
   },
   {
     name: 'Prysmian',
     url: 'https://www.prysmiangroup.com/en/rss.xml',
     category: 'fabricantes',
-    strictFilter: true,
+    filterMode: 'brand',
+  },
+  // Fuentes separadas para no dejar que la fotovoltaica acapare el listado
+  {
+    name: 'Normativa eléctrica',
+    url: GN('REBT OR "ITC-BT" OR "baja tensión" OR "reglamento electrotécnico" OR "instalaciones eléctricas" normativa'),
+    category: 'normativa',
+    filterMode: 'soft',
   },
   {
-    name: 'Sector (Google News)',
-    url:
-      'https://news.google.com/rss/search?q=REBT%20OR%20autoconsumo%20OR%20fotovoltaica%20OR%20%22punto%20de%20recarga%22%20OR%20%22baja%20tensi%C3%B3n%22%20OR%20%22subvenci%C3%B3n%20energ%C3%ADa%22%20OR%20IDAE&hl=es&gl=ES&ceid=ES:es',
+    name: 'Recarga / instalaciones',
+    url: GN('"punto de recarga" OR "vehículo eléctrico" OR "cuadro eléctrico" OR domótica OR "instalación eléctrica" Murcia OR España'),
+    category: 'energia',
+    filterMode: 'soft',
+  },
+  {
+    name: 'Subvenciones',
+    url: GN('IDAE OR subvención OR "ayudas" (autoconsumo OR eficiencia OR "vehículo eléctrico" OR renovable) España'),
+    category: 'subvenciones',
+    filterMode: 'soft',
+  },
+  {
+    name: 'Fotovoltaica',
+    url: GN('fotovoltaica OR autoconsumo OR "paneles solares" (España OR Murcia) -opinión'),
     category: 'fotovoltaica',
-    strictFilter: true,
+    filterMode: 'soft',
   },
   {
-    name: 'Fabricantes (Google News)',
-    url:
-      'https://news.google.com/rss/search?q=(Schneider%20Electric%20OR%20Fronius%20OR%20%22Huawei%20FusionSolar%22%20OR%20Wallbox%20OR%20Victron%20OR%20Circutor%20OR%20Legrand%20OR%20Osram)%20(solar%20OR%20fotovolta%20OR%20cargador%20OR%20el%C3%A9ctrico%20OR%20instalaci%C3%B3n)&hl=es&gl=ES&ceid=ES:es',
+    name: 'Fabricantes',
+    url: GN(
+      '("Schneider Electric" OR Fronius OR "Huawei" OR Wallbox OR Victron OR Circutor OR Legrand OR Osram OR Philips OR Prysmian OR Salicru) (eléctrico OR eléctrica OR solar OR cargador OR iluminación OR cable OR inversor OR cuadro)'
+    ),
     category: 'fabricantes',
-    strictFilter: true,
+    filterMode: 'brand',
   },
   {
     name: 'Ciencia / Tecnología',
-    url:
-      'https://news.google.com/rss/search?q=(site:ciencia.gob.es%20OR%20%22Ministerio%20de%20Ciencia%22)%20(energ%C3%ADa%20OR%20renovable%20OR%20tecnolog%C3%ADa%20OR%20innovaci%C3%B3n%20OR%20fotovolta)&hl=es&gl=ES&ceid=ES:es',
+    url: GN('(site:ciencia.gob.es OR "Ministerio de Ciencia") (energía OR renovable OR tecnología OR innovación OR eléctrico)'),
     category: 'energia',
-    strictFilter: true,
+    filterMode: 'soft',
   },
+];
+
+/** Cupo por categoría: fabricantes y normativa primero; FV limitado */
+const CATEGORY_QUOTA: Record<NewsItem['category'], number> = {
+  fabricantes: 3,
+  normativa: 3,
+  subvenciones: 2,
+  energia: 2,
+  fotovoltaica: 2,
+};
+
+const CATEGORY_ORDER: NewsItem['category'][] = [
+  'fabricantes',
+  'normativa',
+  'subvenciones',
+  'energia',
+  'fotovoltaica',
 ];
 
 function decodeXml(text: string): string {
@@ -236,8 +273,7 @@ function parseRssItems(xml: string): { title: string; link: string; description:
   for (const part of parts) {
     const block = part.split(/<\/item>/i)[0] || '';
     const title = extractTag(block, 'title');
-    let link = extractTag(block, 'link') || extractTag(block, 'guid');
-    // Google News sometimes puts URL in description; prefer <link>
+    const link = extractTag(block, 'link') || extractTag(block, 'guid');
     const description = extractTag(block, 'description') || extractTag(block, 'content:encoded');
     const pubDate = extractTag(block, 'pubDate') || extractTag(block, 'dc:date');
     if (title && link) items.push({ title, link, description, pubDate });
@@ -245,23 +281,38 @@ function parseRssItems(xml: string): { title: string; link: string; description:
   return items;
 }
 
-function relevanceScore(title: string, description: string): number {
-  const hay = `${title} ${description}`.toLowerCase();
-  if (EXCLUDE.some((k) => hay.includes(k.toLowerCase()))) return -100;
-
-  let score = 0;
-  for (const k of HIGH_PRIORITY) {
-    if (hay.includes(k.toLowerCase())) score += 3;
-  }
-  for (const k of INCLUDE) {
-    if (hay.includes(k.toLowerCase())) score += 1;
-  }
-  return score;
+function mentionsBrand(hay: string): boolean {
+  return BRANDS.some((b) => hay.includes(b));
 }
 
-function isRelevant(title: string, description: string): boolean {
-  // Umbral: al menos una coincidencia de alta prioridad, o varias del sector
-  return relevanceScore(title, description) >= 3;
+function isExcluded(hay: string): boolean {
+  return EXCLUDE.some((k) => hay.includes(k.toLowerCase()));
+}
+
+function isRelevant(title: string, description: string, mode: Source['filterMode']): boolean {
+  const hay = `${title} ${description}`.toLowerCase();
+  if (isExcluded(hay)) return false;
+
+  if (mode === 'brand') {
+    // Actualidad de fabricantes: basta con marca + contexto mínimo de producto/sector
+    if (!mentionsBrand(hay)) return false;
+    return (
+      INCLUDE.some((k) => hay.includes(k.toLowerCase())) ||
+      hay.includes('product') ||
+      hay.includes('launch') ||
+      hay.includes('nuevo') ||
+      hay.includes('nueva') ||
+      hay.includes('cable') ||
+      hay.includes('charger') ||
+      hay.includes('inverter')
+    );
+  }
+
+  const high = HIGH_PRIORITY.some((k) => hay.includes(k.toLowerCase()));
+  const incCount = INCLUDE.filter((k) => hay.includes(k.toLowerCase())).length;
+
+  if (mode === 'soft') return high || incCount >= 1 || mentionsBrand(hay);
+  return high || incCount >= 2;
 }
 
 function inferCategory(
@@ -270,6 +321,25 @@ function inferCategory(
   fallback: NewsItem['category']
 ): NewsItem['category'] {
   const hay = `${title} ${description}`.toLowerCase();
+
+  // Fabricantes antes que FV (una noticia de Huawei solar es "fabricantes")
+  if (mentionsBrand(hay) && fallback === 'fabricantes') return 'fabricantes';
+  if (mentionsBrand(hay) && !hay.includes('subvenc') && !hay.includes('ayuda idae')) {
+    return 'fabricantes';
+  }
+
+  if (
+    hay.includes('rebt') ||
+    hay.includes('itc-bt') ||
+    hay.includes('itc bt') ||
+    hay.includes('reglamento electrot') ||
+    hay.includes('baja tensión') ||
+    hay.includes('baja tension') ||
+    (hay.includes('normativa') && hay.includes('eléct'))
+  ) {
+    return 'normativa';
+  }
+
   if (
     hay.includes('subvenc') ||
     hay.includes('ayuda') ||
@@ -279,6 +349,19 @@ function inferCategory(
   ) {
     return 'subvenciones';
   }
+
+  if (
+    hay.includes('punto de recarga') ||
+    hay.includes('vehículo eléctrico') ||
+    hay.includes('vehiculo electrico') ||
+    hay.includes('domótica') ||
+    hay.includes('domotica') ||
+    hay.includes('cuadro eléctrico') ||
+    hay.includes('instalación eléctrica')
+  ) {
+    return 'energia';
+  }
+
   if (
     hay.includes('fotovolta') ||
     hay.includes('autoconsumo') ||
@@ -289,29 +372,7 @@ function inferCategory(
   ) {
     return 'fotovoltaica';
   }
-  if (
-    hay.includes('schneider') ||
-    hay.includes('fronius') ||
-    hay.includes('huawei') ||
-    hay.includes('wallbox') ||
-    hay.includes('victron') ||
-    hay.includes('circutor') ||
-    hay.includes('legrand') ||
-    hay.includes('prysmian') ||
-    hay.includes('osram') ||
-    hay.includes('philips')
-  ) {
-    return 'fabricantes';
-  }
-  if (
-    hay.includes('rebt') ||
-    hay.includes('itc') ||
-    hay.includes('reglamento') ||
-    hay.includes('normativa') ||
-    hay.includes('boe')
-  ) {
-    return 'normativa';
-  }
+
   return fallback;
 }
 
@@ -325,10 +386,14 @@ function slugId(source: string, title: string, url: string): string {
   return raw || `${source}-${Date.now()}`;
 }
 
+function cleanTitle(title: string): string {
+  return title.replace(/\s+-\s+[^-]+$/, '').trim() || title;
+}
+
 async function fetchSource(source: Source): Promise<NewsItem[]> {
   const res = await fetch(source.url, {
     headers: {
-      'User-Agent': 'VoltimurNewsAgent/1.1 (+https://voltimur.com; sector electrico Murcia)',
+      'User-Agent': 'VoltimurNewsAgent/1.2 (+https://voltimur.com; sector electrico Murcia)',
       Accept: 'application/rss+xml, application/xml, text/xml, */*',
     },
   });
@@ -336,25 +401,82 @@ async function fetchSource(source: Source): Promise<NewsItem[]> {
   const xml = await readXmlText(res);
   const parsed = parseRssItems(xml);
 
-  const filtered = source.strictFilter
-    ? parsed.filter((item) => isRelevant(item.title, item.description))
-    : parsed;
-
-  return filtered.slice(0, 6).map((item) => {
-    const category = inferCategory(item.title, item.description, source.category);
-    return {
+  return parsed
+    .filter((item) => isRelevant(item.title, item.description, source.filterMode))
+    .slice(0, 10)
+    .map((item) => ({
       id: slugId(source.name, item.title, item.link),
-      title: item.title.replace(/\s+-\s+[^-]+$/, '').trim() || item.title, // limpia " - Medio" de Google News
+      title: cleanTitle(item.title),
       summary: item.description.slice(0, 220) || `Novedad del sector publicada por ${source.name}.`,
       url: item.link,
       source: source.name,
-      category,
+      category: inferCategory(item.title, item.description, source.category),
       publishedAt: toIso(item.pubDate),
-    };
-  });
+    }));
+}
+
+/** Equilibra el listado para que FV no domine */
+function balanceByCategory(items: NewsItem[], limit = 12): NewsItem[] {
+  const byCat = new Map<NewsItem['category'], NewsItem[]>();
+  for (const cat of CATEGORY_ORDER) byCat.set(cat, []);
+
+  const sorted = [...items].sort((a, b) => +new Date(b.publishedAt) - +new Date(a.publishedAt));
+  for (const item of sorted) {
+    const list = byCat.get(item.category) || [];
+    list.push(item);
+    byCat.set(item.category, list);
+  }
+
+  const picked: NewsItem[] = [];
+  const seen = new Set<string>();
+
+  const take = (item: NewsItem) => {
+    const key = item.title.toLowerCase().slice(0, 120);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    picked.push(item);
+    return true;
+  };
+
+  // 1ª pasada: respetar cupos por categoría (orden de prioridad)
+  for (const cat of CATEGORY_ORDER) {
+    const quota = CATEGORY_QUOTA[cat];
+    const list = byCat.get(cat) || [];
+    let n = 0;
+    for (const item of list) {
+      if (n >= quota || picked.length >= limit) break;
+      if (take(item)) n += 1;
+    }
+  }
+
+  // 2ª pasada: rellenar huecos con lo más reciente de cualquier categoría (FV como máximo +1 extra)
+  if (picked.length < limit) {
+    let extraPv = 0;
+    for (const item of sorted) {
+      if (picked.length >= limit) break;
+      if (item.category === 'fotovoltaica') {
+        if (extraPv >= 1) continue;
+        if (take(item)) extraPv += 1;
+      } else {
+        take(item);
+      }
+    }
+  }
+
+  return picked.slice(0, limit);
 }
 
 const FALLBACK: NewsItem[] = [
+  {
+    id: 'fallback-fab',
+    title: 'Novedades de fabricantes para instalaciones eléctricas',
+    summary:
+      'Seguimiento de producto de Schneider, Fronius, Huawei, Wallbox, Victron, Circutor, Legrand u Osram.',
+    url: 'https://voltimur.com/#brands',
+    source: 'Voltimur',
+    category: 'fabricantes',
+    publishedAt: new Date().toISOString(),
+  },
   {
     id: 'fallback-rebt',
     title: 'REBT e ITC-BT: marco normativo para instalaciones de baja tensión',
@@ -367,32 +489,29 @@ const FALLBACK: NewsItem[] = [
   },
   {
     id: 'fallback-subvenciones',
-    title: 'Ayudas e incentivos al autoconsumo fotovoltaico',
-    summary:
-      'Seguimiento de líneas de ayuda e información del IDAE relacionadas con eficiencia energética y renovables.',
+    title: 'Ayudas e incentivos energéticos (IDAE y fondos)',
+    summary: 'Información orientativa sobre líneas de ayuda de eficiencia, renovable y movilidad eléctrica.',
     url: 'https://www.idae.es/',
     source: 'IDAE',
     category: 'subvenciones',
     publishedAt: new Date().toISOString(),
   },
   {
-    id: 'fallback-fv',
-    title: 'Autoconsumo fotovoltaico: criterios técnicos y legalización',
-    summary:
-      'Aspectos clave de tramitación, legalización e inscripción de instalaciones de autoconsumo en España.',
-    url: 'https://www.idae.es/',
+    id: 'fallback-energia',
+    title: 'Puntos de recarga e instalaciones eléctricas: criterios técnicos',
+    summary: 'Aspectos clave de potencia, protecciones y legalización en vivienda y empresa.',
+    url: 'https://voltimur.com/#services',
     source: 'Voltimur',
-    category: 'fotovoltaica',
+    category: 'energia',
     publishedAt: new Date().toISOString(),
   },
   {
-    id: 'fallback-fab',
-    title: 'Fabricantes de referencia en instalaciones eléctricas y solar',
-    summary:
-      'Seguimiento de novedades de producto de marcas como Schneider, Fronius, Huawei, Wallbox, Victron o Circutor.',
-    url: 'https://voltimur.com/#brands',
+    id: 'fallback-fv',
+    title: 'Autoconsumo fotovoltaico: legalización y puesta en marcha',
+    summary: 'Tramitación y criterios técnicos habituales en proyectos de autoconsumo.',
+    url: 'https://www.idae.es/',
     source: 'Voltimur',
-    category: 'fabricantes',
+    category: 'fotovoltaica',
     publishedAt: new Date().toISOString(),
   },
 ];
@@ -411,14 +530,7 @@ async function collectNews(): Promise<{ items: NewsItem[]; updatedAt: string; so
     }
   });
 
-  items.sort((a, b) => +new Date(b.publishedAt) - +new Date(a.publishedAt));
-  const unique = new Map<string, NewsItem>();
-  for (const item of items) {
-    const key = item.title.toLowerCase().slice(0, 120);
-    if (!unique.has(key)) unique.set(key, item);
-  }
-
-  const finalItems = [...unique.values()].slice(0, 12);
+  const finalItems = balanceByCategory(items, 12);
   return {
     items: finalItems.length ? finalItems : FALLBACK,
     updatedAt: new Date().toISOString(),
@@ -434,12 +546,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     const payload = await collectNews();
     res.setHeader('Content-Type', 'application/json; charset=utf-8');
-    res.setHeader('Cache-Control', 's-maxage=1800, stale-while-revalidate=3600');
+    // Cache más corto para ver el cambio antes
+    res.setHeader('Cache-Control', 's-maxage=600, stale-while-revalidate=1800');
     res.setHeader('Access-Control-Allow-Origin', '*');
     return res.status(200).json({
       ok: true,
       agent: 'voltimur-news-agent',
-      focus: ['normativa-electrica', 'subvenciones', 'fotovoltaica', 'fabricantes', 'ciencia-tecnologia'],
+      balance: CATEGORY_QUOTA,
+      focus: ['fabricantes', 'normativa', 'subvenciones', 'energia', 'fotovoltaica'],
       ...payload,
     });
   } catch (error: any) {

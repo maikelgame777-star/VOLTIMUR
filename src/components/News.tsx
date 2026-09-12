@@ -53,7 +53,7 @@ export default function News() {
             Normativa, ayudas y tecnología del sector
           </h2>
           <p className="text-lg md:text-xl text-gray-400 font-light leading-relaxed">
-            Solo contenido útil para instalaciones: REBT y normativa eléctrica, subvenciones, fotovoltaica, ciencia/tecnología energética y novedades de fabricantes de referencia.
+            Solo contenido útil y equilibrado: fabricantes, normativa eléctrica, subvenciones, instalaciones/recarga y fotovoltaica (sin que un solo tema acapare el listado).
           </p>
         </motion.div>
 
