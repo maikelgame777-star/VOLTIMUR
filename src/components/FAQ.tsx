@@ -16,12 +16,12 @@ const faqs = [
     a: "Nos encargamos de toda la tramitación administrativa: licencias municipales, legalización ante la distribuidora y alta en el Registro de Autoconsumo. Tú solo tienes que disfrutar del ahorro."
   },
   {
-    q: "¿Cuánto cuesta instalar un punto de recarga para coche eléctrico en Murcia?",
-    a: "El precio depende del tipo de cargador y de la instalación existente. Como instaladores oficiales V2C en Murcia, te enviamos un presupuesto exacto sin compromiso, incluyendo legalización y boletín eléctrico."
+    q: "¿Cuánto cuesta instalar un cargador de coche eléctrico en Murcia?",
+    a: "El precio depende del tipo de wallbox y de la instalación existente. Como instaladores oficiales V2C en Murcia, te enviamos un presupuesto exacto sin compromiso, incluyendo legalización y boletín eléctrico."
   },
   {
-    q: "¿Sois instaladores oficiales de puntos de recarga?",
-    a: "Sí. Somos instaladores oficiales V2C. Instalamos y legalizamos puntos de recarga para coche eléctrico en viviendas, garajes y empresas de Murcia y la Región de Murcia."
+    q: "¿Sois instaladores de cargadores de coche eléctrico?",
+    a: "Sí. Somos instaladores oficiales V2C. Instalamos y legalizamos cargadores de coche eléctrico (punto de recarga / wallbox) en viviendas, garajes y empresas de Murcia y la Región de Murcia."
   },
   {
     q: "¿Estáis certificados como instaladores autorizados?",

@@ -57,10 +57,10 @@ const services: Service[] = [
   },
   {
     icon: BatteryCharging,
-    title: "Puntos de Recarga en Murcia",
-    description: "Instaladores oficiales V2C en Murcia. Instalación y legalización de puntos de recarga para coche eléctrico en viviendas, aparcamientos y empresas de la Región de Murcia. Implantamos sistemas de gestión de carga dinámica (SPL) para el control y distribución inteligente de la potencia disponible, evitando disparos de protecciones. Asesoramiento en discriminación horaria y contratación de tarifa óptima para minimizar el coste por kWh en recarga.",
+    title: "Cargadores de Coche Eléctrico en Murcia",
+    description: "Instalamos cargadores de coche eléctrico en Murcia (wallbox / punto de recarga). Instaladores oficiales V2C: instalación y legalización en viviendas, garajes y empresas de la Región de Murcia. Gestión de carga dinámica (SPL), boletín eléctrico y asesoramiento en tarifa óptima para minimizar el coste por kWh.",
     image: "/images/recarga.jpg",
-    alt: "Instalación de punto de recarga para coche eléctrico en Murcia — instaladores oficiales V2C",
+    alt: "Instalación de cargador de coche eléctrico en Murcia — instaladores oficiales V2C",
     badge: "/brands/v2c-oficial.jpg",
     badgeAlt: "Instalador oficial V2C de cargadores de coche eléctrico"
   },
@@ -164,17 +164,17 @@ export default function Services() {
                 Movilidad eléctrica
               </div>
               <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-4 tracking-tight">
-                Puntos de recarga en Murcia · Instaladores oficiales V2C
+                Instalar cargador de coche eléctrico en Murcia · Oficiales V2C
               </h3>
               <p className="text-gray-300 font-light leading-relaxed max-w-xl mb-6">
-                Instalación y legalización de cargadores para coche eléctrico en Murcia y toda la Región. Certificados por V2C, con gestión de potencia, boletín oficial y puesta en marcha profesional.
+                Instalación y legalización de cargadores (wallbox / punto de recarga) en Murcia y toda la Región. Certificados por V2C, con gestión de potencia, boletín oficial y puesta en marcha profesional.
               </p>
               <button
                 type="button"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 className="inline-flex px-6 py-3 bg-orange-500 hover:bg-orange-400 text-white rounded-lg text-sm font-medium transition-colors"
               >
-                Solicitar presupuesto de recarga
+                Solicitar presupuesto de cargador
               </button>
             </div>
             <div className="relative z-10 w-full lg:w-[420px] shrink-0 space-y-4">

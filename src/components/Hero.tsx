@@ -168,7 +168,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 1.1 }}
           className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed font-light"
         >
-          Más de 25 años de experiencia en instalaciones eléctricas y puntos de recarga para coche eléctrico en Murcia. Instaladores oficiales V2C, con garantía, eficiencia y certificación oficial.
+          Más de 25 años de experiencia en instalaciones eléctricas e instalación de cargadores de coche eléctrico en Murcia. Instaladores oficiales V2C, con garantía, eficiencia y certificación oficial.
         </motion.p>
 
         {/* Buttons */}

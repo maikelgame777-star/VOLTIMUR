@@ -285,7 +285,7 @@ export default function Contact() {
                     <option>Energía Solar</option>
                     <option>Mantenimiento</option>
                     <option>Domótica</option>
-                    <option>Puntos de Recarga</option>
+                    <option>Cargador coche eléctrico</option>
                     <option>Análisis de Redes Eléctricas</option>
                     <option>Otro</option>
                   </select>
