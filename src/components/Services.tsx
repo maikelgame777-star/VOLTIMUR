@@ -58,11 +58,11 @@ const services: Service[] = [
   {
     icon: BatteryCharging,
     title: "Cargadores de Coche Eléctrico en Murcia",
-    description: "Instalamos cargadores de coche eléctrico en Murcia (wallbox / punto de recarga). Instaladores oficiales V2C: instalación y legalización en viviendas, garajes y empresas de la Región de Murcia. Gestión de carga dinámica (SPL), boletín eléctrico y asesoramiento en tarifa óptima para minimizar el coste por kWh.",
+    description: "Instalación y legalización de cargadores para vehículo eléctrico en viviendas, garajes y empresas de la Región de Murcia. Gestión de carga dinámica (SPL), boletín eléctrico y asesoramiento en tarifa óptima. Trabajamos con distintas marcas y somos instaladores oficiales V2C.",
     image: "/images/recarga.jpg",
-    alt: "Instalación de cargador de coche eléctrico en Murcia — instaladores oficiales V2C",
+    alt: "Instalación de cargador de coche eléctrico en Murcia",
     badge: "/brands/v2c-oficial.jpg",
-    badgeAlt: "Instalador oficial V2C de cargadores de coche eléctrico"
+    badgeAlt: "Certificación instalador oficial V2C"
   },
   {
     icon: Activity,
@@ -148,7 +148,7 @@ export default function Services() {
           <div className="hidden lg:block p-10 border-r border-b border-gray-200 border-dashed bg-gray-50/30"></div>
         </div>
 
-        {/* Destacado instalador oficial V2C */}
+        {/* Certificación oficial V2C */}
         <motion.div
           id="v2c"
           initial={{ opacity: 0, y: 20 }}
@@ -161,20 +161,20 @@ export default function Services() {
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,_rgba(255,100,50,0.18),_transparent_55%)] pointer-events-none" />
             <div className="relative z-10 flex-1">
               <div className="text-orange-400 font-semibold tracking-wider uppercase text-sm mb-3">
-                Movilidad eléctrica
+                Certificación de marca
               </div>
               <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-4 tracking-tight">
-                Instalar cargador de coche eléctrico en Murcia · Oficiales V2C
+                Instaladores oficiales V2C
               </h3>
               <p className="text-gray-300 font-light leading-relaxed max-w-xl mb-6">
-                Instalación y legalización de cargadores (wallbox / punto de recarga) en Murcia y toda la Región. Certificados por V2C, con gestión de potencia, boletín oficial y puesta en marcha profesional.
+                Certificados por V2C para instalar y legalizar sus cargadores de coche eléctrico con garantía de fabricante, gestión de potencia y puesta en marcha profesional en Murcia.
               </p>
               <button
                 type="button"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 className="inline-flex px-6 py-3 bg-orange-500 hover:bg-orange-400 text-white rounded-lg text-sm font-medium transition-colors"
               >
-                Solicitar presupuesto de cargador
+                Solicitar presupuesto V2C
               </button>
             </div>
             <div className="relative z-10 w-full lg:w-[420px] shrink-0 space-y-4">
@@ -190,6 +190,55 @@ export default function Services() {
                 loading="lazy"
                 className="w-full max-w-xs mx-auto lg:ml-auto h-auto rounded-lg"
               />
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Otras marcas de recarga que también instalamos */}
+        <motion.div
+          id="marcas-recarga"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mt-10 md:mt-12"
+        >
+          <div className="rounded-3xl border border-gray-200 bg-gray-50/80 p-6 md:p-10">
+            <div className="mb-8 md:max-w-2xl">
+              <div className="text-emerald-600 font-semibold tracking-wider uppercase text-sm mb-3">
+                Movilidad eléctrica
+              </div>
+              <h3 className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-3 tracking-tight">
+                También instalamos otras marcas de recarga
+              </h3>
+              <p className="text-gray-500 font-light leading-relaxed">
+                Además de la certificación oficial V2C, instalamos y legalizamos cargadores de otras marcas de referencia según el proyecto, la potencia y las necesidades de cada cliente.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+              {[
+                { name: 'Wallbox', file: 'wallbox.svg' },
+                { name: 'Schneider Electric', file: 'schneider.svg' },
+                { name: 'Orbis Viaris', file: 'orbis.svg' },
+                { name: 'Policharger', file: 'policharger.svg' },
+                { name: 'Circutor eHome / eNext', file: 'circutor-enext.svg' },
+                { name: 'V2C', file: 'v2c.svg' },
+              ].map((brand) => (
+                <div
+                  key={brand.name}
+                  className="flex flex-col items-center justify-center gap-2 rounded-2xl border border-gray-100 bg-white p-4 min-h-[110px]"
+                >
+                  <img
+                    src={`/brands/${brand.file}`}
+                    alt={`Logo ${brand.name}`}
+                    loading="lazy"
+                    className="h-12 w-full object-contain"
+                  />
+                  <span className="text-[11px] text-gray-500 text-center font-medium leading-tight">
+                    {brand.name}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </motion.div>

@@ -6,13 +6,14 @@ type Brand = {
 };
 
 const brands: Brand[] = [
-  { name: 'V2C', file: 'v2c-oficial.jpg' },
   { name: 'Schneider Electric', file: 'schneider.svg' },
   { name: 'Simon', file: 'simon.svg' },
   { name: 'General Cable', file: 'general-cable.svg' },
   { name: 'Prysmian', file: 'prysmian.svg' },
   { name: 'Circutor', file: 'circutor.svg' },
   { name: 'Wallbox', file: 'wallbox.svg' },
+  { name: 'Orbis Viaris', file: 'orbis.svg' },
+  { name: 'Policharger', file: 'policharger.svg' },
   { name: 'Legrand', file: 'legrand.svg' },
   { name: 'Fronius', file: 'fronius.svg' },
   { name: 'Huawei', file: 'huawei.svg' },
@@ -22,6 +23,7 @@ const brands: Brand[] = [
   { name: 'Himoinsa', file: 'himoinsa.svg' },
   { name: 'Philips', file: 'philips.svg' },
   { name: 'Osram', file: 'osram.svg' },
+  { name: 'V2C', file: 'v2c-oficial.jpg' },
 ];
 
 export default function Brands() {
@@ -74,7 +76,7 @@ export default function Brands() {
               />
               {brand.name === 'V2C' && (
                 <p className="mt-2 text-center text-[10px] font-semibold uppercase tracking-wider text-orange-600">
-                  Instalador oficial
+                  Certificación oficial
                 </p>
               )}
             </motion.div>

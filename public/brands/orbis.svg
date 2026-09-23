@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" role="img" aria-label="Orbis Viaris">
+  <rect width="320" height="80" rx="14" fill="#FFFFFF" stroke="#EEF2F7"/>
+  <rect x="0" y="0" width="8" height="80" fill="#0055A5"/>
+  <circle cx="40" cy="40" r="22" fill="#0055A5"/>
+  <text x="40" y="41" text-anchor="middle" dominant-baseline="central"
+        font-family="Arial Black, Arial, sans-serif" font-size="16" font-weight="700" fill="#fff">O</text>
+  <text x="74" y="48" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="#0F172A">Orbis Viaris</text>
+</svg>
