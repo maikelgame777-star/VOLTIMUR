@@ -2,7 +2,17 @@ import { motion } from 'motion/react';
 import type { ReactNode } from 'react';
 import { Zap, Wifi, Shield, Sun, Wrench, Home, BatteryCharging, Activity } from 'lucide-react';
 
-const services = [
+type Service = {
+  icon: typeof Zap;
+  title: string;
+  description: string;
+  image: string;
+  alt: string;
+  badge?: string;
+  badgeAlt?: string;
+};
+
+const services: Service[] = [
   {
     icon: Zap,
     title: "Instalaciones Eléctricas",
@@ -48,9 +58,11 @@ const services = [
   {
     icon: BatteryCharging,
     title: "Puntos de Recarga",
-    description: "Instalación y legalización de puntos de recarga para VE en viviendas, aparcamientos y empresas. Implantamos sistemas de gestión de carga dinámica (SPL) para el control y distribución inteligente de la potencia disponible, evitando disparos de protecciones. Asesoramiento en discriminación horaria y contratación de tarifa óptima para minimizar el coste por kWh en recarga.",
+    description: "Instaladores oficiales V2C. Instalación y legalización de puntos de recarga para VE en viviendas, aparcamientos y empresas. Implantamos sistemas de gestión de carga dinámica (SPL) para el control y distribución inteligente de la potencia disponible, evitando disparos de protecciones. Asesoramiento en discriminación horaria y contratación de tarifa óptima para minimizar el coste por kWh en recarga.",
     image: "/images/recarga.jpg",
-    alt: "Punto de recarga para vehículo eléctrico"
+    alt: "Punto de recarga para vehículo eléctrico",
+    badge: "/brands/v2c-oficial.jpg",
+    badgeAlt: "Instalador oficial V2C de cargadores de coche eléctrico"
   },
   {
     icon: Activity,
@@ -98,19 +110,34 @@ export default function Services() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-gray-200 border-dashed">
           {services.map((service, index) => (
             <TiltCard key={index} index={index}>
-              <div className="aspect-[16/10] overflow-hidden bg-gray-100">
+              <div className="aspect-[16/10] overflow-hidden bg-gray-100 relative">
                 <img
                   src={service.image}
                   alt={service.alt}
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
+                {service.badge && (
+                  <div className="absolute bottom-3 right-3 left-3 sm:left-auto sm:max-w-[200px]">
+                    <img
+                      src={service.badge}
+                      alt={service.badgeAlt || ''}
+                      loading="lazy"
+                      className="w-full h-auto rounded-lg shadow-lg border border-white/40 bg-white/95"
+                    />
+                  </div>
+                )}
               </div>
               <div className="p-6 md:p-10 flex flex-col flex-1">
                 <div className="w-14 h-14 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
                   <service.icon size={28} strokeWidth={1.5} />
                 </div>
                 <h3 className="text-xl font-display font-semibold mb-4 text-gray-900">{service.title}</h3>
+                {service.badge && (
+                  <p className="text-xs font-semibold uppercase tracking-wider text-orange-600 mb-3">
+                    Instalador oficial V2C
+                  </p>
+                )}
                 <p className="text-gray-500 leading-relaxed text-sm md:text-base mt-auto">
                   {service.description}
                 </p>
@@ -120,6 +147,52 @@ export default function Services() {
           <div className="hidden lg:block p-10 border-r border-b border-gray-200 border-dashed bg-gray-50/30"></div>
           <div className="hidden lg:block p-10 border-r border-b border-gray-200 border-dashed bg-gray-50/30"></div>
         </div>
+
+        {/* Destacado instalador oficial V2C */}
+        <motion.div
+          id="v2c"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-16 md:mt-20"
+        >
+          <div className="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12 p-6 md:p-10 rounded-3xl bg-gradient-to-br from-[#1a0a0a] via-[#2a1010] to-[#3d1510] border border-orange-500/20 overflow-hidden relative">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,_rgba(255,100,50,0.18),_transparent_55%)] pointer-events-none" />
+            <div className="relative z-10 flex-1">
+              <div className="text-orange-400 font-semibold tracking-wider uppercase text-sm mb-3">
+                Movilidad eléctrica
+              </div>
+              <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-4 tracking-tight">
+                Instaladores oficiales V2C
+              </h3>
+              <p className="text-gray-300 font-light leading-relaxed max-w-xl mb-6">
+                Certificados por V2C para instalar y legalizar cargadores de coche eléctrico con garantía de fabricante, gestión de potencia y puesta en marcha profesional en Murcia.
+              </p>
+              <button
+                type="button"
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                className="inline-flex px-6 py-3 bg-orange-500 hover:bg-orange-400 text-white rounded-lg text-sm font-medium transition-colors"
+              >
+                Solicitar presupuesto de recarga
+              </button>
+            </div>
+            <div className="relative z-10 w-full lg:w-[420px] shrink-0 space-y-4">
+              <img
+                src="/brands/v2c-oficial-banner.jpg"
+                alt="Instalador oficial de cargadores de coche eléctrico V2C"
+                loading="lazy"
+                className="w-full h-auto rounded-xl shadow-2xl"
+              />
+              <img
+                src="/brands/v2c-oficial.jpg"
+                alt="Sello Official installer V2C"
+                loading="lazy"
+                className="w-full max-w-xs mx-auto lg:ml-auto h-auto rounded-lg"
+              />
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -6,12 +6,12 @@ type Brand = {
 };
 
 const brands: Brand[] = [
+  { name: 'V2C', file: 'v2c-oficial.jpg' },
   { name: 'Schneider Electric', file: 'schneider.svg' },
   { name: 'Simon', file: 'simon.svg' },
   { name: 'General Cable', file: 'general-cable.svg' },
   { name: 'Prysmian', file: 'prysmian.svg' },
   { name: 'Circutor', file: 'circutor.svg' },
-  { name: 'V2C', file: 'v2c.svg' },
   { name: 'Wallbox', file: 'wallbox.svg' },
   { name: 'Legrand', file: 'legrand.svg' },
   { name: 'Fronius', file: 'fronius.svg' },
@@ -60,14 +60,23 @@ export default function Brands() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.03 }}
-              className="group rounded-2xl border border-gray-100 bg-white p-3 shadow-sm hover:shadow-[0_12px_32px_rgba(16,185,129,0.12)] hover:border-emerald-200 transition-all duration-300"
+              className={`group rounded-2xl border bg-white p-3 shadow-sm transition-all duration-300 ${
+                brand.name === 'V2C'
+                  ? 'border-orange-200 ring-1 ring-orange-100 hover:shadow-[0_12px_32px_rgba(249,115,22,0.18)] hover:border-orange-300'
+                  : 'border-gray-100 hover:shadow-[0_12px_32px_rgba(16,185,129,0.12)] hover:border-emerald-200'
+              }`}
             >
               <img
                 src={`/brands/${brand.file}`}
-                alt={`Logo ${brand.name}`}
+                alt={brand.name === 'V2C' ? 'Instalador oficial V2C' : `Logo ${brand.name}`}
                 loading="lazy"
                 className="w-full h-[76px] object-contain transition-transform duration-300 group-hover:scale-[1.02]"
               />
+              {brand.name === 'V2C' && (
+                <p className="mt-2 text-center text-[10px] font-semibold uppercase tracking-wider text-orange-600">
+                  Instalador oficial
+                </p>
+              )}
             </motion.div>
           ))}
         </motion.div>
