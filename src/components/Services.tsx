@@ -57,10 +57,10 @@ const services: Service[] = [
   },
   {
     icon: BatteryCharging,
-    title: "Puntos de Recarga",
-    description: "Instaladores oficiales V2C. Instalación y legalización de puntos de recarga para VE en viviendas, aparcamientos y empresas. Implantamos sistemas de gestión de carga dinámica (SPL) para el control y distribución inteligente de la potencia disponible, evitando disparos de protecciones. Asesoramiento en discriminación horaria y contratación de tarifa óptima para minimizar el coste por kWh en recarga.",
+    title: "Puntos de Recarga en Murcia",
+    description: "Instaladores oficiales V2C en Murcia. Instalación y legalización de puntos de recarga para coche eléctrico en viviendas, aparcamientos y empresas de la Región de Murcia. Implantamos sistemas de gestión de carga dinámica (SPL) para el control y distribución inteligente de la potencia disponible, evitando disparos de protecciones. Asesoramiento en discriminación horaria y contratación de tarifa óptima para minimizar el coste por kWh en recarga.",
     image: "/images/recarga.jpg",
-    alt: "Punto de recarga para vehículo eléctrico",
+    alt: "Instalación de punto de recarga para coche eléctrico en Murcia — instaladores oficiales V2C",
     badge: "/brands/v2c-oficial.jpg",
     badgeAlt: "Instalador oficial V2C de cargadores de coche eléctrico"
   },
@@ -164,10 +164,10 @@ export default function Services() {
                 Movilidad eléctrica
               </div>
               <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-4 tracking-tight">
-                Instaladores oficiales V2C
+                Puntos de recarga en Murcia · Instaladores oficiales V2C
               </h3>
               <p className="text-gray-300 font-light leading-relaxed max-w-xl mb-6">
-                Certificados por V2C para instalar y legalizar cargadores de coche eléctrico con garantía de fabricante, gestión de potencia y puesta en marcha profesional en Murcia.
+                Instalación y legalización de cargadores para coche eléctrico en Murcia y toda la Región. Certificados por V2C, con gestión de potencia, boletín oficial y puesta en marcha profesional.
               </p>
               <button
                 type="button"
