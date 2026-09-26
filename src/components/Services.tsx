@@ -61,7 +61,7 @@ const services: Service[] = [
     description: "Instalación y legalización de cargadores para vehículo eléctrico en viviendas, garajes y empresas de la Región de Murcia. Gestión de carga dinámica (SPL), boletín eléctrico y asesoramiento en tarifa óptima. Trabajamos con distintas marcas y somos instaladores oficiales V2C.",
     image: "/images/recarga.jpg",
     alt: "Instalación de cargador de coche eléctrico en Murcia",
-    badge: "/brands/v2c-oficial.jpg",
+    badge: "/brands/v2c-oficial.svg",
     badgeAlt: "Certificación instalador oficial V2C"
   },
   {
@@ -184,12 +184,14 @@ export default function Services() {
                 loading="lazy"
                 className="w-full h-auto rounded-xl shadow-2xl"
               />
-              <img
-                src="/brands/v2c-oficial.jpg"
-                alt="Sello Official installer V2C"
-                loading="lazy"
-                className="w-full max-w-xs mx-auto lg:ml-auto h-auto rounded-lg"
-              />
+              <div className="w-full max-w-xs mx-auto lg:ml-auto rounded-xl bg-white p-3 shadow-lg">
+                <img
+                  src="/brands/v2c-oficial.svg"
+                  alt="Sello Official installer V2C"
+                  loading="lazy"
+                  className="w-full h-auto"
+                />
+              </div>
             </div>
           </div>
         </motion.div>

@@ -23,7 +23,7 @@ const brands: Brand[] = [
   { name: 'Himoinsa', file: 'himoinsa.svg' },
   { name: 'Philips', file: 'philips.svg' },
   { name: 'Osram', file: 'osram.svg' },
-  { name: 'V2C', file: 'v2c-oficial.jpg' },
+  { name: 'V2C', file: 'v2c-oficial.svg' },
 ];
 
 export default function Brands() {

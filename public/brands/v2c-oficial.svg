@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" role="img" aria-label="Instalador oficial V2C">
+  <defs>
+    <linearGradient id="v2cGrad" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#E31C23"/>
+      <stop offset="45%" stop-color="#F15A29"/>
+      <stop offset="100%" stop-color="#F7EDE8"/>
+    </linearGradient>
+    <linearGradient id="frameGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C41E26"/>
+      <stop offset="100%" stop-color="#F15A29"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Left: Official installer on black with readable white text -->
+  <rect x="8" y="8" width="292" height="284" rx="6" fill="url(#frameGrad)"/>
+  <rect x="16" y="16" width="276" height="268" rx="2" fill="#0A0A0A"/>
+  <text x="154" y="128" text-anchor="middle"
+        font-family="Arial Black, Arial, Helvetica, sans-serif"
+        font-size="42" font-weight="800" fill="#FFFFFF" letter-spacing="-0.5">Official</text>
+  <text x="154" y="186" text-anchor="middle"
+        font-family="Arial Black, Arial, Helvetica, sans-serif"
+        font-size="42" font-weight="800" fill="#FFFFFF" letter-spacing="-0.5">installer</text>
+
+  <!-- Right: V2C wordmark on brand gradient -->
+  <rect x="300" y="8" width="332" height="284" fill="url(#v2cGrad)"/>
+  <g transform="translate(355 118)">
+    <text x="0" y="58"
+          font-family="Arial Black, Arial, Helvetica, sans-serif"
+          font-size="92" font-weight="900" fill="#0A0A0A" letter-spacing="-4">V2</text>
+    <!-- Stylized C as charging connector -->
+    <circle cx="198" cy="42" r="40" fill="#0A0A0A"/>
+    <circle cx="198" cy="42" r="22" fill="none" stroke="#F15A29" stroke-width="5"/>
+    <circle cx="198" cy="24" r="3.2" fill="#F15A29"/>
+    <circle cx="214" cy="32" r="3.2" fill="#F15A29"/>
+    <circle cx="218" cy="48" r="3.2" fill="#F15A29"/>
+    <circle cx="208" cy="60" r="3.2" fill="#F15A29"/>
+    <circle cx="188" cy="60" r="3.2" fill="#F15A29"/>
+    <circle cx="178" cy="48" r="3.2" fill="#F15A29"/>
+    <circle cx="182" cy="32" r="3.2" fill="#F15A29"/>
+  </g>
+</svg>
