@@ -21,7 +21,7 @@ class Doc(FPDF):
         self.set_y(-15)
         self.set_font("Helvetica", "", 8)
         self.set_text_color(120, 120, 120)
-        self.cell(0, 10, f"voltimur.com - 660 144 754 - Pagina {self.page_no()}", align="C")
+        self.cell(0, 10, f"voltimur.com - 681 330 640 - Pagina {self.page_no()}", align="C")
 
     def title_block(self, title, subtitle):
         self.set_x(10)
@@ -319,7 +319,7 @@ def main():
         pdf.multi_cell(
             190,
             5,
-            "Documento orientativo elaborado por Voltimur. Para un estudio personalizado: 660 144 754 / voltimur.com",
+            "Documento orientativo elaborado por Voltimur. Para un estudio personalizado: 681 330 640 / voltimur.com",
         )
         path = OUT / filename
         pdf.output(str(path))
