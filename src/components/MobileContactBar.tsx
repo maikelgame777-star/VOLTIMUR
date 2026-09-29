@@ -1,8 +1,8 @@
 import { Phone } from 'lucide-react';
 
-const PHONE = '+34660144754';
-const PHONE_LABEL = '660 144 754';
-const WHATSAPP = 'https://wa.me/34660144754';
+const PHONE = '+34681330640';
+const PHONE_LABEL = '681 330 640';
+const WHATSAPP = 'https://wa.me/34681330640';
 
 function WhatsAppIcon({ size = 20 }: { size?: number }) {
   return (
