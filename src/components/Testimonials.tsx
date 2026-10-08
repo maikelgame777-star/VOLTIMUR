@@ -39,11 +39,11 @@ export default function Testimonials() {
             Por qué Voltimur
           </div>
           <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight text-gray-900 mb-6">
-            Criterio técnico, no reseñas de relleno
+            Experiencia y rigor en cada instalación
           </h2>
           <p className="text-lg md:text-xl text-gray-500 font-light leading-relaxed">
-            Estamos en fase de lanzamiento de la web. En lugar de testimonios inventados, te dejamos claro cómo trabajamos.
-            Cuando tengamos reseñas en Google Business, las publicaremos aquí.
+            Más de 25 años en Murcia trabajando infraestructuras eléctricas, mantenimiento, inspecciones según REBT
+            e infraestructura de recarga. Así es como abordamos cada proyecto.
           </p>
         </motion.div>
 
