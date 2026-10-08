@@ -74,10 +74,10 @@ export default function Works() {
         >
           <div className="text-emerald-600 font-semibold tracking-wider uppercase text-sm mb-4">Trabajos</div>
           <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight mb-6 text-gray-900">
-            Residencial, recarga e industrial
+            El día a día de nuestras instalaciones
           </h2>
           <p className="text-lg md:text-xl text-gray-500 font-light leading-relaxed">
-            Obras reales en Murcia: cargadores, protecciones SAI, bancos de condensadores, fallas eléctricas y mantenimiento.
+            Fotos reales de nuestros trabajos en Murcia: electricidad, industrial, mantenimiento, recarga y alumbrado.
           </p>
         </motion.div>
 

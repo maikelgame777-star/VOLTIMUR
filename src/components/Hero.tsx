@@ -161,22 +161,14 @@ export default function Hero() {
           </span>
         </h1>
 
-        {/* Subtitle — recarga as secondary focus */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 1.1 }}
-          className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto mb-3 leading-relaxed font-light"
+          className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed font-light"
         >
-          Instalación de infraestructura de recarga de coche eléctrico: oficial V2C y otros fabricantes.
-        </motion.p>
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.2 }}
-          className="text-sm md:text-base text-gray-500 max-w-xl mx-auto mb-12 leading-relaxed font-light"
-        >
-          Más de 25 años en Murcia: electricidad, automatización, solar, industrial y legalización.
+          Más de 25 años en Murcia en electricidad, automatización, solar e industrial.
+          También instalación de infraestructura de recarga de coche eléctrico: oficial V2C y otros fabricantes.
         </motion.p>
 
         {/* Buttons */}

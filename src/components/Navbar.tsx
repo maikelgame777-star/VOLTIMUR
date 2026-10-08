@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Zap } from 'lucide-react';
 
 const links = [
-  { label: 'Cargadores', href: 'cargadores' },
   { label: 'Servicios', href: 'services' },
   { label: 'Trabajos', href: 'works' },
   { label: 'Marcas', href: 'brands' },

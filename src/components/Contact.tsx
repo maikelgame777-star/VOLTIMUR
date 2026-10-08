@@ -163,7 +163,7 @@ function PhoneField({ value, onChange }: { value: string; onChange: (val: string
 }
 
 export default function Contact() {
-  const [form, setForm] = useState({ nombre: '', telefono: '', email: '', servicio: 'Cargador coche eléctrico', mensaje: '' });
+  const [form, setForm] = useState({ nombre: '', telefono: '', email: '', servicio: 'Instalación Eléctrica', mensaje: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
 
@@ -183,7 +183,7 @@ export default function Contact() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Error desconocido');
       setStatus('success');
-      setForm({ nombre: '', telefono: '', email: '', servicio: 'Cargador coche eléctrico', mensaje: '' });
+      setForm({ nombre: '', telefono: '', email: '', servicio: 'Instalación Eléctrica', mensaje: '' });
     } catch (err: any) {
       setErrorMsg(err.message);
       setStatus('error');
@@ -216,7 +216,7 @@ export default function Contact() {
               </span>
             </h2>
             <p className="text-gray-400 text-xl mb-16 max-w-md font-light leading-relaxed">
-              ¿Quieres instalar un cargador de coche eléctrico en Murcia u otro servicio? Presupuesto personalizado y gratuito en 24h.
+              Cuéntanos qué necesitas y te enviamos un presupuesto personalizado y gratuito. Sin compromiso, sin rodeos.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-6">
@@ -279,13 +279,13 @@ export default function Contact() {
                 <div className="relative">
                   <select name="servicio" value={form.servicio} onChange={handleChange}
                     className="w-full bg-[#0d1117] border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all appearance-none cursor-pointer">
-                    <option>Cargador coche eléctrico</option>
                     <option>Instalación Eléctrica</option>
-                    <option>Energía Solar</option>
                     <option>Telecomunicaciones</option>
                     <option>Sistemas de Seguridad</option>
+                    <option>Energía Solar</option>
                     <option>Mantenimiento</option>
                     <option>Domótica</option>
+                    <option>Cargador coche eléctrico</option>
                     <option>Análisis de Redes Eléctricas</option>
                     <option>Otro</option>
                   </select>

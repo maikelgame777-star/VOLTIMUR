@@ -14,63 +14,71 @@ type Service = {
 
 const services: Service[] = [
   {
-    icon: BatteryCharging,
-    title: "Cargadores de Coche Eléctrico en Murcia",
-    description: "Instalación y legalización de cargadores para vehículo eléctrico en viviendas, garajes y empresas de la Región de Murcia. Gestión de carga dinámica (SPL), boletín eléctrico y asesoramiento en tarifa óptima. Trabajamos con distintas marcas y somos instaladores oficiales V2C.",
-    image: "/images/recarga.jpg",
-    alt: "Instalación real de cargador V2C de coche eléctrico en Murcia por Voltimur",
-    badge: "/brands/v2c-oficial.svg",
-    badgeAlt: "Certificación instalador oficial V2C"
-  },
-  {
     icon: Zap,
-    title: "Instalaciones Eléctricas",
-    description: "Diseño e instalación de sistemas eléctricos residenciales, comerciales e industriales: cuadros de protección, SAI, canalizaciones y legalización conforme al REBT.",
-    image: "/images/electrico.jpg",
-    alt: "Instalación eléctrica real de Voltimur en garaje comunitario en Murcia"
-  },
-  {
-    icon: Sun,
-    title: "Energía Solar",
-    description: "Instalación de paneles fotovoltaicos, sistemas de autoconsumo, funcionamiento en modo isla y baterías de respaldo. Reduce tu factura eléctrica y autogestiona tu energía desde la app móvil.",
-    image: "/images/solar.jpg",
-    alt: "Instalación de paneles solares fotovoltaicos"
+    title: 'Instalaciones Eléctricas',
+    description:
+      'Diseño e instalación de sistemas eléctricos residenciales, comerciales e industriales: cuadros de protección, SAI, canalizaciones y legalización conforme al REBT.',
+    image: '/images/electrico.jpg',
+    alt: 'Instalación eléctrica real de Voltimur en Murcia',
   },
   {
     icon: Wifi,
-    title: "Telecomunicaciones",
-    description: "Redes de datos, sistemas telefónicos y conectividad empresarial. Tu negocio, siempre conectado y a máximo rendimiento.",
-    image: "/images/telecom.jpg",
-    alt: "Infraestructura de telecomunicaciones y redes de datos"
+    title: 'Telecomunicaciones',
+    description:
+      'Redes de datos, sistemas telefónicos y conectividad empresarial. Tu negocio, siempre conectado y a máximo rendimiento.',
+    image: '/images/telecom.jpg',
+    alt: 'Infraestructura de telecomunicaciones y redes de datos',
   },
   {
     icon: Shield,
-    title: "Sistemas de Seguridad",
-    description: "CCTV, alarmas inteligentes y control de accesos para proteger lo que más importa: tu hogar y tu negocio, las 24 horas.",
-    image: "/images/seguridad.jpg",
-    alt: "Cámaras de seguridad CCTV instaladas"
+    title: 'Sistemas de Seguridad',
+    description:
+      'CCTV, alarmas inteligentes y control de accesos para proteger lo que más importa: tu hogar y tu negocio, las 24 horas.',
+    image: '/images/seguridad.jpg',
+    alt: 'Cámaras de seguridad CCTV instaladas',
   },
   {
-    icon: Home,
-    title: "Domótica",
-    description: "Automatización de viviendas y edificios mediante sistemas KNX, Zigbee y Z-Wave. Gestión centralizada de iluminación, climatización y seguridad desde dispositivo móvil.",
-    image: "/images/domotica.jpg",
-    alt: "Sistema de domótica y control inteligente del hogar"
+    icon: Sun,
+    title: 'Energía Solar',
+    description:
+      'Instalación de paneles fotovoltaicos, sistemas de autoconsumo, funcionamiento en modo isla y baterías de respaldo. Reduce tu factura eléctrica y autogestiona tu energía desde la app móvil.',
+    image: '/images/solar.jpg',
+    alt: 'Instalación de paneles solares fotovoltaicos',
   },
   {
     icon: Wrench,
-    title: "Mantenimiento",
-    description: "Mantenimiento preventivo y correctivo de instalaciones eléctricas. Minimiza el riesgo de averías, prolonga la vida útil de los equipos y garantiza el cumplimiento normativo.",
-    image: "/images/mantenimiento.jpg",
-    alt: "Mantenimiento real de cuadro eléctrico con EPI por Voltimur en Murcia"
+    title: 'Mantenimiento',
+    description:
+      'Mantenimiento preventivo y correctivo de instalaciones eléctricas. Minimiza el riesgo de averías, prolonga la vida útil de los equipos y garantiza el cumplimiento normativo.',
+    image: '/images/mantenimiento.jpg',
+    alt: 'Mantenimiento real de cuadro eléctrico con EPI por Voltimur en Murcia',
+  },
+  {
+    icon: Home,
+    title: 'Domótica',
+    description:
+      'Automatización de viviendas y edificios mediante sistemas KNX, Zigbee y Z-Wave. Gestión centralizada de iluminación, climatización y seguridad desde dispositivo móvil.',
+    image: '/images/domotica.jpg',
+    alt: 'Sistema de domótica y control inteligente del hogar',
+  },
+  {
+    icon: BatteryCharging,
+    title: 'Cargadores de Coche Eléctrico',
+    description:
+      'Instalación y legalización de puntos de recarga en viviendas, garajes y empresas. Instaladores oficiales V2C y otras marcas (Wallbox, Schneider, Orbis, Policharger, Circutor). Gestión de carga dinámica y boletín eléctrico.',
+    image: '/images/recarga.jpg',
+    alt: 'Instalación real de cargador V2C en Murcia por Voltimur',
+    badge: '/brands/v2c-oficial.svg',
+    badgeAlt: 'Certificación instalador oficial V2C',
   },
   {
     icon: Activity,
-    title: "Análisis de Redes Eléctricas",
-    description: "Diagnóstico industrial y comercial: armónicos (THD), desequilibrios, fallas eléctricas y corrección del factor de potencia. Instalamos y gestionamos baterías de condensadores, cuadros de protección para SAI y sistemas de medida para reducir penalizaciones y estabilizar la red.",
-    image: "/images/analisis.jpg",
-    alt: "Gestión y control de banco de condensadores de potencia instalado por Voltimur"
-  }
+    title: 'Análisis de Redes Eléctricas',
+    description:
+      'Diagnóstico industrial y comercial: armónicos (THD), desequilibrios, fallas eléctricas y corrección del factor de potencia. Baterías de condensadores, protecciones SAI y sistemas de medida.',
+    image: '/images/analisis.jpg',
+    alt: 'Gestión y control de banco de condensadores de potencia instalado por Voltimur',
+  },
 ];
 
 function TiltCard({ children, index }: { children: ReactNode; index: number }) {
@@ -78,7 +86,7 @@ function TiltCard({ children, index }: { children: ReactNode; index: number }) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
       className="border-r border-b border-gray-200 border-dashed group hover:bg-emerald-50/50 transition-colors duration-300 cursor-pointer relative overflow-hidden flex flex-col"
     >
@@ -100,10 +108,10 @@ export default function Services() {
         >
           <div className="text-emerald-600 font-semibold tracking-wider uppercase text-sm mb-4">Servicios</div>
           <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight mb-6 text-gray-900">
-            Cargadores, electricidad y energía en Murcia
+            Todo lo que necesitas, en un solo equipo
           </h2>
           <p className="text-lg md:text-xl text-gray-500 font-light leading-relaxed">
-            Especialistas en instalar cargadores de coche eléctrico, instalaciones eléctricas, solar y más. Un solo equipo certificado para tu proyecto en la Región de Murcia.
+            Desde una instalación eléctrica hasta solar, seguridad o un cargador de coche eléctrico. Soluciones a medida en la Región de Murcia.
           </p>
         </motion.div>
 
@@ -138,9 +146,7 @@ export default function Services() {
                     Instalador oficial V2C
                   </p>
                 )}
-                <p className="text-gray-500 leading-relaxed text-sm md:text-base mt-auto">
-                  {service.description}
-                </p>
+                <p className="text-gray-500 leading-relaxed text-sm md:text-base mt-auto">{service.description}</p>
               </div>
             </TiltCard>
           ))}
@@ -148,43 +154,39 @@ export default function Services() {
           <div className="hidden lg:block p-10 border-r border-b border-gray-200 border-dashed bg-gray-50/30"></div>
         </div>
 
-        {/* Certificación oficial V2C */}
+        {/* Certificación V2C + otras marcas (bloque compacto) */}
         <motion.div
-          id="v2c"
+          id="cargadores"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="mt-16 md:mt-20"
         >
-          <div className="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12 p-6 md:p-10 rounded-3xl bg-gradient-to-br from-[#1a0a0a] via-[#2a1010] to-[#3d1510] border border-orange-500/20 overflow-hidden relative">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,_rgba(255,100,50,0.18),_transparent_55%)] pointer-events-none" />
-            <div className="relative z-10 flex-1">
-              <div className="text-orange-400 font-semibold tracking-wider uppercase text-sm mb-3">
-                Certificación de marca
+          <div className="grid lg:grid-cols-2 gap-6 md:gap-8">
+            <div
+              id="v2c"
+              className="flex flex-col sm:flex-row sm:items-center gap-6 p-6 md:p-8 rounded-3xl bg-gradient-to-br from-[#1a0a0a] via-[#2a1010] to-[#3d1510] border border-orange-500/20"
+            >
+              <div className="flex-1">
+                <div className="text-orange-400 font-semibold tracking-wider uppercase text-xs mb-2">
+                  Certificación de marca
+                </div>
+                <h3 className="text-xl md:text-2xl font-display font-bold text-white mb-2 tracking-tight">
+                  Instaladores oficiales V2C
+                </h3>
+                <p className="text-gray-300 font-light text-sm leading-relaxed mb-4">
+                  Instalamos y legalizamos cargadores V2C con garantía de fabricante en Murcia.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="inline-flex px-5 py-2.5 bg-orange-500 hover:bg-orange-400 text-white rounded-lg text-sm font-medium transition-colors"
+                >
+                  Presupuesto V2C
+                </button>
               </div>
-              <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-4 tracking-tight">
-                Instaladores oficiales V2C
-              </h3>
-              <p className="text-gray-300 font-light leading-relaxed max-w-xl mb-6">
-                Certificados por V2C para instalar y legalizar sus cargadores de coche eléctrico con garantía de fabricante, gestión de potencia y puesta en marcha profesional en Murcia.
-              </p>
-              <button
-                type="button"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex px-6 py-3 bg-orange-500 hover:bg-orange-400 text-white rounded-lg text-sm font-medium transition-colors"
-              >
-                Solicitar presupuesto V2C
-              </button>
-            </div>
-            <div className="relative z-10 w-full lg:w-[420px] shrink-0 space-y-4">
-              <img
-                src="/brands/v2c-oficial-banner.jpg"
-                alt="Instalador oficial de cargadores de coche eléctrico V2C"
-                loading="lazy"
-                className="w-full h-auto rounded-xl shadow-2xl"
-              />
-              <div className="w-full max-w-xs mx-auto lg:ml-auto rounded-xl bg-white p-3 shadow-lg">
+              <div className="w-full sm:w-40 shrink-0 rounded-xl bg-white p-2">
                 <img
                   src="/brands/v2c-oficial.svg"
                   alt="Sello Official installer V2C"
@@ -193,54 +195,38 @@ export default function Services() {
                 />
               </div>
             </div>
-          </div>
-        </motion.div>
 
-        {/* Otras marcas de recarga que también instalamos */}
-        <motion.div
-          id="marcas-recarga"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mt-10 md:mt-12"
-        >
-          <div className="rounded-3xl border border-gray-200 bg-gray-50/80 p-6 md:p-10">
-            <div className="mb-8 md:max-w-2xl">
-              <div className="text-emerald-600 font-semibold tracking-wider uppercase text-sm mb-3">
-                Movilidad eléctrica
+            <div className="p-6 md:p-8 rounded-3xl border border-gray-200 bg-gray-50/80">
+              <div className="text-emerald-600 font-semibold tracking-wider uppercase text-xs mb-2">
+                Otras marcas
               </div>
-              <h3 className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-3 tracking-tight">
-                También instalamos otras marcas de recarga
+              <h3 className="text-xl md:text-2xl font-display font-bold text-gray-900 mb-2 tracking-tight">
+                También instalamos
               </h3>
-              <p className="text-gray-500 font-light leading-relaxed">
-                Además de la certificación oficial V2C, instalamos y legalizamos cargadores de otras marcas de referencia según el proyecto, la potencia y las necesidades de cada cliente.
+              <p className="text-gray-500 font-light text-sm leading-relaxed mb-5">
+                Wallbox, Schneider, Orbis Viaris, Policharger y Circutor eHome/eNext según el proyecto.
               </p>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-              {[
-                { name: 'Wallbox', file: 'wallbox.svg' },
-                { name: 'Schneider Electric', file: 'schneider.svg' },
-                { name: 'Orbis Viaris', file: 'orbis.svg' },
-                { name: 'Policharger', file: 'policharger.svg' },
-                { name: 'Circutor eHome / eNext', file: 'circutor-enext.svg' },
-                { name: 'V2C', file: 'v2c.svg' },
-              ].map((brand) => (
-                <div
-                  key={brand.name}
-                  className="flex flex-col items-center justify-center gap-2 rounded-2xl border border-gray-100 bg-white p-4 min-h-[110px]"
-                >
-                  <img
-                    src={`/brands/${brand.file}`}
-                    alt={`Logo ${brand.name}`}
-                    loading="lazy"
-                    className="h-12 w-full object-contain"
-                  />
-                  <span className="text-[11px] text-gray-500 text-center font-medium leading-tight">
-                    {brand.name}
-                  </span>
-                </div>
-              ))}
+              <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                {[
+                  { name: 'Wallbox', file: 'wallbox.svg' },
+                  { name: 'Schneider', file: 'schneider.svg' },
+                  { name: 'Orbis', file: 'orbis.svg' },
+                  { name: 'Policharger', file: 'policharger.svg' },
+                  { name: 'Circutor', file: 'circutor-enext.svg' },
+                ].map((brand) => (
+                  <div
+                    key={brand.name}
+                    className="flex items-center justify-center rounded-xl border border-gray-100 bg-white p-3 h-14"
+                  >
+                    <img
+                      src={`/brands/${brand.file}`}
+                      alt={`Logo ${brand.name}`}
+                      loading="lazy"
+                      className="max-h-8 w-full object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </motion.div>

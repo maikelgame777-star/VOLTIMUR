@@ -32,18 +32,14 @@ export default function ServiceArea() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-emerald-400 font-semibold tracking-wider uppercase text-sm mb-4">
-            Zona de actuación
-          </p>
           <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 leading-tight">
-            Instalamos cargadores en toda la{' '}
+            Llegamos a toda la{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-400">
               Región de Murcia
             </span>
           </h2>
           <p className="text-gray-400 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
-            Puntos de recarga, wallbox e instalaciones eléctricas en Murcia capital y municipios de la Región.
-            Si buscas un instalador de cargador de coche eléctrico cerca de ti, estamos a un mensaje.
+            Instalaciones eléctricas, solar, seguridad, recarga y más en Murcia capital y municipios de la Región.
           </p>
           <ul className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-gray-300 mb-12 max-w-3xl mx-auto">
             {areas.map((area) => (
@@ -56,7 +52,7 @@ export default function ServiceArea() {
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             className="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-medium transition-colors shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)]"
           >
-            Pedir presupuesto en mi zona
+            Consultar disponibilidad
           </motion.button>
         </motion.div>
       </div>

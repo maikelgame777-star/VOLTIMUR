@@ -47,11 +47,11 @@ export default function About() {
               Más de 25 años en soluciones integrales de instalaciones
             </h2>
             <p className="text-lg text-gray-600 mb-6 leading-relaxed font-light">
-              <strong className="text-gray-900 font-medium">Voltimur</strong> nace en Murcia con una misión clara: instalaciones eléctricas profesionales y, cada vez más, infraestructura de recarga para vehículo eléctrico. Más de 25 años de experiencia, instaladores oficiales V2C y legalización incluida en toda la Región de Murcia.
+              <strong className="text-gray-900 font-medium">Voltimur</strong> nace en Murcia con una misión clara: ofrecer a hogares y empresas más de 25 años de experiencia en soluciones integrales de instalaciones eléctricas y telecomunicaciones. Un profesional certificado que conoce cada reto del sector y sabe cómo resolverlo con rigor y eficiencia.
             </p>
             <p className="text-lg text-gray-600 leading-relaxed font-light">
               Trabajamos bajo tres pilares que nunca negociamos:{' '}
-              <span className="text-emerald-600 font-medium">profesionalidad, eficiencia y confianza</span>. Desde un wallbox en tu garaje hasta una instalación industrial completa: tiene que funcionar y tiene que durar.
+              <span className="text-emerald-600 font-medium">profesionalidad, eficiencia y confianza</span>. Porque una buena instalación no solo tiene que funcionar: tiene que durar.
             </p>
           </motion.div>
 
