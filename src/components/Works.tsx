@@ -5,57 +5,57 @@ const works = [
     image: '/images/recarga-v2c-obra.jpg',
     title: 'Cargador V2C',
     caption: 'Instalación real de wallbox V2C con canalización profesional en garaje',
-    className: 'md:col-span-2 md:row-span-2',
-    objectPosition: 'object-[center_20%]',
+    className: 'md:col-span-2 md:row-span-2 bg-[#1a1f26]',
+    imgClass: 'object-contain object-center',
   },
   {
     image: '/images/industrial-sai-proteccion.jpg',
     title: 'Industrial · SAI',
     caption: 'Cuadro de protecciones para sistemas SAI (alimentación ininterrumpida)',
     className: 'md:col-span-1',
-    objectPosition: 'object-center',
+    imgClass: 'object-cover object-center',
   },
   {
     image: '/images/industrial-condensadores.jpg',
     title: 'Banco de condensadores',
     caption: 'Gestión y control de batería de condensadores de potencia',
     className: 'md:col-span-1',
-    objectPosition: 'object-[center_35%]',
+    imgClass: 'object-cover object-[center_35%]',
   },
   {
     image: '/images/industrial-condensadores-medida.jpg',
     title: 'Control de potencia',
     caption: 'Analizador PowerLogic en batería de condensadores (trafo y medida)',
     className: 'md:col-span-1',
-    objectPosition: 'object-center',
+    imgClass: 'object-cover object-center',
   },
   {
     image: '/images/industrial-fallas.jpg',
     title: 'Fallas eléctricas',
     caption: 'Diagnóstico de fallas con pinzas amperimétricas en instalación industrial',
     className: 'md:col-span-1',
-    objectPosition: 'object-[center_40%]',
+    imgClass: 'object-cover object-[center_40%]',
   },
   {
     image: '/images/obra-mantenimiento-cuadro.jpg',
     title: 'Mantenimiento',
     caption: 'Revisión de cuadros eléctricos con EPI y medición en campo',
     className: 'md:col-span-1',
-    objectPosition: 'object-center',
+    imgClass: 'object-cover object-center',
   },
   {
     image: '/images/obra-garaje-cuadro.jpg',
     title: 'Garaje comunitario',
     caption: 'Trabajo en cuadro y canalización para infraestructura de recarga',
     className: 'md:col-span-1',
-    objectPosition: 'object-[center_25%]',
+    imgClass: 'object-cover object-[center_25%]',
   },
   {
     image: '/images/obra-alumbrado-exterior.jpg',
     title: 'Alumbrado exterior',
     caption: 'Mantenimiento e instalación de luminarias en zonas comunes',
     className: 'md:col-span-1',
-    objectPosition: 'object-[center_35%]',
+    imgClass: 'object-cover object-[center_35%]',
   },
 ];
 
@@ -95,7 +95,7 @@ export default function Works() {
                 src={work.image}
                 alt={work.caption}
                 loading="lazy"
-                className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 ${work.objectPosition}`}
+                className={`absolute inset-0 w-full h-full transition-transform duration-700 ease-out group-hover:scale-105 ${work.imgClass}`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117]/85 via-[#0d1117]/25 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500" />
               <figcaption className="absolute inset-x-0 bottom-0 p-5 md:p-6 translate-y-1 group-hover:translate-y-0 transition-transform duration-500">
