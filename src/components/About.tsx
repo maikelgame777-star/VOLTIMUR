@@ -1,31 +1,21 @@
-import { useEffect, useRef, useState } from 'react';
-import { motion, useInView } from 'motion/react';
+import { motion } from 'motion/react';
 
-function CountUp({ target, suffix = '' }: { target: number; suffix?: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true });
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!isInView) return;
-    const duration = 2000;
-    const step = target / (duration / 16);
-    let current = 0;
-    const timer = setInterval(() => {
-      current = Math.min(current + step, target);
-      setCount(Math.floor(current));
-      if (current >= target) clearInterval(timer);
-    }, 16);
-    return () => clearInterval(timer);
-  }, [isInView, target]);
-
-  return <span ref={ref}>{count}{suffix}</span>;
-}
-
-const stats = [
-  { value: 25, suffix: '+', label: 'Años de experiencia en instalaciones integrales' },
-  { value: 500, suffix: '+', label: 'Instalaciones completadas' },
-  { value: 300, suffix: '+', label: 'Clientes satisfechos' },
+const facts = [
+  {
+    value: '25+',
+    label: 'Años de experiencia',
+    detail: 'Infraestructuras eléctricas, mantenimiento e inspecciones según REBT en la Región de Murcia.',
+  },
+  {
+    value: 'REBT',
+    label: 'Instalador autorizado',
+    detail: 'Boletín eléctrico, legalización e inspecciones técnicas periódicas conforme a normativa.',
+  },
+  {
+    value: 'V2C',
+    label: 'Instalador oficial',
+    detail: 'Infraestructura de recarga de vehículo eléctrico y otras marcas según el proyecto.',
+  },
 ];
 
 export default function About() {
@@ -34,24 +24,26 @@ export default function About() {
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-emerald-50/50 to-transparent pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
           >
             <div className="text-emerald-600 font-semibold tracking-wider uppercase text-sm mb-4">Sobre Nosotros</div>
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-8 text-gray-900">
-              Más de 25 años en soluciones integrales de instalaciones
+              Empresa instaladora de Murcia, con criterio técnico
             </h2>
             <p className="text-lg text-gray-600 mb-6 leading-relaxed font-light">
-              <strong className="text-gray-900 font-medium">Voltimur</strong> nace en Murcia con una misión clara: ofrecer a hogares y empresas más de 25 años de experiencia en soluciones integrales de instalaciones eléctricas y telecomunicaciones. Un profesional certificado que conoce cada reto del sector y sabe cómo resolverlo con rigor y eficiencia.
+              <strong className="text-gray-900 font-medium">Voltimur</strong> trabaja instalaciones eléctricas,
+              mantenimiento, inspecciones técnicas periódicas según REBT e infraestructura de recarga.
+              Más de 25 años de oficio en viviendas, comunidades, comercios e industria de la Región de Murcia.
             </p>
             <p className="text-lg text-gray-600 leading-relaxed font-light">
-              Trabajamos bajo tres pilares que nunca negociamos:{' '}
-              <span className="text-emerald-600 font-medium">profesionalidad, eficiencia y confianza</span>. Porque una buena instalación no solo tiene que funcionar: tiene que durar.
+              No vendemos plantillas: medimos, legalizamos y dejamos cada instalación documentada.
+              Tres pilares que no negociamos:{' '}
+              <span className="text-emerald-600 font-medium">profesionalidad, eficiencia y confianza</span>.
             </p>
           </motion.div>
 
@@ -59,31 +51,31 @@ export default function About() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="grid grid-cols-1 gap-6"
+            transition={{ duration: 0.8, delay: 0.15, ease: 'easeOut' }}
+            className="grid grid-cols-1 gap-5"
           >
-            {stats.map((stat, i) => (
+            {facts.map((fact, i) => (
               <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
+                key={fact.label}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 + i * 0.15 }}
-                whileHover={{ x: 6, scale: 1.02 }}
-                className="stat-glow flex items-center gap-4 md:gap-8 p-6 md:p-8 border rounded-2xl shadow-sm transition-all duration-300 group relative overflow-hidden"
+                transition={{ duration: 0.45, delay: 0.2 + i * 0.1 }}
+                className="flex items-start gap-5 md:gap-6 p-6 md:p-7 border border-gray-200 bg-white relative"
               >
-                {/* Decorative glow orb */}
-                <div className="absolute -right-8 -top-8 w-28 h-28 rounded-full bg-emerald-400/10 blur-2xl pointer-events-none group-hover:bg-emerald-400/20 transition-all duration-500" />
-                {/* Left accent bar */}
-                <div className="absolute left-0 top-4 bottom-4 w-1 rounded-r-full bg-gradient-to-b from-emerald-400 to-amber-400 opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tabular-nums bg-gradient-to-br from-emerald-600 to-emerald-400 bg-clip-text text-transparent drop-shadow-sm shrink-0">
-                  <CountUp target={stat.value} suffix={stat.suffix} />
+                <div className="absolute left-0 top-5 bottom-5 w-1 bg-gradient-to-b from-emerald-500 to-amber-400" />
+                <div className="text-3xl md:text-4xl font-display font-bold text-emerald-600 tabular-nums shrink-0 min-w-[4.5rem]">
+                  {fact.value}
                 </div>
-                <div className="text-sm font-semibold text-gray-500 uppercase tracking-[0.15em]">{stat.label}</div>
+                <div>
+                  <div className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-1">
+                    {fact.label}
+                  </div>
+                  <p className="text-sm text-gray-500 leading-relaxed font-light">{fact.detail}</p>
+                </div>
               </motion.div>
             ))}
           </motion.div>
-
         </div>
       </div>
     </section>

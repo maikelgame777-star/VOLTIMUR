@@ -1,82 +1,89 @@
 import { motion } from 'motion/react';
-import { Star } from 'lucide-react';
+import { BatteryCharging, ClipboardCheck, ShieldCheck, Wrench } from 'lucide-react';
 
-const testimonials = [
+const reasons = [
   {
-    name: "Carlos M.",
-    role: "Director de Operaciones",
-    text: "El equipo de Voltimur hizo un trabajo excelente instalando los paneles solares en nuestra empresa. Muy profesionales y limpios en la ejecución.",
-    rating: 5.0
+    icon: ClipboardCheck,
+    title: 'Legalización y REBT',
+    text: 'Boletín eléctrico, documentación e inspecciones técnicas periódicas según normativa vigente en la Región de Murcia.',
   },
   {
-    name: "Laura G.",
-    role: "Gerente de Oficina",
-    text: "Rápidos y eficientes. Nos solucionaron un problema grave en la red de datos de la oficina en tiempo récord. Totalmente recomendables.",
-    rating: 4.9
+    icon: Wrench,
+    title: 'Mantenimiento y averías',
+    text: 'Intervención en cuadros, alumbrado, fallas eléctricas e instalaciones industriales con criterio de seguridad.',
   },
   {
-    name: "Pedro S.",
-    role: "Cliente Residencial",
-    text: "Instalaron el cargador para mi coche eléctrico en casa. Todo perfecto, legalizado sin complicaciones y funcionando a la perfección.",
-    rating: 5.0
+    icon: BatteryCharging,
+    title: 'Recarga VE · oficial V2C',
+    text: 'Instalamos infraestructura de recarga: V2C como instalador oficial y otras marcas según potencia y uso.',
   },
   {
-    name: "Ana R.",
-    role: "Propietaria",
-    text: "La domótica que instalaron en mi casa ha cambiado por completo nuestra forma de vivir. Controlamos todo desde el móvil de forma sencilla.",
-    rating: 4.8
+    icon: ShieldCheck,
+    title: 'Trabajo documentado',
+    text: 'Fotos reales de obra, protecciones correctas y puesta en marcha clara. Sin rodeos ni “soluciones genéricas”.',
   },
-  {
-    name: "Miguel T.",
-    role: "Administrador de Fincas",
-    text: "Llevan el mantenimiento eléctrico de varias de nuestras comunidades y la respuesta ante incidencias es siempre inmediata.",
-    rating: 4.9
-  }
 ];
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-32 bg-white overflow-hidden relative">
-      <div className="max-w-7xl mx-auto px-6 mb-20 text-center">
-        <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight text-gray-900 mb-6">
-          Nuestros clientes confían en nosotros
-        </h2>
-        <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto font-light">
-          Nuestra misión es impulsar el progreso y mejorar la vida de nuestros clientes mediante soluciones superiores que superan las expectativas.
-        </p>
-      </div>
-
-      {/* Marquee Container */}
-      <div className="relative flex overflow-x-hidden group py-4">
-        <motion.div 
-          className="flex gap-6 px-6"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 40, ease: "linear", repeat: Infinity }}
+    <section id="testimonials" className="py-32 bg-white border-t border-gray-100 relative">
+      <div className="max-w-7xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="mb-14 md:mb-16 md:w-2/3"
         >
-          {/* Duplicate testimonials for seamless loop */}
-          {[...testimonials, ...testimonials, ...testimonials].map((t, i) => (
-            <div 
-              key={i} 
-              className="w-[380px] flex-shrink-0 bg-white border border-gray-100 rounded-3xl p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 flex flex-col"
-            >
-              <div className="flex justify-between items-start mb-6">
-                <div className="flex items-center gap-1 text-emerald-500 bg-emerald-50 px-2.5 py-1 rounded-full">
-                  <span className="font-semibold text-emerald-700 text-sm mr-1">{t.rating}</span>
-                  <Star size={14} fill="currentColor" />
-                </div>
-              </div>
-              <p className="text-gray-600 mb-8 leading-relaxed font-light text-lg">"{t.text}"</p>
-              <div className="mt-auto">
-                <div className="font-semibold text-gray-900">{t.name}</div>
-                <div className="text-sm text-gray-500 mt-0.5">{t.role}</div>
-              </div>
-            </div>
-          ))}
+          <div className="text-emerald-600 font-semibold tracking-wider uppercase text-sm mb-4">
+            Por qué Voltimur
+          </div>
+          <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight text-gray-900 mb-6">
+            Criterio técnico, no reseñas de relleno
+          </h2>
+          <p className="text-lg md:text-xl text-gray-500 font-light leading-relaxed">
+            Estamos en fase de lanzamiento de la web. En lugar de testimonios inventados, te dejamos claro cómo trabajamos.
+            Cuando tengamos reseñas en Google Business, las publicaremos aquí.
+          </p>
         </motion.div>
-        
-        {/* Gradient masks for smooth edges */}
-        <div className="absolute inset-y-0 left-0 w-32 md:w-64 bg-gradient-to-r from-white to-transparent pointer-events-none z-10"></div>
-        <div className="absolute inset-y-0 right-0 w-32 md:w-64 bg-gradient-to-l from-white to-transparent pointer-events-none z-10"></div>
+
+        <div className="grid sm:grid-cols-2 gap-6 md:gap-8">
+          {reasons.map((item, i) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: i * 0.07 }}
+              className="border border-gray-200 p-6 md:p-8"
+            >
+              <div className="w-12 h-12 bg-emerald-50 text-emerald-600 flex items-center justify-center mb-5">
+                <item.icon size={24} strokeWidth={1.5} />
+              </div>
+              <h3 className="text-xl font-display font-semibold text-gray-900 mb-3">{item.title}</h3>
+              <p className="text-gray-500 leading-relaxed font-light">{item.text}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-t border-gray-200 pt-10"
+        >
+          <p className="text-gray-500 font-light">
+            ¿Tienes un proyecto en Murcia? Te respondemos con presupuesto claro en 24 h.
+          </p>
+          <button
+            type="button"
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="px-6 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-sm font-medium transition-colors shrink-0"
+          >
+            Solicitar presupuesto
+          </button>
+        </motion.div>
       </div>
     </section>
   );

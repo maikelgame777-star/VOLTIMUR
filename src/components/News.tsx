@@ -47,13 +47,14 @@ export default function News() {
         >
           <div className="text-emerald-400 font-semibold tracking-wider uppercase text-sm mb-4 flex items-center gap-2">
             <Newspaper size={16} />
-            Actualidad técnica
+            Actualidad del sector
           </div>
           <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight mb-6">
-            Normativa, ayudas y tecnología del sector
+            Normativa, ayudas y fabricantes
           </h2>
           <p className="text-lg md:text-xl text-gray-400 font-light leading-relaxed">
-            Solo contenido útil y equilibrado: fabricantes, normativa eléctrica, subvenciones, instalaciones/recarga y fotovoltaica (sin que un solo tema acapare el listado).
+            Selección automática de noticias de fuentes del sector (normativa, subvenciones, fotovoltaica y fabricantes).
+            No son artículos propios de Voltimur: enlazan a la fuente original para que puedas consultarlas.
           </p>
         </motion.div>
 
@@ -65,7 +66,7 @@ export default function News() {
           </div>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
-            {items.slice(0, 6).map((item, index) => (
+            {items.slice(0, 3).map((item, index) => (
               <motion.a
                 key={item.id}
                 href={item.url}

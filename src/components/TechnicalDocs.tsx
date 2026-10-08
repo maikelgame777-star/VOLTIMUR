@@ -151,10 +151,11 @@ export default function TechnicalDocs() {
             Zona técnica
           </div>
           <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight mb-6 text-gray-900">
-            Documentación para descargar
+            Documentación técnica orientativa
           </h2>
           <p className="text-lg md:text-xl text-gray-500 font-light leading-relaxed">
-            Guías y checklists orientativos según el servicio. Filtra por categoría y descarga el PDF que necesites antes de solicitar presupuesto.
+            Checklists y guías prácticas (REBT, recarga, solar, mantenimiento…) para preparar tu proyecto en Murcia.
+            Filtra por categoría y descarga el PDF; no sustituyen un estudio técnico personalizado.
           </p>
         </motion.div>
 
@@ -194,8 +195,8 @@ export default function TechnicalDocs() {
                 transition={{ duration: 0.35, delay: index * 0.03 }}
                 className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 py-6 md:py-7 group"
               >
-                <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
-                  <FileText size={22} strokeWidth={1.5} />
+                <div className="w-11 h-11 border border-gray-200 text-emerald-700 flex items-center justify-center shrink-0 group-hover:border-emerald-600 group-hover:text-emerald-600 transition-colors duration-300">
+                  <FileText size={20} strokeWidth={1.5} />
                 </div>
 
                 <div className="flex-1 min-w-0">
