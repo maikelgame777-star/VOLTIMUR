@@ -167,8 +167,8 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 1.1 }}
           className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed font-light"
         >
-          Más de 25 años en Murcia en electricidad, automatización, solar e industrial.
-          También instalación de infraestructura de recarga de coche eléctrico: oficial V2C y otros fabricantes.
+          Más de 25 años de experiencia en infraestructuras y mantenimiento eléctricos, inspecciones técnicas periódicas según REBT.
+          Instalaciones de infraestructura de recarga de coche eléctrico: oficial V2C y otros fabricantes.
         </motion.p>
 
         {/* Buttons */}
