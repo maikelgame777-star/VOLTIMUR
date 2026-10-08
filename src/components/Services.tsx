@@ -27,7 +27,7 @@ const services: Service[] = [
     title: "Instalaciones Eléctricas",
     description: "Diseño e instalación de sistemas eléctricos para uso residencial, comercial e industrial. Certificación oficial y cumplimiento íntegro del Reglamento Electrotécnico de Baja Tensión (REBT).",
     image: "/images/electrico.jpg",
-    alt: "Instalación eléctrica profesional con cableado y conexiones"
+    alt: "Instalación eléctrica real de Voltimur en garaje comunitario en Murcia"
   },
   {
     icon: Sun,
@@ -62,14 +62,14 @@ const services: Service[] = [
     title: "Mantenimiento",
     description: "Mantenimiento preventivo y correctivo de instalaciones eléctricas. Minimiza el riesgo de averías, prolonga la vida útil de los equipos y garantiza el cumplimiento normativo.",
     image: "/images/mantenimiento.jpg",
-    alt: "Técnico realizando mantenimiento de instalaciones"
+    alt: "Mantenimiento real de cuadro eléctrico con EPI por Voltimur en Murcia"
   },
   {
     icon: Activity,
     title: "Análisis de Redes Eléctricas",
     description: "Diagnóstico avanzado de instalaciones mediante analizadores de redes multifunción: detección de armónicos (THD), desequilibrios de fases, perturbaciones transitorias y corrección del factor de potencia. Implantamos baterías de condensadores, filtros activos y sistemas de gestión y control para optimizar el consumo energético, reducir penalizaciones en la factura eléctrica y prolongar la vida útil de los equipos.",
     image: "/images/analisis.jpg",
-    alt: "Análisis e infraestructura de redes eléctricas"
+    alt: "Intervención en armario eléctrico y medición en avería por Voltimur"
   }
 ];
 

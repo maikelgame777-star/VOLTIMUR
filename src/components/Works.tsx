@@ -3,43 +3,57 @@ import { motion } from 'motion/react';
 const works = [
   {
     image: '/images/recarga-v2c-obra.jpg',
-    title: 'Cargador V2C en Murcia',
+    title: 'Cargador V2C',
     caption: 'Instalación real de wallbox V2C con canalización profesional en garaje',
     className: 'md:col-span-2 md:row-span-2',
     objectPosition: 'object-[center_20%]',
   },
   {
-    image: '/images/recarga-proteccion-voltimur.jpg',
-    title: 'Protección punto de recarga',
-    caption: 'Cuadro de protecciones Toscano + Schneider con identificación Voltimur',
+    image: '/images/obra-garaje-cuadro.jpg',
+    title: 'Garaje comunitario',
+    caption: 'Trabajo en cuadro y canalización para infraestructura de recarga',
+    className: 'md:col-span-1',
+    objectPosition: 'object-[center_25%]',
+  },
+  {
+    image: '/images/obra-mantenimiento-cuadro.jpg',
+    title: 'Mantenimiento',
+    caption: 'Revisión de cuadros eléctricos con EPI y medición en campo',
     className: 'md:col-span-1',
     objectPosition: 'object-center',
   },
   {
-    image: '/images/trabajo-1.jpg',
-    title: 'Instalaciones en obra',
-    caption: 'Electricistas certificados en instalaciones residenciales y comerciales',
+    image: '/images/recarga-proteccion-voltimur.jpg',
+    title: 'Protección de recarga',
+    caption: 'Cuadro de protecciones del punto de recarga con identificación Voltimur',
     className: 'md:col-span-1',
-    objectPosition: 'object-cover',
+    objectPosition: 'object-center',
+  },
+  {
+    image: '/images/obra-averia-armario.jpg',
+    title: 'Averías',
+    caption: 'Intervención en armario eléctrico con casco, guantes aislantes y medidor',
+    className: 'md:col-span-1',
+    objectPosition: 'object-[center_30%]',
+  },
+  {
+    image: '/images/obra-alumbrado-exterior.jpg',
+    title: 'Alumbrado exterior',
+    caption: 'Mantenimiento e instalación de luminarias en zonas comunes',
+    className: 'md:col-span-1',
+    objectPosition: 'object-[center_35%]',
+  },
+  {
+    image: '/images/obra-iluminacion-vivienda.jpg',
+    title: 'Iluminación en vivienda',
+    caption: 'Instalación de puntos de luz en reforma residencial',
+    className: 'md:col-span-1',
+    objectPosition: 'object-[center_40%]',
   },
   {
     image: '/images/trabajo-2.jpg',
     title: 'Energía solar',
     caption: 'Autoconsumo fotovoltaico para hogares y empresas',
-    className: 'md:col-span-1',
-    objectPosition: 'object-cover',
-  },
-  {
-    image: '/images/trabajo-4.jpg',
-    title: 'Cuadros y cableado',
-    caption: 'Infraestructura eléctrica ordenada y conforme al REBT',
-    className: 'md:col-span-1',
-    objectPosition: 'object-cover',
-  },
-  {
-    image: '/images/trabajo-5.jpg',
-    title: 'Fotovoltaica en cubierta',
-    caption: 'Proyectos de generación limpia a medida',
     className: 'md:col-span-1',
     objectPosition: 'object-cover',
   },
@@ -60,10 +74,10 @@ export default function Works() {
         >
           <div className="text-emerald-600 font-semibold tracking-wider uppercase text-sm mb-4">Trabajos</div>
           <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight mb-6 text-gray-900">
-            Instalaciones reales en Murcia
+            Instalaciones, mantenimiento y averías reales
           </h2>
           <p className="text-lg md:text-xl text-gray-500 font-light leading-relaxed">
-            Fotos de nuestros trabajos: cargadores de coche eléctrico, protecciones, electricidad y solar en la Región de Murcia.
+            Fotos de nuestras obras en Murcia: cargadores, cuadros, alumbrado, viviendas y actuaciones de mantenimiento.
           </p>
         </motion.div>
 
@@ -74,7 +88,7 @@ export default function Works() {
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.55, delay: index * 0.07 }}
+              transition={{ duration: 0.55, delay: index * 0.06 }}
               className={`relative group overflow-hidden min-h-[260px] ${work.className}`}
             >
               <img
