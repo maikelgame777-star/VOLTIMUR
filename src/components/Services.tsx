@@ -25,9 +25,9 @@ const services: Service[] = [
     icon: Wifi,
     title: 'Telecomunicaciones',
     description:
-      'Redes de datos, sistemas telefónicos y conectividad empresarial. Tu negocio, siempre conectado y a máximo rendimiento.',
+      'Redes de datos y antenas para tu hogar o negocio. Sistemas de captación audiovisual a través de redes terrestres y satélite, con instalación profesional y puesta en marcha certificada.',
     image: '/images/telecom.jpg',
-    alt: 'Infraestructura de telecomunicaciones y redes de datos',
+    alt: 'Redes de datos, antenas y captación audiovisual terrestre y satélite',
   },
   {
     icon: Shield,
