@@ -25,7 +25,7 @@ const services: Service[] = [
   {
     icon: Zap,
     title: "Instalaciones Eléctricas",
-    description: "Diseño e instalación de sistemas eléctricos para uso residencial, comercial e industrial. Certificación oficial y cumplimiento íntegro del Reglamento Electrotécnico de Baja Tensión (REBT).",
+    description: "Diseño e instalación de sistemas eléctricos residenciales, comerciales e industriales: cuadros de protección, SAI, canalizaciones y legalización conforme al REBT.",
     image: "/images/electrico.jpg",
     alt: "Instalación eléctrica real de Voltimur en garaje comunitario en Murcia"
   },
@@ -67,9 +67,9 @@ const services: Service[] = [
   {
     icon: Activity,
     title: "Análisis de Redes Eléctricas",
-    description: "Diagnóstico avanzado de instalaciones mediante analizadores de redes multifunción: detección de armónicos (THD), desequilibrios de fases, perturbaciones transitorias y corrección del factor de potencia. Implantamos baterías de condensadores, filtros activos y sistemas de gestión y control para optimizar el consumo energético, reducir penalizaciones en la factura eléctrica y prolongar la vida útil de los equipos.",
+    description: "Diagnóstico industrial y comercial: armónicos (THD), desequilibrios, fallas eléctricas y corrección del factor de potencia. Instalamos y gestionamos baterías de condensadores, cuadros de protección para SAI y sistemas de medida para reducir penalizaciones y estabilizar la red.",
     image: "/images/analisis.jpg",
-    alt: "Intervención en armario eléctrico y medición en avería por Voltimur"
+    alt: "Gestión y control de banco de condensadores de potencia instalado por Voltimur"
   }
 ];
 

@@ -9,11 +9,32 @@ const works = [
     objectPosition: 'object-[center_20%]',
   },
   {
-    image: '/images/obra-garaje-cuadro.jpg',
-    title: 'Garaje comunitario',
-    caption: 'Trabajo en cuadro y canalización para infraestructura de recarga',
+    image: '/images/industrial-sai-proteccion.jpg',
+    title: 'Industrial · SAI',
+    caption: 'Cuadro de protecciones para sistemas SAI (alimentación ininterrumpida)',
     className: 'md:col-span-1',
-    objectPosition: 'object-[center_25%]',
+    objectPosition: 'object-center',
+  },
+  {
+    image: '/images/industrial-condensadores.jpg',
+    title: 'Banco de condensadores',
+    caption: 'Gestión y control de batería de condensadores de potencia',
+    className: 'md:col-span-1',
+    objectPosition: 'object-[center_35%]',
+  },
+  {
+    image: '/images/industrial-condensadores-medida.jpg',
+    title: 'Control de potencia',
+    caption: 'Analizador PowerLogic en batería de condensadores (trafo y medida)',
+    className: 'md:col-span-1',
+    objectPosition: 'object-center',
+  },
+  {
+    image: '/images/industrial-fallas.jpg',
+    title: 'Fallas eléctricas',
+    caption: 'Diagnóstico de fallas con pinzas amperimétricas en instalación industrial',
+    className: 'md:col-span-1',
+    objectPosition: 'object-[center_40%]',
   },
   {
     image: '/images/obra-mantenimiento-cuadro.jpg',
@@ -23,18 +44,11 @@ const works = [
     objectPosition: 'object-center',
   },
   {
-    image: '/images/recarga-proteccion-voltimur.jpg',
-    title: 'Protección de recarga',
-    caption: 'Cuadro de protecciones del punto de recarga con identificación Voltimur',
+    image: '/images/obra-garaje-cuadro.jpg',
+    title: 'Garaje comunitario',
+    caption: 'Trabajo en cuadro y canalización para infraestructura de recarga',
     className: 'md:col-span-1',
-    objectPosition: 'object-center',
-  },
-  {
-    image: '/images/obra-averia-armario.jpg',
-    title: 'Averías',
-    caption: 'Intervención en armario eléctrico con casco, guantes aislantes y medidor',
-    className: 'md:col-span-1',
-    objectPosition: 'object-[center_30%]',
+    objectPosition: 'object-[center_25%]',
   },
   {
     image: '/images/obra-alumbrado-exterior.jpg',
@@ -42,20 +56,6 @@ const works = [
     caption: 'Mantenimiento e instalación de luminarias en zonas comunes',
     className: 'md:col-span-1',
     objectPosition: 'object-[center_35%]',
-  },
-  {
-    image: '/images/obra-iluminacion-vivienda.jpg',
-    title: 'Iluminación en vivienda',
-    caption: 'Instalación de puntos de luz en reforma residencial',
-    className: 'md:col-span-1',
-    objectPosition: 'object-[center_40%]',
-  },
-  {
-    image: '/images/trabajo-2.jpg',
-    title: 'Energía solar',
-    caption: 'Autoconsumo fotovoltaico para hogares y empresas',
-    className: 'md:col-span-1',
-    objectPosition: 'object-cover',
   },
 ];
 
@@ -74,10 +74,10 @@ export default function Works() {
         >
           <div className="text-emerald-600 font-semibold tracking-wider uppercase text-sm mb-4">Trabajos</div>
           <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight mb-6 text-gray-900">
-            Instalaciones, mantenimiento y averías reales
+            Residencial, recarga e industrial
           </h2>
           <p className="text-lg md:text-xl text-gray-500 font-light leading-relaxed">
-            Fotos de nuestras obras en Murcia: cargadores, cuadros, alumbrado, viviendas y actuaciones de mantenimiento.
+            Obras reales en Murcia: cargadores, protecciones SAI, bancos de condensadores, fallas eléctricas y mantenimiento.
           </p>
         </motion.div>
 
