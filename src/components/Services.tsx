@@ -206,24 +206,27 @@ export default function Services() {
               <p className="text-gray-500 font-light text-sm leading-relaxed mb-5">
                 Wallbox, Schneider, Orbis Viaris, Policharger y Circutor eHome/eNext según el proyecto.
               </p>
-              <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {[
                   { name: 'Wallbox', file: 'wallbox.svg' },
                   { name: 'Schneider', file: 'schneider.svg' },
-                  { name: 'Orbis', file: 'orbis.svg' },
+                  { name: 'Orbis Viaris', file: 'orbis.svg' },
                   { name: 'Policharger', file: 'policharger.svg' },
-                  { name: 'Circutor', file: 'circutor-enext.svg' },
+                  { name: 'Circutor eHome/eNext', file: 'circutor-enext.svg' },
                 ].map((brand) => (
                   <div
                     key={brand.name}
-                    className="flex items-center justify-center rounded-xl border border-gray-100 bg-white p-3 h-14"
+                    className="flex flex-col items-center justify-center gap-2 rounded-xl border border-gray-100 bg-white px-3 py-4 min-h-[88px]"
                   >
                     <img
                       src={`/brands/${brand.file}`}
                       alt={`Logo ${brand.name}`}
                       loading="lazy"
-                      className="max-h-8 w-full object-contain"
+                      className="h-12 w-full max-w-[140px] object-contain"
                     />
+                    <span className="text-[11px] text-gray-500 font-medium text-center leading-tight">
+                      {brand.name}
+                    </span>
                   </div>
                 ))}
               </div>
