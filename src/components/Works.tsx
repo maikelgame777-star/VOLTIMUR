@@ -2,40 +2,46 @@ import { motion } from 'motion/react';
 
 const works = [
   {
-    image: "/images/trabajo-1.jpg",
-    title: "Instalaciones en obra",
-    caption: "Electricistas certificados en instalaciones residenciales y comerciales",
-    className: "md:col-span-2 md:row-span-2",
+    image: '/images/recarga-v2c-obra.jpg',
+    title: 'Cargador V2C en Murcia',
+    caption: 'Instalación real de wallbox V2C con canalización profesional en garaje',
+    className: 'md:col-span-2 md:row-span-2',
+    objectPosition: 'object-[center_20%]',
   },
   {
-    image: "/images/trabajo-2.jpg",
-    title: "Energía solar",
-    caption: "Autoconsumo fotovoltaico para hogares y empresas",
-    className: "md:col-span-1",
+    image: '/images/recarga-proteccion-voltimur.jpg',
+    title: 'Protección punto de recarga',
+    caption: 'Cuadro de protecciones Toscano + Schneider con identificación Voltimur',
+    className: 'md:col-span-1',
+    objectPosition: 'object-center',
   },
   {
-    image: "/images/trabajo-3.jpg",
-    title: "Movilidad eléctrica",
-    caption: "Puntos de recarga legales y con gestión de potencia",
-    className: "md:col-span-1",
+    image: '/images/trabajo-1.jpg',
+    title: 'Instalaciones en obra',
+    caption: 'Electricistas certificados en instalaciones residenciales y comerciales',
+    className: 'md:col-span-1',
+    objectPosition: 'object-cover',
   },
   {
-    image: "/images/trabajo-4.jpg",
-    title: "Cuadros y cableado",
-    caption: "Infraestructura eléctrica ordenada y conforme al REBT",
-    className: "md:col-span-1",
+    image: '/images/trabajo-2.jpg',
+    title: 'Energía solar',
+    caption: 'Autoconsumo fotovoltaico para hogares y empresas',
+    className: 'md:col-span-1',
+    objectPosition: 'object-cover',
   },
   {
-    image: "/images/trabajo-5.jpg",
-    title: "Fotovoltaica en cubierta",
-    caption: "Proyectos de generación limpia a medida",
-    className: "md:col-span-1",
+    image: '/images/trabajo-4.jpg',
+    title: 'Cuadros y cableado',
+    caption: 'Infraestructura eléctrica ordenada y conforme al REBT',
+    className: 'md:col-span-1',
+    objectPosition: 'object-cover',
   },
   {
-    image: "/images/trabajo-6.jpg",
-    title: "Seguridad e infraestructura",
-    caption: "Sistemas de vigilancia y cableado técnico profesional",
-    className: "md:col-span-1",
+    image: '/images/trabajo-5.jpg',
+    title: 'Fotovoltaica en cubierta',
+    caption: 'Proyectos de generación limpia a medida',
+    className: 'md:col-span-1',
+    objectPosition: 'object-cover',
   },
 ];
 
@@ -54,10 +60,10 @@ export default function Works() {
         >
           <div className="text-emerald-600 font-semibold tracking-wider uppercase text-sm mb-4">Trabajos</div>
           <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight mb-6 text-gray-900">
-            El día a día de nuestras instalaciones
+            Instalaciones reales en Murcia
           </h2>
           <p className="text-lg md:text-xl text-gray-500 font-light leading-relaxed">
-            Imágenes orientativas del tipo de proyectos que ejecutamos: electricidad, solar, recarga y eficiencia energética en Murcia.
+            Fotos de nuestros trabajos: cargadores de coche eléctrico, protecciones, electricidad y solar en la Región de Murcia.
           </p>
         </motion.div>
 
@@ -67,7 +73,7 @@ export default function Works() {
               key={work.title}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
+              viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.55, delay: index * 0.07 }}
               className={`relative group overflow-hidden min-h-[260px] ${work.className}`}
             >
@@ -75,7 +81,7 @@ export default function Works() {
                 src={work.image}
                 alt={work.caption}
                 loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 ${work.objectPosition}`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117]/85 via-[#0d1117]/25 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500" />
               <figcaption className="absolute inset-x-0 bottom-0 p-5 md:p-6 translate-y-1 group-hover:translate-y-0 transition-transform duration-500">

@@ -62,6 +62,39 @@ export default function EvCharging() {
           </p>
         </motion.div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-14 md:mb-16"
+        >
+          <figure className="relative overflow-hidden rounded-2xl min-h-[280px] md:min-h-[340px] bg-gray-100">
+            <img
+              src="/images/recarga-v2c-obra.jpg"
+              alt="Instalación real de cargador V2C en garaje por Voltimur en Murcia"
+              loading="lazy"
+              className="absolute inset-0 w-full h-full object-cover object-[center_18%]"
+            />
+            <figcaption className="absolute inset-x-0 bottom-0 p-4 md:p-5 bg-gradient-to-t from-[#0d1117]/90 to-transparent">
+              <p className="text-emerald-400 text-xs font-semibold tracking-wider uppercase mb-1">Obra real</p>
+              <p className="text-white text-sm md:text-base font-medium">Cargador V2C instalado en Murcia</p>
+            </figcaption>
+          </figure>
+          <figure className="relative overflow-hidden rounded-2xl min-h-[280px] md:min-h-[340px] bg-gray-100">
+            <img
+              src="/images/recarga-proteccion-voltimur.jpg"
+              alt="Cuadro de protección de punto de recarga instalado por Voltimur en Murcia"
+              loading="lazy"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+            />
+            <figcaption className="absolute inset-x-0 bottom-0 p-4 md:p-5 bg-gradient-to-t from-[#0d1117]/90 to-transparent">
+              <p className="text-emerald-400 text-xs font-semibold tracking-wider uppercase mb-1">Protecciones</p>
+              <p className="text-white text-sm md:text-base font-medium">Cuadro de protecciones del punto de recarga</p>
+            </figcaption>
+          </figure>
+        </motion.div>
+
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 mb-16 md:mb-20">
           {steps.map((step, i) => (
             <motion.div

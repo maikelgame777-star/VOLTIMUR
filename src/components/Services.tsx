@@ -18,7 +18,7 @@ const services: Service[] = [
     title: "Cargadores de Coche Eléctrico en Murcia",
     description: "Instalación y legalización de cargadores para vehículo eléctrico en viviendas, garajes y empresas de la Región de Murcia. Gestión de carga dinámica (SPL), boletín eléctrico y asesoramiento en tarifa óptima. Trabajamos con distintas marcas y somos instaladores oficiales V2C.",
     image: "/images/recarga.jpg",
-    alt: "Instalación de cargador de coche eléctrico en Murcia",
+    alt: "Instalación real de cargador V2C de coche eléctrico en Murcia por Voltimur",
     badge: "/brands/v2c-oficial.svg",
     badgeAlt: "Certificación instalador oficial V2C"
   },
