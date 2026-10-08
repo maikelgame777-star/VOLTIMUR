@@ -2,8 +2,8 @@ import { motion } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
 
 
-const line1 = ['Soluciones', 'eléctricas'];
-const line2 = ['y', 'automáticas'];
+const line1 = ['Cargadores', 'eléctricos'];
+const line2 = ['en', 'Murcia'];
 
 const PARTICLES = [
   { x: 10, y: 22, size: 5, dur: 7,  delay: 0,   color: 'emerald' },
@@ -128,7 +128,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="inline-block py-1.5 px-4 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium tracking-wide mb-8"
         >
-          Instaladores Certificados · Región de Murcia
+          Instalador oficial V2C · Región de Murcia
         </motion.span>
 
         {/* Headline — word by word */}
@@ -168,7 +168,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 1.1 }}
           className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed font-light"
         >
-          Más de 25 años de experiencia en instalaciones eléctricas e instalación de cargadores de coche eléctrico en Murcia. Instaladores oficiales V2C, con garantía, eficiencia y certificación oficial.
+          Voltimur instala y legaliza tu wallbox o punto de recarga en Murcia: viviendas, garajes y empresas. Más de 25 años de experiencia e instaladores oficiales V2C.
         </motion.p>
 
         {/* Buttons */}
@@ -182,13 +182,13 @@ export default function Hero() {
             className="w-full sm:w-auto px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-medium transition-colors shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:shadow-[0_0_30px_rgba(16,185,129,0.6)]"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Solicitar Presupuesto Gratis
+            Presupuesto de cargador gratis
           </button>
           <button
             className="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-lg font-medium transition-colors"
-            onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => document.getElementById('cargadores')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Ver Servicios
+            Cómo instalamos
           </button>
         </motion.div>
       </div>

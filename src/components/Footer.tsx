@@ -16,7 +16,7 @@ export default function Footer() {
               Voltimur<span className="text-emerald-500">.</span>
             </div>
             <p className="text-gray-500 leading-relaxed font-light max-w-xs">
-              Más de 25 años de experiencia en soluciones integrales de instalaciones eléctricas y telecomunicaciones en la Región de Murcia.
+              Instaladores de cargadores de coche eléctrico e instalaciones eléctricas en Murcia. Más de 25 años de experiencia e instaladores oficiales V2C.
             </p>
             <div className="flex gap-4 mt-6">
               <a href="#" aria-label="Instagram" className="w-9 h-9 rounded-lg bg-white/5 hover:bg-emerald-600 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300">
@@ -35,13 +35,22 @@ export default function Footer() {
           <div>
             <div className="text-white font-semibold mb-5 uppercase tracking-wider text-xs">Servicios</div>
             <ul className="space-y-3">
-              {['Instalaciones Eléctricas', 'Telecomunicaciones', 'Energía Solar', 'Sistemas de Seguridad', 'Domótica', 'Cargadores Coche Eléctrico', 'Análisis de Redes Eléctricas', 'Zona técnica'].map(s => (
-                <li key={s}>
+              {[
+                { label: 'Cargadores Coche Eléctrico', id: 'cargadores' },
+                { label: 'Instalaciones Eléctricas', id: 'services' },
+                { label: 'Energía Solar', id: 'services' },
+                { label: 'Telecomunicaciones', id: 'services' },
+                { label: 'Sistemas de Seguridad', id: 'services' },
+                { label: 'Domótica', id: 'services' },
+                { label: 'Análisis de Redes Eléctricas', id: 'services' },
+                { label: 'Zona técnica', id: 'docs' },
+              ].map(s => (
+                <li key={s.label}>
                   <button
-                    onClick={() => document.getElementById(s === 'Zona técnica' ? 'docs' : 'services')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => document.getElementById(s.id)?.scrollIntoView({ behavior: 'smooth' })}
                     className="hover:text-white transition-colors"
                   >
-                    {s}
+                    {s.label}
                   </button>
                 </li>
               ))}

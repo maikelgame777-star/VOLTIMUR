@@ -14,11 +14,27 @@ type Service = {
 
 const services: Service[] = [
   {
+    icon: BatteryCharging,
+    title: "Cargadores de Coche Eléctrico en Murcia",
+    description: "Instalación y legalización de cargadores para vehículo eléctrico en viviendas, garajes y empresas de la Región de Murcia. Gestión de carga dinámica (SPL), boletín eléctrico y asesoramiento en tarifa óptima. Trabajamos con distintas marcas y somos instaladores oficiales V2C.",
+    image: "/images/recarga.jpg",
+    alt: "Instalación de cargador de coche eléctrico en Murcia",
+    badge: "/brands/v2c-oficial.svg",
+    badgeAlt: "Certificación instalador oficial V2C"
+  },
+  {
     icon: Zap,
     title: "Instalaciones Eléctricas",
     description: "Diseño e instalación de sistemas eléctricos para uso residencial, comercial e industrial. Certificación oficial y cumplimiento íntegro del Reglamento Electrotécnico de Baja Tensión (REBT).",
     image: "/images/electrico.jpg",
     alt: "Instalación eléctrica profesional con cableado y conexiones"
+  },
+  {
+    icon: Sun,
+    title: "Energía Solar",
+    description: "Instalación de paneles fotovoltaicos, sistemas de autoconsumo, funcionamiento en modo isla y baterías de respaldo. Reduce tu factura eléctrica y autogestiona tu energía desde la app móvil.",
+    image: "/images/solar.jpg",
+    alt: "Instalación de paneles solares fotovoltaicos"
   },
   {
     icon: Wifi,
@@ -35,20 +51,6 @@ const services: Service[] = [
     alt: "Cámaras de seguridad CCTV instaladas"
   },
   {
-    icon: Sun,
-    title: "Energía Solar",
-    description: "Instalación de paneles fotovoltaicos, sistemas de autoconsumo, funcionamiento en modo isla y baterías de respaldo. Reduce tu factura eléctrica y autogestiona tu energía desde la app móvil.",
-    image: "/images/solar.jpg",
-    alt: "Instalación de paneles solares fotovoltaicos"
-  },
-  {
-    icon: Wrench,
-    title: "Mantenimiento",
-    description: "Mantenimiento preventivo y correctivo de instalaciones eléctricas. Minimiza el riesgo de averías, prolonga la vida útil de los equipos y garantiza el cumplimiento normativo.",
-    image: "/images/mantenimiento.jpg",
-    alt: "Técnico realizando mantenimiento de instalaciones"
-  },
-  {
     icon: Home,
     title: "Domótica",
     description: "Automatización de viviendas y edificios mediante sistemas KNX, Zigbee y Z-Wave. Gestión centralizada de iluminación, climatización y seguridad desde dispositivo móvil.",
@@ -56,13 +58,11 @@ const services: Service[] = [
     alt: "Sistema de domótica y control inteligente del hogar"
   },
   {
-    icon: BatteryCharging,
-    title: "Cargadores de Coche Eléctrico en Murcia",
-    description: "Instalación y legalización de cargadores para vehículo eléctrico en viviendas, garajes y empresas de la Región de Murcia. Gestión de carga dinámica (SPL), boletín eléctrico y asesoramiento en tarifa óptima. Trabajamos con distintas marcas y somos instaladores oficiales V2C.",
-    image: "/images/recarga.jpg",
-    alt: "Instalación de cargador de coche eléctrico en Murcia",
-    badge: "/brands/v2c-oficial.svg",
-    badgeAlt: "Certificación instalador oficial V2C"
+    icon: Wrench,
+    title: "Mantenimiento",
+    description: "Mantenimiento preventivo y correctivo de instalaciones eléctricas. Minimiza el riesgo de averías, prolonga la vida útil de los equipos y garantiza el cumplimiento normativo.",
+    image: "/images/mantenimiento.jpg",
+    alt: "Técnico realizando mantenimiento de instalaciones"
   },
   {
     icon: Activity,
@@ -100,10 +100,10 @@ export default function Services() {
         >
           <div className="text-emerald-600 font-semibold tracking-wider uppercase text-sm mb-4">Servicios</div>
           <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight mb-6 text-gray-900">
-            Todo lo que necesitas, en un solo equipo
+            Cargadores, electricidad y energía en Murcia
           </h2>
           <p className="text-lg md:text-xl text-gray-500 font-light leading-relaxed">
-            Desde una instalación eléctrica hasta un sistema solar completo. Somos tu aliado tecnológico en Murcia, con soluciones a medida para cada proyecto.
+            Especialistas en instalar cargadores de coche eléctrico, instalaciones eléctricas, solar y más. Un solo equipo certificado para tu proyecto en la Región de Murcia.
           </p>
         </motion.div>
 

@@ -8,6 +8,7 @@ import ScrollProgress from './components/ScrollProgress';
 import { NewsTicker } from './components/NewsTicker';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import EvCharging from './components/EvCharging';
 import Services from './components/Services';
 import Works from './components/Works';
 import Brands from './components/Brands';
@@ -35,6 +36,7 @@ export default function App() {
 
       <DarkToLight />
 
+      <EvCharging />
       <Services />
       <Works />
       <Brands />
