@@ -43,7 +43,7 @@ const services: Service[] = [
     description:
       'Instalación de paneles fotovoltaicos, sistemas de autoconsumo, funcionamiento en modo isla y baterías de respaldo. Reduce tu factura eléctrica y autogestiona tu energía desde la app móvil.',
     image: '/images/solar.jpg',
-    alt: 'Instalación de paneles solares fotovoltaicos',
+    alt: 'Instalación fotovoltaica Voltimur 5 kW pico con backup en Murcia',
   },
   {
     icon: Wrench,

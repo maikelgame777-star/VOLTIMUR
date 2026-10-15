@@ -51,11 +51,11 @@ const works = [
     imgClass: 'object-cover object-[center_25%]',
   },
   {
-    image: '/images/obra-alumbrado-exterior.jpg',
-    title: 'Alumbrado exterior',
-    caption: 'Mantenimiento e instalación de luminarias en zonas comunes',
+    image: '/images/obra-solar-niebla.jpg',
+    title: 'Fotovoltaica',
+    caption: 'Instalación solar 5 kW pico con backup — autoconsumo real en Murcia',
     className: 'md:col-span-1',
-    imgClass: 'object-cover object-[center_35%]',
+    imgClass: 'object-cover object-[center_40%]',
   },
 ];
 
@@ -77,7 +77,7 @@ export default function Works() {
             El día a día de nuestras instalaciones
           </h2>
           <p className="text-lg md:text-xl text-gray-500 font-light leading-relaxed">
-            Fotos reales de nuestros trabajos en Murcia: electricidad, industrial, mantenimiento, recarga y alumbrado.
+            Fotos reales de nuestros trabajos en Murcia: electricidad, industrial, mantenimiento, recarga y fotovoltaica.
           </p>
         </motion.div>
 
