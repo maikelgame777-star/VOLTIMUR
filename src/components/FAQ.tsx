@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: '¿Cuánto cuesta instalar un cargador de coche eléctrico en Murcia?',
-    a: 'Depende del tipo de cargador y de la instalación existente. Como instaladores oficiales V2C, te enviamos presupuesto exacto sin compromiso, con legalización incluida. También instalamos Wallbox, Schneider, Orbis Viaris, Policharger y Circutor.',
+    a: 'En el mercado de 2026, una vivienda suele moverse entre 800 y 1.600 € y un garaje comunitario entre 1.200 y 2.200 €. El precio de Voltimur se cierra tras la visita, con legalización incluida. Detalle en la guía de precios.',
   },
   {
     q: '¿Sois instaladores de cargadores de coche eléctrico?',

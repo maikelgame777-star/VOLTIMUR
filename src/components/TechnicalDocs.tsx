@@ -45,6 +45,8 @@ const documents: {
   size: string;
   service: Exclude<ServiceId, 'all'>;
   tag: string;
+  pageHref?: string;
+  pageLabel?: string;
 }[] = [
   {
     id: 'rebt',
@@ -117,6 +119,8 @@ const documents: {
     size: 'PDF',
     service: 'recarga',
     tag: 'Requisitos',
+    pageHref: '/legalizacion-punto-recarga-itc-bt-52/',
+    pageLabel: 'Leer guía',
   },
   {
     id: 'analisis',
@@ -217,14 +221,24 @@ export default function TechnicalDocs() {
                   </p>
                 </div>
 
-                <a
-                  href={doc.file}
-                  download
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-sm font-medium transition-colors shrink-0 w-full sm:w-auto"
-                >
-                  <Download size={16} />
-                  Descargar
-                </a>
+                <div className="flex flex-col sm:flex-row gap-2 shrink-0 w-full sm:w-auto">
+                  {doc.pageHref && (
+                    <a
+                      href={doc.pageHref}
+                      className="inline-flex items-center justify-center gap-2 px-5 py-3 border border-emerald-600 text-emerald-700 hover:bg-emerald-50 rounded-lg text-sm font-medium transition-colors"
+                    >
+                      {doc.pageLabel || 'Leer guía'}
+                    </a>
+                  )}
+                  <a
+                    href={doc.file}
+                    download
+                    className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-sm font-medium transition-colors"
+                  >
+                    <Download size={16} />
+                    Descargar
+                  </a>
+                </div>
               </motion.div>
             ))}
           </AnimatePresence>

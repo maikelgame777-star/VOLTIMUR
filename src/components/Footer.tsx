@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Top row */}
-        <div className="grid md:grid-cols-3 gap-12 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
 
           {/* Brand */}
           <div>
@@ -49,6 +49,23 @@ export default function Footer() {
                   <a href={s.href} className="hover:text-white transition-colors">
                     {s.label}
                   </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <div className="text-white font-semibold mb-5 uppercase tracking-wider text-xs">Guías recarga</div>
+            <ul className="space-y-3">
+              {[
+                { label: 'Instalar cargador en Murcia', href: '/cargador-coche-electrico-murcia/' },
+                { label: 'Precio de la instalación', href: '/precio-instalacion-cargador-murcia/' },
+                { label: 'Garaje comunitario', href: '/cargador-garaje-comunitario-murcia/' },
+                { label: 'IRPF y ayudas', href: '/ayudas-irpf-punto-recarga-murcia/' },
+                { label: 'Legalización ITC-BT-52', href: '/legalizacion-punto-recarga-itc-bt-52/' },
+              ].map(s => (
+                <li key={s.href}>
+                  <a href={s.href} className="hover:text-white transition-colors">{s.label}</a>
                 </li>
               ))}
             </ul>

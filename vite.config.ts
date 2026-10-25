@@ -20,6 +20,10 @@ export default defineConfig(({mode}) => {
         input: {
           main: path.resolve(__dirname, 'index.html'),
           cargador: path.resolve(__dirname, 'cargador-coche-electrico-murcia/index.html'),
+          precioCargador: path.resolve(__dirname, 'precio-instalacion-cargador-murcia/index.html'),
+          garajeCargador: path.resolve(__dirname, 'cargador-garaje-comunitario-murcia/index.html'),
+          irpfCargador: path.resolve(__dirname, 'ayudas-irpf-punto-recarga-murcia/index.html'),
+          legalCargador: path.resolve(__dirname, 'legalizacion-punto-recarga-itc-bt-52/index.html'),
         },
       },
     },

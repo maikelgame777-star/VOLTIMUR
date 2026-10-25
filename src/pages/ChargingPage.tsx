@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type MouseEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   BatteryCharging,
@@ -10,10 +10,16 @@ import {
   Minus,
   ArrowLeft,
   Zap,
+  Home,
+  Building2,
+  Briefcase,
+  Check,
+  Scale,
 } from 'lucide-react';
 import { MobileContactBar, DesktopWhatsApp } from '../components/MobileContactBar';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+import { chargingGuides } from '../data/chargingGuides';
 
 const PHONE = '+34681330640';
 const PHONE_LABEL = '681 330 640';
@@ -51,18 +57,79 @@ const brands = [
   { name: 'Circutor', file: 'circutor-enext.svg' },
 ];
 
+const scenarios = [
+  {
+    icon: Home,
+    title: 'Vivienda o cochera propia',
+    text: 'Línea corta desde tu cuadro, protecciones del punto de recarga y legalización. Suele resolverse en una jornada.',
+  },
+  {
+    icon: Building2,
+    title: 'Garaje comunitario',
+    text: 'Se comunica por escrito a la comunidad: no hace falta votación para un punto de uso privativo en tu plaza. Canalizamos hasta tu plaza y, si hace falta, SPL para no saturar el cuadro.',
+  },
+  {
+    icon: Briefcase,
+    title: 'Empresa, nave o flota',
+    text: 'Uno o varios puntos, con o sin control de usuarios. Como electricistas también vemos el cuadro, la potencia y si conviene solar.',
+  },
+];
+
+const priceBands = [
+  {
+    title: 'Vivienda unifamiliar',
+    range: '800 – 1.600 €',
+    note: 'Monofásico 3,7–7,4 kW, línea corta. Horquilla de mercado 2026.',
+  },
+  {
+    title: 'Garaje comunitario',
+    range: '1.200 – 2.200 €',
+    note: 'Según metros de canalización y acceso al contador.',
+  },
+  {
+    title: 'Empresa o trifásica',
+    range: 'desde 1.500 €',
+    note: 'Por punto. Flotas y 11–22 kW se presupuestan aparte.',
+  },
+];
+
+const included = [
+  'Visita técnica y presupuesto cerrado por escrito',
+  'Cargador homologado (V2C u otra marca según el caso)',
+  'Cuadro de protecciones del punto de recarga',
+  'Cableado y canalización según recorrido real',
+  'Carga dinámica (SPL) si el cuadro lo necesita',
+  'Boletín (CIE), legalización ITC-BT-52 y puesta en marcha',
+];
+
 const faqs = [
   {
     q: '¿Cuánto cuesta instalar un cargador de coche eléctrico en Murcia?',
-    a: 'Depende del tipo de cargador, la distancia al cuadro y si hace falta refuerzo de potencia. Como instaladores oficiales V2C te enviamos un presupuesto exacto sin compromiso, con legalización incluida.',
+    a: 'En el mercado de 2026, una vivienda unifamiliar suele moverse entre 800 y 1.600 € y un garaje comunitario entre 1.200 y 2.200 €, según metros y potencia. No son tarifas fijas de Voltimur: el precio cerrado sale de la visita. Legalización incluida en el presupuesto.',
   },
   {
-    q: '¿Podéis instalarlo en un garaje comunitario?',
-    a: 'Sí. Te guiamos con la normativa de comunidades, revisamos la potencia disponible en tu plaza o derivación y, si hace falta, instalamos gestión de carga dinámica (SPL) para que el cargador no sature el cuadro ni dispare el ICP.',
+    q: '¿Hace falta permiso de la comunidad de vecinos?',
+    a: 'Para un punto de uso privativo en tu plaza, la Ley de Propiedad Horizontal pide comunicarlo por escrito al presidente o administrador. No se vota ni se puede negar por sistema. Redactamos el escrito con el recorrido de la línea.',
+  },
+  {
+    q: '¿Hay que legalizar el cargador? ¿Qué es el CIE?',
+    a: 'Sí. La instalación se ejecuta conforme a la ITC-BT-52 del REBT. Emitimos el boletín (Certificado de Instalación Eléctrica) y tramitamos la legalización en Industria de la Región de Murcia.',
+  },
+  {
+    q: '¿Puedo desgravar el punto de recarga en el IRPF de Murcia?',
+    a: 'La deducción autonómica cubre el 100 % de la base, con un máximo de 4.000 € por infraestructura, si se instala en finca propia o garaje comunitario, hay factura y se mantiene dos años. No sustituye asesoramiento fiscal: cada caso lo confirma Hacienda.',
   },
   {
     q: '¿Cuánto tarda la instalación?',
-    a: 'En la mayoría de viviendas y plazas de garaje se completa en un día. Si hay refuerzo de instalación o aumento de potencia, te indicamos el plazo en el presupuesto.',
+    a: 'En la mayoría de viviendas y plazas se completa en un día. El CIE y el alta en Industria van después. Si hay refuerzo de instalación o aumento de potencia, te indicamos el plazo en el presupuesto.',
+  },
+  {
+    q: '¿Hace falta subir la potencia contratada?',
+    a: 'No siempre. Si el cuadro va justo, instalamos gestión de carga dinámica (SPL) para que el cargador baje cuando la vivienda tira fuerte y no salte el ICP. Solo proponemos aumento de potencia si de verdad hace falta.',
+  },
+  {
+    q: '¿Puedo cargar con mis placas solares?',
+    a: 'Sí. Si ya tienes autoconsumo, enlazamos un wallbox compatible con el inversor para aprovechar excedentes. Si las placas van después, dejamos el punto preparado.',
   },
   {
     q: '¿Solo instaláis V2C?',
@@ -77,6 +144,11 @@ const towns = [
 
 export default function ChargingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  const goContact = (e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <div className="min-h-screen bg-[#0d1117] text-white selection:bg-emerald-500/30 font-sans pb-24 md:pb-0">
@@ -95,15 +167,9 @@ export default function ChargingPage() {
             <a href="/" className="hover:text-white transition-colors inline-flex items-center gap-1.5">
               <ArrowLeft size={14} /> Inicio
             </a>
-            <a href="/#services" className="hover:text-white transition-colors">Servicios</a>
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="hover:text-white transition-colors"
-            >
+            <a href="#precio" className="hover:text-white transition-colors">Precio</a>
+            <a href="#ayudas" className="hover:text-white transition-colors">Ayudas</a>
+            <a href="#contact" onClick={goContact} className="hover:text-white transition-colors">
               Contacto
             </a>
           </nav>
@@ -127,16 +193,13 @@ export default function ChargingPage() {
             Instalación de cargador de coche eléctrico en Murcia
           </h1>
           <p className="text-lg md:text-xl text-gray-400 font-light leading-relaxed max-w-2xl mb-8">
-            Instalamos y legalizamos tu wallbox o punto de recarga en vivienda, garaje comunitario o empresa.
-            Instaladores oficiales V2C y otras marcas. Presupuesto gratis en 24 horas.
+            Instalamos y legalizamos tu wallbox conforme a la ITC-BT-52: vivienda, garaje comunitario o empresa.
+            Instaladores oficiales V2C. Boletín CIE y presupuesto gratis en 24 horas.
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
             <a
               href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={goContact}
               className="inline-flex justify-center px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-medium transition-colors"
             >
               Pedir presupuesto gratis
@@ -205,6 +268,85 @@ export default function ChargingPage() {
             ))}
           </div>
 
+          <div className="grid md:grid-cols-3 gap-4 mb-16">
+            {scenarios.map((item) => (
+              <div key={item.title} className="rounded-2xl border border-gray-200 p-6 bg-white">
+                <div className="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4">
+                  <item.icon size={20} strokeWidth={1.5} />
+                </div>
+                <h3 className="text-lg font-display font-semibold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed font-light">{item.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div id="precio" className="scroll-mt-28 mb-16">
+            <h2 className="text-3xl md:text-4xl font-display font-bold tracking-tight mb-3 text-gray-900">
+              Precio de instalar un cargador en Murcia
+            </h2>
+            <p className="text-gray-500 font-light mb-8 max-w-2xl">
+              Horquillas de mercado 2026 (equipo + obra + legalización). El importe que firmamos es el de la visita técnica, gratis y por escrito. Recela de cifras cerradas sin haber medido los metros.
+            </p>
+            <div className="grid md:grid-cols-3 gap-4 mb-4">
+              {priceBands.map((band) => (
+                <div key={band.title} className="rounded-2xl border border-gray-200 p-6 bg-gray-50">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-emerald-600 mb-2">{band.title}</p>
+                  <p className="text-2xl font-display font-bold text-gray-900 mb-2">{band.range}</p>
+                  <p className="text-sm text-gray-500 font-light leading-relaxed">{band.note}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-gray-400 font-light mb-3">
+              Rangos publicados por fabricantes e instaladores en 2026. No son una oferta de Voltimur.
+            </p>
+            <a href="/precio-instalacion-cargador-murcia/" className="text-sm text-emerald-700 hover:text-emerald-800 font-medium">
+              Ver guía de precios
+            </a>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-6 mb-16">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-6">
+                Qué incluye el presupuesto
+              </h2>
+              <ul className="space-y-3">
+                {included.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-gray-600">
+                    <Check size={18} className="text-emerald-600 shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div id="ayudas" className="scroll-mt-28 rounded-3xl border border-gray-200 bg-gray-50 p-6 md:p-8">
+              <div className="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4">
+                <Scale size={20} strokeWidth={1.5} />
+              </div>
+              <h2 className="text-2xl font-display font-bold text-gray-900 mb-3">
+                Legalización ITC-BT-52 y deducción IRPF
+              </h2>
+              <p className="text-sm text-gray-500 font-light leading-relaxed mb-4">
+                Ejecutamos según la ITC-BT-52, emitimos el CIE y tramitamos el alta en Industria. Te dejamos factura y papeles para la declaración.
+              </p>
+              <p className="text-sm text-gray-500 font-light leading-relaxed mb-4">
+                En la Región de Murcia puedes aplicar una deducción autonómica del <strong className="font-semibold text-gray-800">100 % de la base, hasta 4.000 €</strong> por infraestructura, si la instalación está en finca propia o garaje comunitario, hay factura y se mantiene dos años. Requisitos oficiales de la Agencia Tributaria; no es un asesoramiento fiscal.
+              </p>
+              <div className="flex flex-col gap-2">
+                <a href="/ayudas-irpf-punto-recarga-murcia/" className="text-sm text-emerald-700 hover:text-emerald-800 font-medium">
+                  Guía de IRPF y ayudas
+                </a>
+                <a
+                  href="https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025-deducciones-autonomicas/comunidad-autonoma-region-murcia/gastos-instalacion-infraestructuras-recarga-vehiculos-electricos.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-emerald-700 hover:text-emerald-800 font-medium"
+                >
+                  Ver deducción en la Agencia Tributaria
+                </a>
+              </div>
+            </div>
+          </div>
+
           {/* V2C + brands */}
           <div className="grid lg:grid-cols-2 gap-6 mb-16">
             <div className="p-6 md:p-8 rounded-3xl bg-gradient-to-br from-[#1a0a0a] via-[#2a1010] to-[#3d1510] border border-orange-500/20 text-white">
@@ -247,6 +389,27 @@ export default function ChargingPage() {
                 <li key={t}>{t}</li>
               ))}
             </ul>
+          </div>
+
+          <div className="mb-16">
+            <h2 className="text-3xl md:text-4xl font-display font-bold tracking-tight mb-3 text-gray-900">
+              Guías de recarga
+            </h2>
+            <p className="text-gray-500 font-light mb-8 max-w-2xl">
+              Precio, comunidad, IRPF y legalización. Páginas propias, no recortes de prensa.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {chargingGuides.map((g) => (
+                <a
+                  key={g.slug}
+                  href={g.path}
+                  className="block rounded-2xl border border-gray-200 p-5 hover:border-emerald-300 hover:bg-emerald-50/50 transition-colors"
+                >
+                  <span className="font-semibold text-gray-900">{g.h1}</span>
+                  <span className="block text-sm text-gray-500 font-light mt-2">{g.description}</span>
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* FAQ */}
@@ -296,10 +459,7 @@ export default function ChargingPage() {
             <div className="flex flex-col sm:flex-row justify-center gap-3">
               <a
                 href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={goContact}
                 className="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 rounded-lg font-medium transition-colors"
               >
                 Formulario de presupuesto
