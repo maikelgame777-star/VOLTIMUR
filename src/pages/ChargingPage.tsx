@@ -21,6 +21,7 @@ import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import { chargingGuides } from '../data/chargingGuides';
 import { GOOGLE_REVIEWS, GOOGLE_SEARCH } from '../data/site';
+import HeroVideoBackdrop from '../components/HeroVideoBackdrop';
 
 const PHONE = '+34681330640';
 const PHONE_LABEL = '681 330 640';
@@ -184,16 +185,16 @@ export default function ChargingPage() {
       </header>
 
       {/* Hero */}
-      <section className="relative overflow-hidden pt-16 pb-20 md:pt-24 md:pb-28">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(16,185,129,0.18),_transparent_55%)] pointer-events-none" />
+      <section className="relative overflow-hidden min-h-[88svh] flex items-center pt-24 pb-20 md:pt-28 md:pb-28 bg-[#0d1117]">
+        <HeroVideoBackdrop />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <p className="text-emerald-400 font-semibold tracking-wider uppercase text-sm mb-4">
             Movilidad eléctrica · Región de Murcia
           </p>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold tracking-tight text-white mb-6 leading-[1.1] max-w-4xl">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold tracking-tight text-white mb-6 leading-[1.1] max-w-4xl [text-shadow:0_8px_40px_rgba(0,0,0,0.55)]">
             Instalación de cargador de coche eléctrico en Murcia
           </h1>
-          <p className="text-lg md:text-xl text-gray-400 font-light leading-relaxed max-w-2xl mb-8">
+          <p className="text-lg md:text-xl text-gray-200/90 font-light leading-relaxed max-w-2xl mb-8">
             Instalamos y legalizamos tu wallbox conforme a la ITC-BT-52: vivienda, garaje comunitario o empresa.
             Instaladores oficiales V2C. Boletín CIE y presupuesto gratis en 24 horas.
           </p>

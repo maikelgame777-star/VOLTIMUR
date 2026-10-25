@@ -61,6 +61,32 @@ h1, h2, h3, h4, h5, h6 {
   animation: gradient-shift 5s ease infinite;
 }
 
+.hero-video {
+  transform: scale(1.08);
+  filter: blur(2.5px) saturate(1.18) contrast(1.1) brightness(0.88);
+  animation: hero-ken 36s ease-in-out infinite alternate;
+}
+@keyframes hero-ken {
+  from { transform: scale(1.04) translate3d(0, 0, 0); }
+  to { transform: scale(1.14) translate3d(-1.6%, -1%, 0); }
+}
+.hero-sweep {
+  background: linear-gradient(110deg, transparent 30%, rgba(16, 185, 129, 0.14) 48%, transparent 62%);
+  background-size: 220% 100%;
+  animation: hero-sweep 9s ease-in-out infinite;
+}
+@keyframes hero-sweep {
+  0%, 100% { background-position: 120% 0; opacity: 0.15; }
+  45%, 60% { background-position: -20% 0; opacity: 0.55; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-video,
+  .hero-sweep,
+  .animated-gradient {
+    animation: none;
+  }
+}
+
 /* Shimmer sweep for buttons */
 @keyframes shimmer-sweep {
   0%   { left: -60%; }
