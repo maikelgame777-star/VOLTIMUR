@@ -2,6 +2,9 @@ export const PHONE = '+34681330640';
 export const PHONE_LABEL = '681 330 640';
 export const EMAIL = 'voltimur@voltimur.com';
 export const ADDRESS_LINE = 'Calle del Sol 24, Torreagüera, 30579 Murcia';
+export const LEGAL_NAME = 'Miguel Marin';
+export const LEGAL_NIF = '48488410V';
+export const TRADE_NAME = 'Voltimur';
 export const GOOGLE_MAPS =
   'https://www.google.com/maps/search/?api=1&query=Calle+del+Sol+24+Torreag%C3%BCera+30579+Murcia';
 export const GOOGLE_SEARCH = 'https://www.google.com/search?q=Voltimur+electricista+Murcia';
