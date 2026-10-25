@@ -256,6 +256,11 @@
     <!-- Performance: preconnect to font origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <style>
+      html, body { background: #0d1117; margin: 0; }
+      html:not([data-app]) #root { display: none; }
+    </style>
+    <noscript><style>html:not([data-app]) #root { display: block; }</style></noscript>
 
   </head>
   <body>

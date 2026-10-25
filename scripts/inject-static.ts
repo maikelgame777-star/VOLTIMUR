@@ -30,10 +30,27 @@ function replaceRoot(html: string, inner: string) {
   return `${html.slice(0, start)}<div id="root">\n${inner}\n    </div>\n    ${html.slice(script)}`;
 }
 
+const HIDE_STATIC = `    <style>
+      html, body { background: #0d1117; margin: 0; }
+      html:not([data-app]) #root { display: none; }
+    </style>
+    <noscript><style>html:not([data-app]) #root { display: block; }</style></noscript>
+`;
+
+function ensureHideCss(html: string) {
+  if (html.includes('html:not([data-app]) #root')) {
+    return html
+      .replace('html:not([data-app]) #root { visibility: hidden; }', 'html:not([data-app]) #root { display: none; }')
+      .replace('html:not([data-app]) #root { visibility: visible; }', 'html:not([data-app]) #root { display: block; }')
+      .replace('html:not([data-app]) #root { visibility: visible !important; }', 'html:not([data-app]) #root { display: block; }');
+  }
+  return html.replace('</head>', `${HIDE_STATIC}  </head>`);
+}
+
 function writePage(rel: string, inner: string) {
   const file = resolve(root, rel);
   const html = readFileSync(file, 'utf8');
-  writeFileSync(file, replaceRoot(html, inner));
+  writeFileSync(file, replaceRoot(ensureHideCss(html), inner));
 }
 
 function guideInner(g: ChargingGuide) {
