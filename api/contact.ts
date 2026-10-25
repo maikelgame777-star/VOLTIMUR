@@ -39,9 +39,37 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           </table>
           <h3 style="color: #666; margin-top: 24px;">Mensaje</h3>
           <p style="background: #f5f5f5; padding: 16px; border-radius: 8px; white-space: pre-wrap;">${mensaje}</p>
+          <p style="margin-top:24px;color:#555;font-size:13px;line-height:1.5">
+            <strong>Voltimur</strong> · Electricista en Murcia<br/>
+            C/ del Sol 24, Torreagüera, 30579 Murcia<br/>
+            Tel. 681 330 640 · voltimur@voltimur.com · voltimur.com
+          </p>
         </div>
       `,
     });
+
+    try {
+      await transporter.sendMail({
+        from: `"Voltimur" <${process.env.EMAIL_USER}>`,
+        to: email,
+        subject: 'Hemos recibido tu solicitud — Voltimur',
+        html: `
+          <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
+            <p>Hola ${nombre},</p>
+            <p>Hemos recibido tu mensaje sobre <strong>${servicio}</strong>. Te respondemos en menos de 24 horas laborables.</p>
+            <p style="margin-top:24px;color:#555;font-size:13px;line-height:1.5">
+              <strong>Voltimur</strong> · Electricista en Murcia<br/>
+              C/ del Sol 24, Torreagüera, 30579 Murcia<br/>
+              Tel. <a href="tel:+34681330640">681 330 640</a> ·
+              <a href="mailto:voltimur@voltimur.com">voltimur@voltimur.com</a><br/>
+              <a href="https://voltimur.com">voltimur.com</a>
+            </p>
+          </div>
+        `,
+      });
+    } catch (confirmErr) {
+      console.error('No se pudo enviar el acuse al cliente', confirmErr);
+    }
 
     return res.status(200).json({ ok: true });
   } catch (error: any) {

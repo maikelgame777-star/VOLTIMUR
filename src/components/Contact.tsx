@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
-import { Phone, Mail, MapPin, Clock, ChevronDown, Download, QrCode } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, ChevronDown, Download, QrCode, Star } from 'lucide-react';
+import { GOOGLE_MAPS, GOOGLE_REVIEWS, GOOGLE_SEARCH } from '../data/site';
 import { QRCodeSVG, QRCodeCanvas } from 'qrcode.react';
 
 const QR_URL = 'https://voltimur.com/#contact';
@@ -289,6 +290,33 @@ export default function Contact({ defaultServicio }: ContactProps) {
                   {content}
                 </motion.div>
               ))}
+            </div>
+
+            <div className="mt-8 flex flex-col sm:flex-row gap-3">
+              <a
+                href={GOOGLE_MAPS}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-emerald-400 hover:text-emerald-300 font-medium"
+              >
+                <MapPin size={16} /> Ficha en Google Maps
+              </a>
+              <a
+                href={GOOGLE_SEARCH}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-emerald-400 hover:text-emerald-300 font-medium"
+              >
+                <Star size={16} /> Ficha de Voltimur en Google
+              </a>
+              <a
+                href={GOOGLE_REVIEWS}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-emerald-400 hover:text-emerald-300 font-medium"
+              >
+                <Star size={16} /> Reseñas en Google
+              </a>
             </div>
 
             <QRSection />

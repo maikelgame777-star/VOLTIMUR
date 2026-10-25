@@ -131,14 +131,14 @@ export const chargingGuides: ChargingGuide[] = [
     path: '/ayudas-irpf-punto-recarga-murcia/',
     title: 'Deducción IRPF por punto de recarga en Murcia',
     description:
-      'Deducción autonómica del IRPF en la Región de Murcia por instalar un punto de recarga: 100 % de la base, hasta 4.000 €. Requisitos de Hacienda y papeles que te dejamos.',
+      'Deducción autonómica de Murcia (100 % hasta 4.000 €) y deducción estatal del 15 % (hasta 600 €) por instalar un punto de recarga. Requisitos de Hacienda y papeles que te dejamos.',
     h1: 'Ayudas e IRPF para instalar un punto de recarga en Murcia',
-    lead: 'El MOVES no es una ayuda en la que puedas apoyarte hoy. Lo que sí sigue en pie en la Región de Murcia es una deducción autonómica del IRPF: el 100 % de la base, con un máximo de 4.000 € por infraestructura. Te dejamos factura y CIE; Hacienda decide en cada declaración.',
+    lead: 'El MOVES no es una ayuda en la que puedas apoyarte hoy. Sí puedes mirar dos vías de IRPF: la autonómica de Murcia y la estatal. Te dejamos factura y CIE; Hacienda y tu gestoría deciden en cada declaración.',
     sections: [
       {
-        h2: 'Qué dice Hacienda (Región de Murcia)',
+        h2: 'Deducción autonómica de la Región de Murcia',
         paragraphs: [
-          'La Agencia Tributaria recoge la deducción por gastos en la instalación de infraestructuras de recarga de vehículos eléctricos. La cuantía es el 100 % de la base, con un límite de 4.000 € por infraestructura y contribuyente.',
+          'La Agencia Tributaria recoge la deducción por gastos en la instalación de infraestructuras de recarga. La cuantía es el 100 % de la base, con un límite de 4.000 € por infraestructura y contribuyente.',
         ],
         list: [
           'Instalación en finca de tu propiedad o en tu garaje comunitario',
@@ -149,26 +149,43 @@ export const chargingGuides: ChargingGuide[] = [
         ],
       },
       {
+        h2: 'Deducción estatal (toda España)',
+        paragraphs: [
+          'Además de la autonómica, existe una deducción en la cuota estatal: el 15 % de las cantidades pagadas por instalar un punto de recarga en un inmueble de tu propiedad, con base máxima de 4.000 €. El ahorro máximo es 600 €. La instalación tiene que terminar antes del 31 de diciembre de 2026 (Real Decreto-ley 7/2026).',
+        ],
+        list: [
+          '15 % de la base, tope 4.000 € → hasta 600 €',
+          'Inmueble de tu propiedad y uso particular, no afecto a actividad económica',
+          'Cantidades pagadas desde el 30 de junio de 2023 hasta el 31 de diciembre de 2026',
+          'Se aplica en el ejercicio en que finaliza la instalación',
+          'Conviene pago bancario trazable, factura y CIE',
+        ],
+      },
+      {
         h2: 'Qué papeles te dejamos',
         paragraphs: [
-          'Factura a tu nombre, boletín CIE y documentación de la legalización. Con eso preparas la casilla autonómica. Si no cabe toda la deducción en un ejercicio, Hacienda permite arrastrar el resto hasta tres años.',
+          'Factura a tu nombre, boletín CIE y documentación de la legalización. Con eso tu gestoría puede preparar las casillas autonómica y estatal. La Agencia Tributaria indica que la deducción estatal se practica en el ejercicio en que finaliza la instalación. No afirmamos que se pueda arrastrar el resto a otros años: ese plazo lo confirma tu gestoría con Hacienda.',
         ],
       },
       {
         h2: 'Lo que no prometemos',
         paragraphs: [
-          'No somos asesores fiscales. Cada declaración depende de tu cuota autonómica, de si hay otras ayudas y de que cumplas los requisitos. El enlace oficial de la Agencia Tributaria está más abajo. Si tienes dudas de renta, consúltalo con tu gestoría.',
+          'No somos asesores fiscales. Cada declaración depende de tu cuota, de si hay otras ayudas y de que cumplas los requisitos. Los enlaces oficiales de la Agencia Tributaria están más abajo.',
         ],
       },
     ],
     faqs: [
       {
         q: '¿Sigue el MOVES III?',
-        a: 'El MOVES cerró. No lo incluimos en el presupuesto como si estuviera vigente. La vía útil ahora es la deducción del IRPF, autonómica y, si te aplica, la estatal.',
+        a: 'El MOVES cerró. No lo incluimos en el presupuesto como si estuviera vigente. La vía útil ahora es el IRPF: autonómico de Murcia y, si te aplica, el estatal.',
+      },
+      {
+        q: '¿Puedo aplicar la autonómica y la estatal a la vez?',
+        a: 'Pueden convivir en la misma renta porque gravan cuotas distintas, pero hay requisitos y bases que no se duplican igual en todos los casos. Lo revisa tu gestoría con las fichas de Hacienda.',
       },
       {
         q: '¿Vale para un garaje de alquiler?',
-        a: 'La norma autonómica pide finca en propiedad o plaza en garaje comunitario del contribuyente. El inquilino o usufructuario no entra. Confírmalo en la ficha de Hacienda.',
+        a: 'La norma autonómica pide finca en propiedad o plaza en garaje comunitario del contribuyente. La estatal también exige inmueble propio. El inquilino no entra. Confírmalo en Hacienda.',
       },
     ],
   },
@@ -227,6 +244,9 @@ export const chargingGuides: ChargingGuide[] = [
 
 export const AEAT_IRPF_MURCIA =
   'https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025-deducciones-autonomicas/comunidad-autonoma-region-murcia/gastos-instalacion-infraestructuras-recarga-vehiculos-electricos.html';
+
+export const AEAT_IRPF_ESTATAL =
+  'https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c16-deducciones-generales-cuota/deducciones-adquisicion-vehiculos-electricos-puntos-recarga.html';
 
 export function getGuide(slug: string) {
   return chargingGuides.find((g) => g.slug === slug);

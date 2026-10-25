@@ -1,4 +1,5 @@
 import { Instagram, Facebook, Linkedin } from 'lucide-react';
+import { GOOGLE_MAPS, GOOGLE_REVIEWS, GOOGLE_SEARCH, PHONE, PHONE_LABEL, EMAIL } from '../data/site';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -75,10 +76,13 @@ export default function Footer() {
           <div>
             <div className="text-white font-semibold mb-5 uppercase tracking-wider text-xs">Contacto</div>
             <ul className="space-y-3">
-              <li><a href="tel:+34681330640" className="hover:text-white transition-colors">681 330 640</a></li>
-              <li><a href="mailto:voltimur@voltimur.com" className="hover:text-white transition-colors">voltimur@voltimur.com</a></li>
+              <li><a href={`tel:${PHONE}`} className="hover:text-white transition-colors">{PHONE_LABEL}</a></li>
+              <li><a href={`mailto:${EMAIL}`} className="hover:text-white transition-colors">{EMAIL}</a></li>
               <li className="text-gray-500">C/ del Sol 24, Torreagüera<br />30579 Murcia</li>
               <li className="text-gray-500">Lun–Vie: 8:00–18:00</li>
+              <li><a href={GOOGLE_MAPS} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Ficha en Google Maps</a></li>
+              <li><a href={GOOGLE_SEARCH} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Ficha de Voltimur en Google</a></li>
+              <li><a href={GOOGLE_REVIEWS} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Reseñas en Google</a></li>
             </ul>
           </div>
 

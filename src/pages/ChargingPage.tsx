@@ -20,6 +20,7 @@ import { MobileContactBar, DesktopWhatsApp } from '../components/MobileContactBa
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import { chargingGuides } from '../data/chargingGuides';
+import { GOOGLE_REVIEWS, GOOGLE_SEARCH } from '../data/site';
 
 const PHONE = '+34681330640';
 const PHONE_LABEL = '681 330 640';
@@ -117,7 +118,7 @@ const faqs = [
   },
   {
     q: '¿Puedo desgravar el punto de recarga en el IRPF de Murcia?',
-    a: 'La deducción autonómica cubre el 100 % de la base, con un máximo de 4.000 € por infraestructura, si se instala en finca propia o garaje comunitario, hay factura y se mantiene dos años. No sustituye asesoramiento fiscal: cada caso lo confirma Hacienda.',
+    a: 'La autonómica de Murcia cubre el 100 % de la base, hasta 4.000 €, con factura y requisitos de Hacienda. La estatal es el 15 % (hasta 600 €) si la instalación termina antes del 31 de diciembre de 2026. No sustituye asesoramiento fiscal.',
   },
   {
     q: '¿Cuánto tarda la instalación?',
@@ -470,6 +471,10 @@ export default function ChargingPage() {
             </div>
             <p className="mt-8 text-sm text-gray-500">
               <a href="/" className="text-emerald-400 hover:text-emerald-300">Volver a Voltimur</a>
+              {' · '}
+              <a href={GOOGLE_SEARCH} className="text-emerald-400 hover:text-emerald-300" target="_blank" rel="noopener noreferrer">Ficha en Google</a>
+              {' · '}
+              <a href={GOOGLE_REVIEWS} className="text-emerald-400 hover:text-emerald-300" target="_blank" rel="noopener noreferrer">Reseñas</a>
               {' · '}
               Electricista en Murcia · C/ del Sol 24, Torreagüera
             </p>

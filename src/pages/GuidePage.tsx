@@ -4,11 +4,13 @@ import { MobileContactBar, DesktopWhatsApp } from '../components/MobileContactBa
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import {
+  AEAT_IRPF_ESTATAL,
   AEAT_IRPF_MURCIA,
   chargingGuides,
   otherGuides,
   type ChargingGuide,
 } from '../data/chargingGuides';
+import { GOOGLE_REVIEWS, GOOGLE_SEARCH } from '../data/site';
 
 const PHONE = '+34681330640';
 const PHONE_LABEL = '681 330 640';
@@ -84,14 +86,22 @@ export default function GuidePage({ slug }: Props) {
           ))}
 
           {guide.slug === 'ayudas-irpf-punto-recarga-murcia' && (
-            <p>
+            <p className="flex flex-col gap-2">
               <a
                 href={AEAT_IRPF_MURCIA}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-emerald-700 hover:text-emerald-800 font-medium"
               >
-                Ficha oficial de la Agencia Tributaria
+                Ficha autonómica Murcia (Agencia Tributaria)
+              </a>
+              <a
+                href={AEAT_IRPF_ESTATAL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-emerald-700 hover:text-emerald-800 font-medium"
+              >
+                Deducción estatal por punto de recarga (Agencia Tributaria)
               </a>
             </p>
           )}
@@ -123,6 +133,11 @@ export default function GuidePage({ slug }: Props) {
                 Ver instalación de cargadores
               </a>
             </div>
+            <p className="mt-6 text-sm text-gray-400">
+              <a href={GOOGLE_SEARCH} className="text-emerald-400 hover:text-emerald-300" target="_blank" rel="noopener noreferrer">Ficha en Google</a>
+              {' · '}
+              <a href={GOOGLE_REVIEWS} className="text-emerald-400 hover:text-emerald-300" target="_blank" rel="noopener noreferrer">Reseñas</a>
+            </p>
           </div>
         </div>
       </article>
