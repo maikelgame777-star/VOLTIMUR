@@ -41,17 +41,23 @@ export default function Footer() {
                 { label: 'Energía Solar', id: 'services' },
                 { label: 'Sistemas de Seguridad', id: 'services' },
                 { label: 'Domótica', id: 'services' },
-                { label: 'Cargadores Coche Eléctrico', id: 'cargadores' },
+                { label: 'Cargadores Coche Eléctrico', id: 'cargador-page' },
                 { label: 'Análisis de Redes Eléctricas', id: 'services' },
                 { label: 'Zona técnica', id: 'docs' },
               ].map(s => (
                 <li key={s.label}>
-                  <button
-                    onClick={() => document.getElementById(s.id)?.scrollIntoView({ behavior: 'smooth' })}
-                    className="hover:text-white transition-colors"
-                  >
-                    {s.label}
-                  </button>
+                  {s.id === 'cargador-page' ? (
+                    <a href="/cargador-coche-electrico-murcia/" className="hover:text-white transition-colors">
+                      {s.label}
+                    </a>
+                  ) : (
+                    <button
+                      onClick={() => document.getElementById(s.id)?.scrollIntoView({ behavior: 'smooth' })}
+                      className="hover:text-white transition-colors"
+                    >
+                      {s.label}
+                    </button>
+                  )}
                 </li>
               ))}
             </ul>

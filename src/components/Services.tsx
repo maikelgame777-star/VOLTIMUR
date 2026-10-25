@@ -147,6 +147,14 @@ export default function Services() {
                   </p>
                 )}
                 <p className="text-gray-500 leading-relaxed text-sm md:text-base mt-auto">{service.description}</p>
+                {service.badge && (
+                  <a
+                    href="/cargador-coche-electrico-murcia/"
+                    className="mt-4 inline-flex text-sm font-medium text-emerald-600 hover:text-emerald-500 transition-colors"
+                  >
+                    Ver página de cargadores →
+                  </a>
+                )}
               </div>
             </TiltCard>
           ))}
@@ -178,13 +186,21 @@ export default function Services() {
                 <p className="text-gray-300 font-light text-sm leading-relaxed mb-4">
                   Instalamos y legalizamos cargadores V2C con garantía de fabricante en Murcia.
                 </p>
-                <button
-                  type="button"
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="inline-flex px-5 py-2.5 bg-orange-500 hover:bg-orange-400 text-white rounded-lg text-sm font-medium transition-colors"
-                >
-                  Presupuesto V2C
-                </button>
+                <div className="flex flex-wrap gap-2">
+                  <a
+                    href="/cargador-coche-electrico-murcia/"
+                    className="inline-flex px-5 py-2.5 bg-orange-500 hover:bg-orange-400 text-white rounded-lg text-sm font-medium transition-colors"
+                  >
+                    Más sobre cargadores
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="inline-flex px-5 py-2.5 bg-white/10 hover:bg-white/15 text-white rounded-lg text-sm font-medium transition-colors"
+                  >
+                    Presupuesto
+                  </button>
+                </div>
               </div>
               <div className="w-full sm:w-40 shrink-0 rounded-xl bg-white p-2">
                 <img

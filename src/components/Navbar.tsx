@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Zap } from 'lucide-react';
 
-const links = [
+const links: { label: string; href: string; external?: boolean }[] = [
+  { label: 'Cargadores', href: '/cargador-coche-electrico-murcia/', external: true },
   { label: 'Servicios', href: 'services' },
   { label: 'Trabajos', href: 'works' },
   { label: 'Marcas', href: 'brands' },
@@ -51,15 +52,25 @@ export default function Navbar() {
           </button>
 
           <div className="hidden lg:flex items-center gap-5 xl:gap-7">
-            {links.map(link => (
-              <button
-                key={link.href}
-                onClick={() => scrollTo(link.href)}
-                className="text-sm text-gray-400 hover:text-white transition-colors font-medium"
-              >
-                {link.label}
-              </button>
-            ))}
+            {links.map(link =>
+              link.external ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm text-gray-400 hover:text-white transition-colors font-medium"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <button
+                  key={link.href}
+                  onClick={() => scrollTo(link.href)}
+                  className="text-sm text-gray-400 hover:text-white transition-colors font-medium"
+                >
+                  {link.label}
+                </button>
+              )
+            )}
           </div>
 
           <motion.button
@@ -90,15 +101,26 @@ export default function Navbar() {
             transition={{ duration: 0.2 }}
             className="fixed top-[6.5rem] left-0 right-0 z-40 bg-[#0d1117]/98 backdrop-blur-md border-b border-white/10 py-6 px-6 flex flex-col gap-2 max-h-[calc(100vh-6.5rem)] overflow-y-auto"
           >
-            {links.map(link => (
-              <button
-                key={link.href}
-                onClick={() => scrollTo(link.href)}
-                className="text-left text-gray-300 hover:text-white transition-colors py-3 text-lg font-medium border-b border-white/5 last:border-0"
-              >
-                {link.label}
-              </button>
-            ))}
+            {links.map(link =>
+              link.external ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-left text-gray-300 hover:text-white transition-colors py-3 text-lg font-medium border-b border-white/5 last:border-0"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <button
+                  key={link.href}
+                  onClick={() => scrollTo(link.href)}
+                  className="text-left text-gray-300 hover:text-white transition-colors py-3 text-lg font-medium border-b border-white/5 last:border-0"
+                >
+                  {link.label}
+                </button>
+              )
+            )}
             <button
               onClick={() => scrollTo('contact')}
               className="mt-4 px-5 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-sm font-medium transition-colors text-center"

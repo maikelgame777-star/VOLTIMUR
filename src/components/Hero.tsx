@@ -192,12 +192,12 @@ export default function Hero() {
           >
             Solicitar presupuesto gratis
           </button>
-          <button
-            className="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-lg font-medium transition-colors"
-            onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+          <a
+            href="/cargador-coche-electrico-murcia/"
+            className="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-lg font-medium transition-colors text-center"
           >
-            Ver servicios
-          </button>
+            Cargadores eléctricos
+          </a>
         </motion.div>
       </div>
 
