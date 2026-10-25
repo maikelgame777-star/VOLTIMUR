@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { useEffect } from 'react';
 import Loader from './components/Loader';
 import ScrollProgress from './components/ScrollProgress';
 import { NewsTicker } from './components/NewsTicker';
@@ -22,7 +23,27 @@ import Footer from './components/Footer';
 import { DarkToLight, LightToDark } from './components/WaveDivider';
 import { MobileContactBar, DesktopWhatsApp } from './components/MobileContactBar';
 
+function scrollToHash() {
+  const id = window.location.hash.replace('#', '');
+  if (!id) return;
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
 export default function App() {
+  useEffect(() => {
+    const t1 = window.setTimeout(scrollToHash, 50);
+    const t2 = window.setTimeout(scrollToHash, 400);
+    window.addEventListener('hashchange', scrollToHash);
+    return () => {
+      window.clearTimeout(t1);
+      window.clearTimeout(t2);
+      window.removeEventListener('hashchange', scrollToHash);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#0d1117] text-white selection:bg-emerald-500/30 font-sans pb-24 md:pb-0">
       <Loader />

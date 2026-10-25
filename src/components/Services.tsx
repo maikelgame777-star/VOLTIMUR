@@ -8,6 +8,7 @@ type Service = {
   description: string;
   image: string;
   alt: string;
+  imgClass?: string;
   badge?: string;
   badgeAlt?: string;
 };
@@ -20,6 +21,7 @@ const services: Service[] = [
       'Diseño e instalación de sistemas eléctricos residenciales, comerciales e industriales: cuadros de protección, SAI, canalizaciones y legalización conforme al REBT.',
     image: '/images/electrico.jpg',
     alt: 'Instalación eléctrica real de Voltimur en Murcia',
+    imgClass: 'object-[68%_58%]',
   },
   {
     icon: Wifi,
@@ -123,7 +125,7 @@ export default function Services() {
                   src={service.image}
                   alt={service.alt}
                   loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  className={`w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 ${service.imgClass ?? 'object-center'}`}
                 />
                 {service.badge && (
                   <div className="absolute bottom-3 right-3 left-3 sm:left-auto sm:max-w-[200px]">

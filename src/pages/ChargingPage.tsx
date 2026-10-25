@@ -12,6 +12,8 @@ import {
   Zap,
 } from 'lucide-react';
 import { MobileContactBar, DesktopWhatsApp } from '../components/MobileContactBar';
+import Contact from '../components/Contact';
+import Footer from '../components/Footer';
 
 const PHONE = '+34681330640';
 const PHONE_LABEL = '681 330 640';
@@ -56,7 +58,7 @@ const faqs = [
   },
   {
     q: '¿Podéis instalarlo en un garaje comunitario?',
-    a: 'Sí. Asesoramos sobre la normativa de comunidades, la potencia disponible y, si conviene, la gestión de carga dinámica (SPL) para compartir potencia entre vecinos.',
+    a: 'Sí. Te guiamos con la normativa de comunidades, revisamos la potencia disponible en tu plaza o derivación y, si hace falta, instalamos gestión de carga dinámica (SPL) para que el cargador no sature el cuadro ni dispare el ICP.',
   },
   {
     q: '¿Cuánto tarda la instalación?',
@@ -94,7 +96,16 @@ export default function ChargingPage() {
               <ArrowLeft size={14} /> Inicio
             </a>
             <a href="/#services" className="hover:text-white transition-colors">Servicios</a>
-            <a href="/#contact" className="hover:text-white transition-colors">Contacto</a>
+            <a
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="hover:text-white transition-colors"
+            >
+              Contacto
+            </a>
           </nav>
           <a
             href={`tel:${PHONE}`}
@@ -121,7 +132,11 @@ export default function ChargingPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
             <a
-              href="/#contact"
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              }}
               className="inline-flex justify-center px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-medium transition-colors"
             >
               Pedir presupuesto gratis
@@ -160,11 +175,11 @@ export default function ChargingPage() {
                 <p className="text-white font-medium">Cargador V2C instalado en Murcia</p>
               </figcaption>
             </figure>
-            <figure className="relative overflow-hidden rounded-2xl min-h-[300px] md:min-h-[380px] bg-gray-100">
+            <figure className="relative overflow-hidden rounded-2xl min-h-[300px] md:min-h-[420px] bg-[#1a1f26]">
               <img
                 src="/images/recarga-proteccion-voltimur.jpg"
                 alt="Cuadro de protección de punto de recarga instalado por Voltimur"
-                className="absolute inset-0 w-full h-full object-cover object-center"
+                className="absolute inset-0 w-full h-full object-contain object-center"
                 loading="lazy"
               />
               <figcaption className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-[#0d1117]/90 to-transparent">
@@ -279,7 +294,14 @@ export default function ChargingPage() {
               Cuéntanos tu caso y te enviamos presupuesto claro en 24 h: vivienda, comunidad o empresa.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3">
-              <a href="/#contact" className="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 rounded-lg font-medium transition-colors">
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 rounded-lg font-medium transition-colors"
+              >
                 Formulario de presupuesto
               </a>
               <a href={`tel:${PHONE}`} className="px-8 py-4 bg-white/10 hover:bg-white/15 rounded-lg font-medium transition-colors">
@@ -294,6 +316,9 @@ export default function ChargingPage() {
           </div>
         </div>
       </section>
+
+      <Contact defaultServicio="Cargador coche eléctrico" />
+      <Footer />
 
       <MobileContactBar />
       <DesktopWhatsApp />

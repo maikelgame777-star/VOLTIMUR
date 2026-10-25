@@ -174,8 +174,15 @@ const emptyForm = {
   privacidad: false,
 };
 
-export default function Contact() {
-  const [form, setForm] = useState(emptyForm);
+type ContactProps = {
+  defaultServicio?: string;
+};
+
+export default function Contact({ defaultServicio }: ContactProps) {
+  const initialForm = defaultServicio
+    ? { ...emptyForm, servicio: defaultServicio }
+    : emptyForm;
+  const [form, setForm] = useState(initialForm);
   const [phoneKey, setPhoneKey] = useState(0);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
@@ -226,7 +233,7 @@ export default function Contact() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Error desconocido');
       setStatus('success');
-      setForm(emptyForm);
+      setForm(initialForm);
       setPhoneKey((k) => k + 1);
     } catch (err: any) {
       setErrorMsg(err.message);

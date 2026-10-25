@@ -48,7 +48,7 @@ const works = [
     title: 'Garaje comunitario',
     caption: 'Trabajo en cuadro y canalización para infraestructura de recarga',
     className: 'md:col-span-1',
-    imgClass: 'object-cover object-[center_25%]',
+    imgClass: 'object-cover object-[68%_58%]',
   },
   {
     image: '/images/obra-solar-niebla.jpg',

@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function Loader() {
-  const [visible, setVisible] = useState(true);
+  const skip = typeof window !== 'undefined' && Boolean(window.location.hash);
+  const [visible, setVisible] = useState(!skip);
 
   useEffect(() => {
+    if (skip) return;
     document.body.style.overflow = 'hidden';
     const timer = setTimeout(() => {
       setVisible(false);
@@ -14,7 +16,7 @@ export default function Loader() {
       clearTimeout(timer);
       document.body.style.overflow = '';
     };
-  }, []);
+  }, [skip]);
 
   return (
     <AnimatePresence>

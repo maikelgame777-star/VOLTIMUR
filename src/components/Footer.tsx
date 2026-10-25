@@ -36,28 +36,19 @@ export default function Footer() {
             <div className="text-white font-semibold mb-5 uppercase tracking-wider text-xs">Servicios</div>
             <ul className="space-y-3">
               {[
-                { label: 'Instalaciones Eléctricas', id: 'services' },
-                { label: 'Telecomunicaciones', id: 'services' },
-                { label: 'Energía Solar', id: 'services' },
-                { label: 'Sistemas de Seguridad', id: 'services' },
-                { label: 'Domótica', id: 'services' },
-                { label: 'Cargadores Coche Eléctrico', id: 'cargador-page' },
-                { label: 'Análisis de Redes Eléctricas', id: 'services' },
-                { label: 'Zona técnica', id: 'docs' },
+                { label: 'Instalaciones Eléctricas', href: '/#services' },
+                { label: 'Telecomunicaciones', href: '/#services' },
+                { label: 'Energía Solar', href: '/#services' },
+                { label: 'Sistemas de Seguridad', href: '/#services' },
+                { label: 'Domótica', href: '/#services' },
+                { label: 'Cargadores Coche Eléctrico', href: '/cargador-coche-electrico-murcia/' },
+                { label: 'Análisis de Redes Eléctricas', href: '/#services' },
+                { label: 'Zona técnica', href: '/#docs' },
               ].map(s => (
                 <li key={s.label}>
-                  {s.id === 'cargador-page' ? (
-                    <a href="/cargador-coche-electrico-murcia/" className="hover:text-white transition-colors">
-                      {s.label}
-                    </a>
-                  ) : (
-                    <button
-                      onClick={() => document.getElementById(s.id)?.scrollIntoView({ behavior: 'smooth' })}
-                      className="hover:text-white transition-colors"
-                    >
-                      {s.label}
-                    </button>
-                  )}
+                  <a href={s.href} className="hover:text-white transition-colors">
+                    {s.label}
+                  </a>
                 </li>
               ))}
             </ul>
