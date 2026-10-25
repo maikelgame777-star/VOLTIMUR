@@ -2,8 +2,8 @@ import { motion } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
 
 
-const line1 = ['Sistemas', 'eléctricos'];
-const line2 = ['y', 'automáticos'];
+const line1 = ['Electricista', 'en', 'Murcia'];
+const line2 = ['Instalaciones', 'y', 'puntos', 'de', 'recarga'];
 
 const PARTICLES = [
   { x: 10, y: 22, size: 5, dur: 7,  delay: 0,   color: 'emerald' },
@@ -162,9 +162,17 @@ export default function Hero() {
         </h1>
 
         <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.05 }}
+          className="text-base md:text-lg text-emerald-400/90 font-medium tracking-wide mb-4"
+        >
+          Sistemas eléctricos y automáticos
+        </motion.p>
+        <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.1 }}
+          transition={{ duration: 0.7, delay: 1.15 }}
           className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed font-light"
         >
           Más de 25 años de experiencia en infraestructuras y mantenimiento eléctricos, inspecciones técnicas periódicas según REBT.

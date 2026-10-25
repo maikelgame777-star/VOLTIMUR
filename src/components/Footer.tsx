@@ -63,7 +63,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li><a href="tel:+34681330640" className="hover:text-white transition-colors">681 330 640</a></li>
               <li><a href="mailto:voltimur@voltimur.com" className="hover:text-white transition-colors">voltimur@voltimur.com</a></li>
-              <li className="text-gray-500">Murcia, España</li>
+              <li className="text-gray-500">C/ del Sol 24, Torreagüera<br />30579 Murcia</li>
               <li className="text-gray-500">Lun–Vie: 8:00–18:00</li>
             </ul>
           </div>
@@ -74,8 +74,8 @@ export default function Footer() {
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p>© {year} Voltimur. Todos los derechos reservados.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">Aviso Legal</a>
-            <a href="#" className="hover:text-white transition-colors">Política de Privacidad</a>
+            <a href="/aviso-legal/" className="hover:text-white transition-colors">Aviso Legal</a>
+            <a href="/privacidad/" className="hover:text-white transition-colors">Política de Privacidad</a>
           </div>
         </div>
 

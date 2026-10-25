@@ -13,9 +13,9 @@
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="language" content="Spanish" />
     <meta name="geo.region" content="ES-MC" />
-    <meta name="geo.placename" content="Murcia" />
-    <meta name="geo.position" content="37.9922;-1.1307" />
-    <meta name="ICBM" content="37.9922, -1.1307" />
+    <meta name="geo.placename" content="Torreagüera, Murcia" />
+    <meta name="geo.position" content="37.9786;-1.0339" />
+    <meta name="ICBM" content="37.9786, -1.0339" />
     <link rel="canonical" href="https://voltimur.com/" />
 
     <!-- Open Graph -->
@@ -66,14 +66,16 @@
           ],
           "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Murcia",
-            "addressRegion": "Región de Murcia",
+            "streetAddress": "Calle del Sol 24",
+            "addressLocality": "Torreagüera",
+            "addressRegion": "Murcia",
+            "postalCode": "30579",
             "addressCountry": "ES"
           },
           "geo": {
             "@type": "GeoCoordinates",
-            "latitude": "37.9922",
-            "longitude": "-1.1307"
+            "latitude": "37.9786",
+            "longitude": "-1.0339"
           },
           "openingHoursSpecification": [
             {
@@ -252,7 +254,38 @@
 
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Contenido estático para rastreadores (se sustituye al cargar React) -->
+      <header>
+        <p>Voltimur — Electricista en Murcia</p>
+        <h1>Electricista en Murcia: instalaciones eléctricas y puntos de recarga</h1>
+        <p>Sistemas eléctricos y automáticos. Más de 25 años de experiencia en infraestructuras y mantenimiento eléctricos, inspecciones técnicas periódicas según REBT. Instalaciones de infraestructura de recarga de coche eléctrico: oficial V2C y otros fabricantes.</p>
+      </header>
+      <main>
+        <section>
+          <h2>Servicios</h2>
+          <ul>
+            <li>Instalaciones eléctricas y boletines (REBT)</li>
+            <li>Puntos de recarga para coche eléctrico — instalador oficial V2C</li>
+            <li>Energía solar fotovoltaica y autoconsumo</li>
+            <li>Telecomunicaciones, antenas y captación audiovisual</li>
+            <li>Sistemas de seguridad, CCTV y domótica</li>
+            <li>Mantenimiento, averías y análisis de redes eléctricas</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Contacto</h2>
+          <p>Teléfono: <a href="tel:+34681330640">681 330 640</a></p>
+          <p>Email: <a href="mailto:voltimur@voltimur.com">voltimur@voltimur.com</a></p>
+          <p>Dirección: Calle del Sol 24, Torreagüera, Murcia</p>
+          <p>Horario: lunes a viernes, 8:00–18:00</p>
+          <p>Presupuesto gratis en 24 horas. Zona: Región de Murcia.</p>
+        </section>
+      </main>
+      <footer>
+        <p><a href="/aviso-legal/">Aviso Legal</a> · <a href="/privacidad/">Política de Privacidad</a></p>
+      </footer>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

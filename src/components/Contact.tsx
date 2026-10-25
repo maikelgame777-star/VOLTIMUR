@@ -156,34 +156,78 @@ function PhoneField({ value, onChange }: { value: string; onChange: (val: string
         value={number}
         onChange={e => setNumber(e.target.value)}
         placeholder="600 000 000"
+        required
+        minLength={9}
         className="w-full flex-1 min-w-0 bg-[#0d1117] border border-white/10 rounded-xl px-4 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
       />
     </div>
   );
 }
 
+const emptyForm = {
+  nombre: '',
+  telefono: '',
+  email: '',
+  email2: '',
+  servicio: 'Instalación Eléctrica',
+  mensaje: '',
+  privacidad: false,
+};
+
 export default function Contact() {
-  const [form, setForm] = useState({ nombre: '', telefono: '', email: '', servicio: 'Instalación Eléctrica', mensaje: '' });
+  const [form, setForm] = useState(emptyForm);
+  const [phoneKey, setPhoneKey] = useState(0);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
+    setForm(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMsg('');
+
+    if (!form.telefono.trim() || form.telefono.replace(/\D/g, '').length < 9) {
+      setErrorMsg('Indica un teléfono de contacto válido.');
+      setStatus('error');
+      return;
+    }
+    if (form.email.trim().toLowerCase() !== form.email2.trim().toLowerCase()) {
+      setErrorMsg('Los emails no coinciden. Revísalos por favor.');
+      setStatus('error');
+      return;
+    }
+    if (!form.privacidad) {
+      setErrorMsg('Debes aceptar la Política de Privacidad.');
+      setStatus('error');
+      return;
+    }
+
     setStatus('loading');
     try {
+      const payload = {
+        nombre: form.nombre,
+        telefono: form.telefono,
+        email: form.email,
+        servicio: form.servicio,
+        mensaje: form.mensaje,
+      };
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify(payload),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Error desconocido');
       setStatus('success');
-      setForm({ nombre: '', telefono: '', email: '', servicio: 'Instalación Eléctrica', mensaje: '' });
+      setForm(emptyForm);
+      setPhoneKey((k) => k + 1);
     } catch (err: any) {
       setErrorMsg(err.message);
       setStatus('error');
@@ -223,7 +267,7 @@ export default function Contact() {
               {[
                 { icon: Phone, label: 'Teléfono', content: <a href="tel:+34681330640" className="font-medium text-lg text-gray-200 hover:text-emerald-400 transition-colors">681 330 640</a> },
                 { icon: Mail, label: 'Email', content: <a href="mailto:voltimur@voltimur.com" className="font-medium text-base text-gray-200 hover:text-emerald-400 transition-colors break-all">voltimur@voltimur.com</a> },
-                { icon: MapPin, label: 'Ubicación', content: <div className="font-medium text-lg text-gray-200">Murcia, España</div> },
+                { icon: MapPin, label: 'Dirección', content: <div className="font-medium text-base text-gray-200 leading-snug">C/ del Sol 24<br />Torreagüera, Murcia</div> },
                 { icon: Clock, label: 'Horario', content: <div className="font-medium text-lg text-gray-200">Lun–Vie: 8:00–18:00</div> },
               ].map(({ icon: Icon, label, content }, i) => (
                 <motion.div
@@ -261,16 +305,23 @@ export default function Contact() {
               </div>
 
               <div className="space-y-3">
-                <label className="text-sm font-medium text-gray-400 uppercase tracking-wider">Teléfono</label>
+                <label className="text-sm font-medium text-gray-400 uppercase tracking-wider">Teléfono *</label>
                 <PhoneField
+                  key={phoneKey}
                   value={form.telefono}
                   onChange={val => setForm(prev => ({ ...prev, telefono: val }))}
                 />
               </div>
 
               <div className="space-y-3">
-                <label className="text-sm font-medium text-gray-400 uppercase tracking-wider">Email</label>
+                <label className="text-sm font-medium text-gray-400 uppercase tracking-wider">Email *</label>
                 <input type="email" name="email" value={form.email} onChange={handleChange} required placeholder="tu@email.com"
+                  className="w-full bg-[#0d1117] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all" />
+              </div>
+
+              <div className="space-y-3">
+                <label className="text-sm font-medium text-gray-400 uppercase tracking-wider">Repite el email *</label>
+                <input type="email" name="email2" value={form.email2} onChange={handleChange} required placeholder="Confirma tu email"
                   className="w-full bg-[#0d1117] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all" />
               </div>
 
@@ -298,6 +349,24 @@ export default function Contact() {
                 <textarea name="mensaje" value={form.mensaje} onChange={handleChange} required rows={4} placeholder="Cuéntanos tu proyecto..."
                   className="w-full bg-[#0d1117] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all resize-none"></textarea>
               </div>
+
+              <label className="flex items-start gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="privacidad"
+                  checked={form.privacidad}
+                  onChange={handleChange}
+                  required
+                  className="mt-1 w-4 h-4 rounded border-white/20 bg-[#0d1117] text-emerald-600 focus:ring-emerald-500"
+                />
+                <span className="text-sm text-gray-400 leading-relaxed">
+                  He leído y acepto la{' '}
+                  <a href="/privacidad/" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 underline underline-offset-2">
+                    Política de Privacidad
+                  </a>
+                  .
+                </span>
+              </label>
 
               {status === 'success' && (
                 <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-center">
