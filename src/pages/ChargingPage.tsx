@@ -148,11 +148,11 @@ export default function ChargingPage() {
       <section className="bg-white text-gray-900 py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-4 mb-16">
-            <figure className="relative overflow-hidden rounded-2xl min-h-[300px] md:min-h-[380px] bg-gray-100">
+            <figure className="relative overflow-hidden rounded-2xl min-h-[300px] md:min-h-[420px] bg-[#1a1f26]">
               <img
                 src="/images/recarga-v2c-obra.jpg"
                 alt="Instalación real de cargador V2C en garaje por Voltimur en Murcia"
-                className="absolute inset-0 w-full h-full object-cover object-[center_18%]"
+                className="absolute inset-0 w-full h-full object-contain object-center"
                 loading="eager"
               />
               <figcaption className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-[#0d1117]/90 to-transparent">
